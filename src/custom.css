@@ -1,0 +1,12 @@
+.BrainhubCarousel__arrows:hover {
+  background-color: #cc0d2a !important;
+}
+
+.BrainhubCarousel__arrows {
+  background-color: #e40c2b !important;
+  border-radius: 100% !important;
+  -webkit-border-radius: 100% !important;
+  -moz-border-radius: 100% !important;
+  -ms-border-radius: 100% !important;
+  -o-border-radius: 100% !important;
+}
