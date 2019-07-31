@@ -13,30 +13,33 @@
  */
 
 import React, { Component } from 'react';
-import './App.css';
-import logo_pemimpin from './image/Logo.png';
+import '../App.css';
+// import logo_pemimpin from '../image/Logo.png';
+
+// Navbar related
+import Navbar from '../Navbar';
 
 // Program Development Import & related
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import PD_1 from './image/PD-1.png';
-import PD_2 from './image/PD-2.png';
-import PD_3 from './image/PD-3.png';
-import PD_4 from './image/PD-4.png';
-import PD_5 from './image/PD-5.png';
+import PD_1 from '../image/PD-1.png';
+import PD_2 from '../image/PD-2.png';
+import PD_3 from '../image/PD-3.png';
+import PD_4 from '../image/PD-4.png';
+import PD_5 from '../image/PD-5.png';
 
 // Tujuan section import & related
-import Imgtujuan_1 from './image/Tujuan_1-small.png';
-import Imgtujuan_2 from './image/Tujuan_2-small.png';
-import Imgtujuan_3 from './image/Tujuan_3-small.png';
+import Imgtujuan_1 from '../image/Tujuan_1-small.png';
+import Imgtujuan_2 from '../image/Tujuan_2-small.png';
+import Imgtujuan_3 from '../image/Tujuan_3-small.png';
 
 // Custom CSS (for Carousel arrow etc)
-import './custom.css';
+import '../custom.css';
 // Demo styles, see 'Styles' section below for some notes on use.
 import 'react-accessible-accordion/dist/fancy-example.css';
 
 // ? FAQ Related 
-import FAQ from './pages/FAQ';
+import FAQ from './FAQ';
 
 // T&C Modal
 import Modal from 'react-modal';
@@ -63,7 +66,7 @@ TnCModal.setAppElement('#root');
 
 
 
-class App extends Component {
+class Home extends Component {
 
   constructor(props){
     // const [modalShow, setModalShow] = useState(false);
@@ -71,14 +74,20 @@ class App extends Component {
     this.state={
       isHide:true,
       showNotif: true,
-      isTnCOpen: false
+      isTnCOpen: false,
+      isTncCheck: false,
     };
+    this.toggleTncCheck = this.toggleTncCheck.bind(this);
     this.isNewsletterHide = this.isNewsletterHide.bind(this);
     this.handleTnC_Open = this.handleTnC_Open.bind(this);
     this.handleAfterTnC_Open = this.handleAfterTnC_Open.bind(this);
     this.handleTnC_Close = this.handleTnC_Close.bind(this);
   }
-
+  toggleTncCheck(){
+    this.setState(state=> ({
+      isTncCheck: !state.isTncCheck 
+    }))
+  }
   /*
     Show the isNewsletterHide after scrolling 1/3 of page
   */
@@ -167,6 +176,11 @@ class App extends Component {
   
 
   render() {
+    // Checklist on Click label
+    // const [tncCheck, setTncCheck] = useState(false);
+    // const onClickTncCheck = ()=>{
+    //   setTncCheck(!tncCheck)
+    // }
     return (
 
       <div className="web-container">
@@ -176,22 +190,7 @@ class App extends Component {
           {this.state.showNotif && <NotificationPanel onClose={this.closeNotif} />}
         </div> */}
 
-        {/* Navigation Section */}
-        <header className="navigation-container_grid">
-          <div className="logo-container">
-            <div className="logo-container_container">
-              <img src={logo_pemimpin} alt="y-logo" className="app-logo"/>
-            </div>
-          </div>
-          <div className="navigation-container">
-            <div className="menu_container">
-              <div className="navigation_item">About</div>
-              <div className="navigation_item">Term & Condition</div>
-              <div className="navigation_item">Contact</div>
-              <div className="navigation_item">Login</div>
-            </div>
-          </div>
-        </header>
+        <Navbar/>
 
         {/* Header Section */}
         <div className="heroshot-section">
@@ -219,7 +218,7 @@ class App extends Component {
               pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan.
             </p>
             <button className="cta-button" onClick={this.handleTnC_Open}>              
-              Enroll now
+              Daftar Sekarang
             </button>
 
             {/* Term and Condition Section */}
@@ -311,8 +310,10 @@ class App extends Component {
                 </div>
               </div>
               <div ref={tnc_checklistLabel => this.tnc_checklistLabel = tnc_checklistLabel}>
-                <input type="checkbox"/>
-                  <label className="TnC-checkmark_label">
+                <input onClick={this.toggleTncCheck} checked={this.state.isTncCheck} type="checkbox"/>
+                {/* <input type="checkbox"/> */}
+                  <label onClick={this.toggleTncCheck} className="TnC-checkmark_label">
+                  {/* <label className="TnC-checkmark_label"> */}
                     Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
                   </label>
                 <span class="checkmark">
@@ -327,7 +328,7 @@ class App extends Component {
                   cursor: "pointer"
                   }} 
                   onClick={this.handleTnC_Close}>
-                  Enroll now!
+                  Daftar Sekarang!
                 </button>
               </div>
             </TnCModal>
@@ -590,4 +591,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

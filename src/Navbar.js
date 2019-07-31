@@ -1,39 +1,54 @@
 import React, { Component } from 'react';
-import './index.css';
+import './App.css';
 import { NavLink } from 'react-router-dom';
+
+import logo_pemimpin from '../src/image/Logo.png';
 
 class Navbar extends Component {
 
   render() {
     return (
-      <header className="navbar">
+      <header className="navigation-container_grid">
         <div className="logo-container">
-          <NavLink exact to="/">
-            <img
-              className="app-logo"
-              src="images/logo.png"
-              alt="titiktemu"
-            />
-          </NavLink>
+          <div className="logo-container_container">
+            <NavLink exact to="/">
+              <img src={logo_pemimpin} alt="Pemimpin.co" className="app-logo"/>
+            </NavLink>
+          </div>
         </div>
         {/*This is the function to Show the Menu Page*/}
-        <div className="menu-navbar">
-          <a href="/">
-            <NavLink activeClassName="active-navlink-home" exact to="/">About</NavLink>
-          </a>
-          <a href="/">
-            <NavLink activeClassName="active-navlink-chat" exact to="/chat">Term & Condition</NavLink>
-          </a>
-          <a href="/">
-            <NavLink activeClassName="active-navlink-chat" exact to="/chat">Contact</NavLink>
-          </a>
-          <a href="/chat">
-            <NavLink activeClassName="active-navlink-chat" exact to="/chat">Login</NavLink>
-          </a>
-          <div className="signout">
-        </div>
-        </div>
+        {/* <div className="navigation-container">
+          <div className="menu_container">
+            <div className="navigation_item">About</div>
+            <div className="navigation_item">Term & Condition</div>
+            <div className="navigation_item">Contact</div>
+            <div className="navigation_item">Login</div>
+          </div>
+        </div> */}
+          <div className="menu_container">
+            <NavLink className="navigation_item" exact to="/about">About</NavLink>
+            <NavLink className="navigation_item" exact to="/tnc">Term & Condition</NavLink>
+            <NavLink className="navigation_item" exact to="/contact">Contact</NavLink>
+            <NavLink className="navigation_item" exact to="/login">Login</NavLink>
+          </div>
       </header>
+
+    //   {/* Navigation Section */}
+    //   <header className="navigation-container_grid">
+    //   <div className="logo-container">
+    //     <div className="logo-container_container">
+    //       <img src={logo_pemimpin} alt="Pemimpin.co" className="app-logo"/>
+    //     </div>
+    //   </div>
+    //   <div className="navigation-container">
+    //     <div className="menu_container">
+    //       <div className="navigation_item">About</div>
+    //       <div className="navigation_item">Term & Condition</div>
+    //       <div className="navigation_item">Contact</div>
+    //       <div className="navigation_item">Login</div>
+    //     </div>
+    // //   </div>
+    // </header>
     );
   }
 }
