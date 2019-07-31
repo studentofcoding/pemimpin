@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
 
-import customStyles from 'semantic-ui/dist/semantic.min.css';
+import customStyles from 'semantic-ui-css/semantic.min.css';
 import './Contact.css';
 
 import { Form, Input, TextArea, Message } from 'semantic-ui-react';
