@@ -94,7 +94,7 @@ class Login extends React.Component {
                             <Button
                                 disabled={loading}
                                 className={loading ? 'loading' : ''}
-                                style={{background:"#E43F35", color:"#fff"}}
+                                style={{background:"#e6133d", color:"#fff"}}
                                 fluid
                                 size="medium">
                                 Login

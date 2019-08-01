@@ -6,6 +6,7 @@ import Home from './pages/Home';
 
 // import nothinghere from './components/nothinghere';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import TnC_Page from './pages/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 class App extends Component {
@@ -25,7 +26,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/kontak" component={Contact} />
+            <Route exact path="/tnc" component={TnC_Page} />
           </Switch>
         </div>
       </Router>

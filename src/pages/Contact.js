@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 
 import customStyles from 'semantic-ui-css/semantic.min.css';
 import './Contact.css';
+import './Pages.css';
 
 import { Form, Input, TextArea, Message } from 'semantic-ui-react';
 
@@ -62,95 +63,106 @@ class Contact extends Component {
     //   submittedName, submittedEmail, submittedQuestion, submittedUniversity, loading, errors } = this.state;
 
     return (
-      <div style={customStyles}>
+      <div className="web-container">
         <Navbar />
-        <div className="contact_container">
-          <Form unstackable onSubmit={this.handleSubmit}>
-            {/* Form for Contact */}
-            <Form.Group onSubmit={this.handleSubmit} widths="equal">
-              <Form.Field
-                  fluid
-                  name="username"
-                  value={username}
-                  control={Input}
-                  label='Nama Lengkap'
-                  placeholder="Masukan Namamu"
-                  onChange={this.handleChange}
-                  className={this.handleInputError(errors, 'username')}
-                  type="username"
-                  required
-              />
-
-              <Form.Field
-                  fluid
-                  name="email"
-                  value={email}
-                  control={Input}
-                  label='Email'
-                  placeholder="Masukan Emailmu"
-                  onChange={this.handleChange}
-                  className={this.handleInputError(errors, 'email')}
-                  type="email"
-                  required
-              />
-
-              <Form.Field
-                  fluid
-                  name="university"
-                  value={university}
-                  control={Input}
-                  label='Universitas'
-                  placeholder="Masukan Universitasmu"
-                  onChange={this.handleChange}
-                  className={this.handleInputError(errors, 'username')}
-                  type="username"
-                  required
-              />
-            </Form.Group>
-            <Form.Field
-              fluid
-              name="question"
-              control={TextArea}
-              value={question}
-              label='Pertanyaan'
-              placeholder='Masukan Pertanyaanmu'
-              onChange={this.handleChange}
-              className={this.handleInputError(errors, 'question')}
-              type="question"
-              required
-            />
-                {/* <Button
-                    disabled={loading}
-                    className={loading ? 'loading' : ''}
-                    style={{background:"#E43F35", color:"#fff"}}
-                    fluid
-                    size="medium">
-                    Login
-                </Button> */}
-          {/* <Message style={{fontSize:"14px"}}>
-              Don't have an account? <Link to="/register">Join here!</Link>
-          </Message> */}
-            <Form.Button 
-            style={{background:"#E43F35", color:"#fff"}} 
-            size="medium" 
-            content='Kirim Pertanyaan'
-            disabled={loading}
-            className={loading ? 'loading' : ''}
-            />
-            {errors.length > 0 && (
-              <Message error>
-                  <h3>Error</h3>
-                  {this.dispalyErrors(errors)}
-              </Message>
-            )}
-          </Form>
+        
+        {/* Pages Header */}
+        <div className="pages-header">
+          <div className="pages-header_header">
+            <div className="pages-header_content">
+              Kontak Kami
+            </div>
+          </div>
         </div>
-        {/* <strong>onChange:</strong>
-        <pre>{JSON.stringify({ username, email, university, question }, null, 4)}</pre>
-        <strong>onSubmit:</strong>
-        <pre>{JSON.stringify({ submittedName, submittedEmail, submittedQuestion, submittedUniversity }, null, 4)}</pre> */}
-        {/* </Grid>
-        <Grid textAlign="center" verticalAlign="middle" className="registerlogin"> */}
+        <div style={customStyles}>
+          <div className="contact_container">
+            <Form unstackable onSubmit={this.handleSubmit}>
+              {/* Form for Contact */}
+              <Form.Group onSubmit={this.handleSubmit} widths="equal">
+                <Form.Field
+                    fluid
+                    name="username"
+                    value={username}
+                    control={Input}
+                    label='Nama Lengkap'
+                    placeholder="Masukan Namamu"
+                    onChange={this.handleChange}
+                    className={this.handleInputError(errors, 'username')}
+                    type="username"
+                    required
+                />
+
+                <Form.Field
+                    fluid
+                    name="email"
+                    value={email}
+                    control={Input}
+                    label='Email'
+                    placeholder="Masukan Emailmu"
+                    onChange={this.handleChange}
+                    className={this.handleInputError(errors, 'email')}
+                    type="email"
+                    required
+                />
+
+                <Form.Field
+                    fluid
+                    name="university"
+                    value={university}
+                    control={Input}
+                    label='Universitas'
+                    placeholder="Masukan Universitasmu"
+                    onChange={this.handleChange}
+                    className={this.handleInputError(errors, 'username')}
+                    type="username"
+                    required
+                />
+              </Form.Group>
+              <Form.Field
+                fluid
+                name="question"
+                control={TextArea}
+                value={question}
+                label='Pertanyaan'
+                placeholder='Masukan Pertanyaanmu'
+                onChange={this.handleChange}
+                className={this.handleInputError(errors, 'question')}
+                type="question"
+                required
+              />
+                  {/* <Button
+                      disabled={loading}
+                      className={loading ? 'loading' : ''}
+                      style={{background:"#E43F35", color:"#fff"}}
+                      fluid
+                      size="medium">
+                      Login
+                  </Button> */}
+            {/* <Message style={{fontSize:"14px"}}>
+                Don't have an account? <Link to="/register">Join here!</Link>
+            </Message> */}
+              <Form.Button 
+              style={{background:"#e6133d", color:"#fff"}} 
+              size="medium" 
+              content='Kirim Pertanyaan'
+              disabled={loading}
+              className={loading ? 'loading' : ''}
+              />
+              {errors.length > 0 && (
+                <Message error>
+                    <h3>Error</h3>
+                    {this.dispalyErrors(errors)}
+                </Message>
+              )}
+            </Form>
+          </div>
+          {/* <strong>onChange:</strong>
+          <pre>{JSON.stringify({ username, email, university, question }, null, 4)}</pre>
+          <strong>onSubmit:</strong>
+          <pre>{JSON.stringify({ submittedName, submittedEmail, submittedQuestion, submittedUniversity }, null, 4)}</pre> */}
+          {/* </Grid>
+          <Grid textAlign="center" verticalAlign="middle" className="registerlogin"> */}
+        </div>
       </div>
     );
   }
