@@ -1,0 +1,7 @@
+.Button-Daftar {
+  position:fixed;
+  margin:2em;
+  bottom:0;
+  left:0;
+  animation:back-to-docs 1.5s ease-in-out infinite;z-index:6
+}

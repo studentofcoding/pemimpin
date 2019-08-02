@@ -43,6 +43,7 @@ import FAQ from './FAQ';
 
 // T&C Modal
 import Modal from 'react-modal';
+import Footer from '../components/Footer';
 var TnCModal = Modal;
 const tncStyles = {
   content : {
@@ -83,6 +84,7 @@ class Home extends Component {
     this.handleAfterTnC_Open = this.handleAfterTnC_Open.bind(this);
     this.handleTnC_Close = this.handleTnC_Close.bind(this);
   }
+  
   toggleTncCheck(){
     this.setState(state=> ({
       isTncCheck: !state.isTncCheck 
@@ -182,15 +184,15 @@ class Home extends Component {
     //   setTncCheck(!tncCheck)
     // }
     return (
-
       <div className="web-container">
-        
+
         {/* Notification Panel Content
         <div className="notif-panel">
           {this.state.showNotif && <NotificationPanel onClose={this.closeNotif} />}
         </div> */}
 
         <Navbar/>
+
         <div className="inner_web-container">
           {/* Header Section */}
           <div className="heroshot-section">
@@ -236,37 +238,41 @@ class Home extends Component {
                       KETENTUAN UMUM
                     </div>
                     <div className="TnC-container_body">
-                      <li className="TnC-container-body_list">
-                        Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Inovatif, berkomitmen, persisten, dan bersemangat
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Memiliki kemampuan menganalisa masalah yang baik
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Siap mengikuti program pembinaan selama 9 bulan
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Jika pernah menerima beasiswa berikut akan diprioritaskan:
-                        <span>-></span>Bidik Misi, 
-                        <span>-></span>Rumah Kepemimpinan, 
-                        <span>-></span>Bakti Nusa, 
-                        <span>-></span>Beastudi Etos, 
-                        <span>-></span>Karya Salemba Empat, 
-                        <span>-></span>Kader Surau YBM BRI, dan 
-                        <span>-></span>LAZ Salman.
-                      </li>
+                      <ol>
+                        <li className="TnC-container-body_list">
+                          Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Inovatif, berkomitmen, persisten, dan bersemangat
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Memiliki kemampuan menganalisa masalah yang baik
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Siap mengikuti program pembinaan selama 9 bulan
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
+                        </li>
+                        <li className="TnC-container-body_list">
+                          Jika pernah menerima beasiswa berikut akan diprioritaskan :
+                          <ul>
+                          <li>Bidik Misi,</li>
+                          <li>Rumah Kepemimpinan,</li> 
+                          <li>Bakti Nusa,</li> 
+                          <li>Beastudi Etos,</li> 
+                          <li>Karya Salemba Empat,</li> 
+                          <li>Kader Surau YBM BRI, dan</li> 
+                          <li>LAZ Salman.</li>
+                          </ul>
+                        </li>
+                      </ol>
                     </div>
 
                     <div className="TnC-container_header">
@@ -519,73 +525,7 @@ class Home extends Component {
             </div>
           </div>
 
-
-          {/* Sliding Panel (Newsletter) Content
-          <div 
-          id={classwhenHide||"newsletter-container"}
-          >
-            <div className="newsletter-details">
-              <h3 style={{margin:0, fontSize:"0.9em"}}>
-                Get latest updates in web technologies
-              </h3>
-              <i 
-                style={{fontSize:"0.6em"}}
-                className="fa"
-                onClick={this.closeNewsletter}
-              >
-                  &#xf00d;
-              </i>
-              <p className="p-newsletter">
-                I write articles related to web technologies, such as design trends, development tools, UI/UX case studies and reviews, and more. Sign up to my newsletter to get them all.
-              </p>
-            </div>
-            <div className="newsletter-form">
-              <input 
-                name="email" 
-                type="email" 
-                placeholder="Email address" 
-                className="newsletter-input"
-              />
-              <button 
-                className="newsletter-button"
-                onClick={this.closeNewsletter}
-              >
-                Count me in!
-              </button>
-            </div>
-          </div> */}
-
-          {/* Footer Content */}
-          <footer className="footer_grid">
-            <div className="footer-about-container">
-              <div className="footer-about_header">
-                PEMIMPIN.CO
-              </div>
-              <div className="footer-about_body">
-                Pemimpin.co adalah salah satu inisiatif dari DeepSpace konsorsium
-                untuk perubahan sosial di Indonesia.
-              </div>
-              <div className="footer-about_alamat">
-                Jln. Melawai X No.9, RT.2/RW.6, Melawai, Kota Jakarta Selatan, 
-                DKI Jakarta 12160
-              </div>
-            </div>
-            <div className="footer-contact-container">
-              <div className="footer-contact_container">
-                <div className="footer-contact_header">
-                  Kontak kami
-                </div>
-                <div className="footer-contact_item">
-                  <div className="footer-contact-item_1">
-                    0812-9821-9099
-                  </div>
-                  <div className="footer-contact-item_1">
-                    program@pemimpin.co
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
+          <Footer/>
         </div>
       </div>
     );

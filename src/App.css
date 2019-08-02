@@ -616,6 +616,8 @@ body {
 */
 
 .footer_grid {
+  bottom:0;
+  left:0;
   display: grid;
   display: -ms-grid;
   grid-template-rows: 1fr;

@@ -2,22 +2,26 @@ import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Navbar from '../Navbar';
 import './Pages.css';
+import Footer from '../components/Footer';
+import Tncmodul from '../components/Tncmodul';
 
 const TnC_Page = () => (
   <div className="web-container">
     <Navbar/>
 
+    <Tncmodul/>
+
     {/* Pages Header */}
     <div className="pages-header">
-          <div className="pages-header_header">
-            <div className="pages-header_content">
-              Term and Condition
-            </div>
-          </div>
+      <div className="pages-header_header">
+        <div className="pages-header_content">
+          Term and Condition
         </div>
+      </div>
+    </div>
     
     {/* Terms and Condition Header */}
-    <Container text textAlign='justified'>
+    <Container style={{marginTop:"1em"}} text textAlign='justified'>
       <h2>KETENTUAN UMUM</h2>
       <ol>
         <li>
@@ -244,6 +248,7 @@ const TnC_Page = () => (
         </li>
       </ul>
     </Container>
+    <Footer />
   </div>
 )
 

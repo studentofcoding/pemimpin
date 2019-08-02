@@ -6,6 +6,8 @@ import './Contact.css';
 import './Pages.css';
 
 import { Form, Input, TextArea, Message } from 'semantic-ui-react';
+import Footer from '../components/Footer';
+import Tncmodul from '../components/Tncmodul';
 
 class Contact extends Component {
   state = { 
@@ -65,6 +67,8 @@ class Contact extends Component {
     return (
       <div className="web-container">
         <Navbar />
+        
+        <Tncmodul />
         
         {/* Pages Header */}
         <div className="pages-header">
@@ -142,7 +146,7 @@ class Contact extends Component {
                 Don't have an account? <Link to="/register">Join here!</Link>
             </Message> */}
               <Form.Button 
-              style={{background:"#e6133d", color:"#fff"}} 
+              style={{background:"#1d1d2c", color:"#fff"}} 
               size="medium" 
               content='Kirim Pertanyaan'
               disabled={loading}
@@ -163,6 +167,8 @@ class Contact extends Component {
           {/* </Grid>
           <Grid textAlign="center" verticalAlign="middle" className="registerlogin"> */}
         </div>
+
+        <Footer />
       </div>
     );
   }
