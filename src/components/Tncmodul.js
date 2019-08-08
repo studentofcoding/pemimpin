@@ -115,7 +115,7 @@ handleHideButton_TnC () {
               <div className="TnC-container_body">
                 <ol>
                   <li className="TnC-container-body_list">
-                    Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
+                    Mahasiswa S1 dari universitas di Jabodetabek dan Bandung
                   </li>
                   <li className="TnC-container-body_list">
                     Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020

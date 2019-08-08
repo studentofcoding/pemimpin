@@ -99,19 +99,19 @@ export default class About extends Component {
             Batas akhir pendaftaran :
           </h3>
             <p>
-              10 Agustus 2019
+              31 Agustus 2019
             </p>
           <h3>
           Seleksi :
           </h3>
             <p>
-              5 -  13 Agustus 2019
+              1 - 5 September 2019
             </p>
           <h3>
           Pengumuman :
           </h3>
             <p>
-              24 Agustus 2019
+              20 September 2019
             </p> 
         </Container>
 

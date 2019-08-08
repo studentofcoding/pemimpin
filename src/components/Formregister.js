@@ -4,22 +4,24 @@ import { Message, Header, Container, Form, Input, TextArea, Select, Divider } fr
 // import axios from 'axios';
 
 import Navbar from '../Navbar';
+import Footer from './Footer';
 
 // sexOptions dropdown
 const sexOptions = [
-  { key: 'm', text: 'Male', value: 'Laki-laki' },
-  { key: 'f', text: 'Female', value: 'Perempuan' },
+  { key: 'm', text: 'Male', value: 'Male' },
+  { key: 'f', text: 'Female', value: 'Female' },
 ]
 
 // scolarshipOption dropdown
 const scholarshipOptions = [
-  { key: 'bm', text: 'Bidik Misi', value: 'Bidik Misi' },
-  { key: 'rk', text: 'Rumah Kepemimpinan', value: 'Rumah Kepemimpinan' },
-  { key: 'bn', text: 'Bakti Nusa', value: 'Bakti Nusa' },
-  { key: 'be', text: 'Beastudi Etos', value: 'Beastudi Etos' },
-  { key: 'kse', text: 'Karya Salemba Empat', value: 'Karya Salemba Empat' },
-  { key: 'ksyb', text: 'Kader Surau YBM BRI', value: 'Kader Surau YBM BRI' },
-  { key: 'ls', text: 'LAZ Salman', value: 'LAZ Salman' }
+  { key: 'a', text: 'Bidik Misi', value: 'Bidik Misi' },
+  { key: 'b', text: 'Rumah Kepemimpinan', value: 'Rumah Kepemimpinan' },
+  { key: 'c', text: 'Bakti Nusa', value: 'Bakti Nusa' },
+  { key: 'd', text: 'Beastudi Etos', value: 'Beastudi Etos' },
+  { key: 'e', text: 'Karya Salemba Empat', value: 'Karya Salemba Empat' },
+  { key: 'f', text: 'Kader Surau YBM BRI', value: 'Kader Surau YBM BRI' },
+  { key: 'g', text: 'LAZ Salman', value: 'LAZ Salman' },
+  { key: 'h', text: 'Lainnya', value: '' }
 ]
 
 // universityOptions dropdown
@@ -30,17 +32,18 @@ const universityOptions = [
   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
   { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-  { key: '7', text: 'Lainnya', value: 'Lainnya' }
+  { key: '7', text: 'Lainnya', value: '' }
 ]
 
 // essaytopicOptions dropdown
 const essaytopicOptions = [
-  { key: 'pen', text: 'Pendidikan', value: 'Pendidikan' },
-  { key: 'ks', text: 'Kesejahteraan Sosial', value: 'Kesejahteraan Sosial' },
-  { key: 'kep', text: 'Kepemimpinan', value: 'Kepemimpinan' },
-  { key: 'ling', text: 'Linkungan', value: 'Linkungan' },
-  { key: 'mb', text: 'Manajemen Bencana', value: 'Manajemen Bencana' },
-  { key: 'it', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' }
+  { key: 'a', text: 'Pendidikan', value: 'Pendidikan' },
+  { key: 'b', text: 'Kesejahteraan Sosial', value: 'Kesejahteraan Sosial' },
+  { key: 'c', text: 'Kepemimpinan', value: 'Kepemimpinan' },
+  { key: 'd', text: 'Linkungan', value: 'Linkungan' },
+  { key: 'e', text: 'Manajemen Bencana', value: 'Manajemen Bencana' },
+  { key: 'f', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' },
+  { key: 'g', text: 'Lainnya', value: '' }
 ]
 
 class Formregister extends Component {
@@ -62,9 +65,13 @@ class Formregister extends Component {
     scholarship_other: "",
     recommendation_paper: "",
     competencies: "",
-    achievements: "",
+    achievements_1: "",
+    achievements_2: "",
+    achievements_3: "",
     scientific_works: "",
     university_id: "",
+    university_letter: "",
+    scholarship_letter: "",
     faculty: "",
     score: "",
     essay_topic: "",
@@ -76,18 +83,21 @@ class Formregister extends Component {
     submittedBirth_date: "",
     submittedAddress: "", 
     submittedEmail: "", 
-    submittedPhone: "", 
+    submittedPhone: "",
+    submittedPhoto: "",  
     submittedEmegency_Phone: "", 
     submittedSocial_media: "", 
     submittedReligion: "", 
     submittedHobby: "", 
     submittedScholarship: "", 
+    submittedScholarship_letter: "",
     submittedSex: "", 
     submittedScientific_works: "", 
     submittedCompetencies: "", 
     submittedAchievements: "", 
     submittedRecommendation_paper: "", 
     submittedUniversity_id: "",
+    submittedUniversity_letter: "",
     submittedProposed_essay: "", 
     submittedEssay_topic: "", 
     submittedScore: "", 
@@ -105,9 +115,101 @@ class Formregister extends Component {
   handleUnivDropdown = (e, { value }) => this.setState({ university_id: value });
   handleEssayDropdown = (e, { value }) => this.setState({ essay_topic: value });
 
+  onChangePhoto(e) {
+    let files=e.target.files;
+    console.warn("data file", files)
+
+    let reader= new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload=(e)=>{
+      console.warn("img data", e.target.result);
+      this.setState({
+        photo: e.target.result
+      });
+    }
+  }
+
+  onChangeRecommendedPaper(e) {
+    let files=e.target.files;
+    console.warn("data file", files)
+
+    let reader= new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload=(e)=>{
+      console.warn("recom paper data", e.target.result);
+      this.setState({
+        recommendation_paper: e.target.result
+      });
+    }
+  }
+
+  onChangeProposedEssay(e) {
+    let files=e.target.files;
+    console.warn("data file", files)
+
+    let reader= new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload=(e)=>{
+      console.warn("essay data", e.target.result);
+      this.setState({
+        proposed_essay: e.target.result
+      });
+    }
+  }
+
+  onChangeScholarshipLetter(e) {
+    let files=e.target.files;
+    console.warn("data file", files)
+
+    let reader= new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload=(e)=>{
+      console.warn("scholarship data", e.target.result);
+      this.setState({
+        scholarship_letter: e.target.result
+      });
+    }
+  }
+
+  onChangeKTM(e) {
+    let files=e.target.files;
+    console.warn("data file", files)
+
+    let reader= new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload=(e)=>{
+      console.warn("KTM data", e.target.result);
+      this.setState({
+        university_letter: e.target.result
+      });
+    }
+  }
+
+  // combine3Achievements=()=>{
+
+  //   const a_1 = this.state.achievements_1 ;
+  //   const a_2 = this.state.achievements_2 ;
+  //   const a_3 = this.state.achievements_3 ;
+
+  //   const submittedAchievements = a_1.concat(" ;", a_2, " ;", a_3);
+
+  //   this.setState({submittedAchievements : submittedAchievements});
+  // }
+
   handleFormSubmit = () => {
     const { 
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,  sex, scientific_works, competencies, achievements, recommendation_paper, university_id, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, scholarship_letter,  sex, scientific_works, competencies, recommendation_paper, university_id, university_letter, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
+
+    const a_1 = this.state.achievements_1 ;
+    const a_2 = this.state.achievements_2 ;
+    const a_3 = this.state.achievements_3 ;
+
+    const submittedAchievements = a_1.concat(";", a_2, ";", a_3);
 
     this.setState({ 
       username: "",
@@ -122,6 +224,23 @@ class Formregister extends Component {
       religion: "",
       hobby: "",
       sex: "",
+      photo: "",
+      competencies: "",
+      scientific_works: "",
+      scholarship: "",
+      scholarship_other: "",
+      scholarship_letter: "",
+      university_id: "",
+      university_letter: "",
+      faculty: "",
+      score: "",
+      essay_topic: "",
+      essay_topic_other: "",
+      proposed_essay: "",
+      achievements_1: "",
+      achievements_2: "",
+      achievements_3: "",
+      recommendation_paper: "",
       submittedName: username,
       submittedNickname: nickname,
       submittedBirth_place: birth_place,
@@ -138,9 +257,11 @@ class Formregister extends Component {
       submittedScholarship_Other: scholarship_other,
       submittedScientific_works: scientific_works,
       submittedCompetencies: competencies,
-      submittedAchievements: achievements,
+      submittedAchievements: submittedAchievements,
       submittedRecommendation_paper: recommendation_paper,
       submittedUniversity_id: university_id,
+      submittedUniversity_letter: university_letter,
+      submittedScholarship_letter: scholarship_letter,
       submittedPhoto: photo,
       submittedProposed_essay: proposed_essay,
       submittedEssay_topic: essay_topic,
@@ -162,31 +283,7 @@ class Formregister extends Component {
 
   render() {
     const { 
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty, 
-      submittedName,
-      submittedNickname,
-      submittedBirth_place,
-      submittedBirth_date,
-      submittedAddress,
-      submittedEmail,
-      submittedPhone,
-      submittedEmegency_Phone,
-      submittedSocial_media,
-      submittedReligion,
-      submittedHobby,
-      submittedScholarship,
-      submittedScholarship_Other,
-      submittedSex,
-      submittedScientific_works,
-      submittedCompetencies,
-      submittedAchievements,
-      submittedRecommendation_paper,
-      submittedUniversity_id,
-      submittedProposed_essay,
-      submittedEssay_topic,
-      submittedEssay_topic_other,
-      submittedScore,
-      submittedFaculty,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements_1, achievements_2, achievements_3, university_id, essay_topic, essay_topic_other, score, faculty, recommendation_paper, proposed_essay, photo, scholarship_letter, university_letter,
       loading, 
       errors 
     } = this.state;
@@ -228,25 +325,33 @@ class Formregister extends Component {
                 onChange={this.handleChange}
                 className={this.handleInputError(errors, 'nickname')}
               />
+            </Form.Group>
+            <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
                 options={sexOptions}
                 label={{ children: 'Jenis Kelamin', htmlFor: 'form-select-control-gender' }}
-                placeholder='Laki-laki/Perempuan'
+                placeholder='Male/Female'
                 search
                 onChange={this.handleSexDropdown}
               
                 value={sex}
                 searchInput={{ id: 'form-select-control-gender' }}
               />
+              <Form.Field
+                name="photo"
+                control={Input}
+                label='Pas Photo'
+                value={photo}
+                placeholder='Upload Pas Photo 3x4'
+              >
+                <Input 
+                type="file" 
+                name="file"
+                onChange={(e)=>this.onChangePhoto(e)} 
+                />
+              </Form.Field>
             </Form.Group>
-            {/* <Form.Field
-              name="photo"
-              control={Input}
-              label='Pas Photo'
-              value={photo}
-              placeholder='Upload Pas Photo'
-            /> */}
             <Form.Group widths='equal'>
               <Form.Field
                   name="birth_place"
@@ -261,10 +366,9 @@ class Formregister extends Component {
                   control={Input}
                   label='Tanggal Lahir'
                   value={birth_date}
-                  placeholder='contoh : 16041996'
+                  placeholder='contoh : 1996-04-16 (YYYY-MM-DD)'
                   name="birth_date"
-                  onChange={this.handleChange}
-                
+                  onChange={this.handleChange}             
                 />
             </Form.Group>
             <Form.Field
@@ -359,14 +463,29 @@ class Formregister extends Component {
               onChange={this.handleChange}
             />
             <Form.Field
-              id='form-input-control-achievements'
-              control={TextArea}
+              id='form-input-control-achievements_1'
+              control={Input}
               label='3 prestasi terbaik'
-              value={achievements}
-              placeholder='contoh : Pencapaian | Penyelenggara | Tahun'
-              name="achievements"
+              value={achievements_1}
+              placeholder='contoh : 1. Nama Pencapaian | Penyelenggara | Tahun'
+              name="achievements_1"
               onChange={this.handleChange}
-            
+            />
+            <Form.Field
+              id='form-input-control-achievements_2'
+              control={Input}
+              value={achievements_2}
+              placeholder='contoh : 2. Nama Pencapaian | Penyelenggara | Tahun'
+              name="achievements_2"
+              onChange={this.handleChange}
+            />
+            <Form.Field
+              id='form-input-control-achievements_3'
+              control={Input}
+              value={achievements_3}
+              placeholder='contoh : 3. Nama Pencapaian | Penyelenggara | Tahun'
+              name="achievements_3"
+              onChange={this.handleChange}
             />
             <Form.Field
               id='form-input-control-scientific-works  '
@@ -382,7 +501,7 @@ class Formregister extends Component {
               <Form.Field
                 control={Select}
                 options={scholarshipOptions}
-                label={{ children: 'Pilih Beasiswamu', htmlFor: 'form-select-control-beasiswa' }}
+                label={{ children: 'Beasiswa yang pernah diterima', htmlFor: 'form-select-control-beasiswa' }}
                 placeholder='Bidik Misi'
                 search
                 onChange={this.handleScholarshipDropdown}             
@@ -398,18 +517,33 @@ class Formregister extends Component {
                 type="username"
                 onChange={this.handleChange}
               />
-              {/* <Form.Field
-                id='form-input-control-scholarship'
+              <Form.Field
+                name="scholarship_letter"
                 control={Input}
-                value={scholarship}
-                placeholder='Upload Surat Beasiswa'
-                label="Upload Surat Beasiswa"
-                name="scholarship"
-                type="username"
-                onChange={this.handleChange}
-              
-              /> */}
+                label='Surat Pernyataan Beasiswa'
+                value={scholarship_letter}
+                placeholder='Upload Surat Pernyataan Beasiswa'
+              >
+                <Input 
+                type="file" 
+                name="file"
+                onChange={(e)=>this.onChangeScholarshipLetter(e)} 
+                />
+              </Form.Field>
             </Form.Group>
+            <Form.Field
+              name="recommendation_paper"
+              control={Input}
+              label='Surat Rekomendasi'
+              value={recommendation_paper}
+              placeholder='Upload Surat Rekomendasi'
+            >
+              <Input 
+              type="file" 
+              name="file"
+              onChange={(e)=>this.onChangeRecommendedPaper(e)} 
+              />
+            </Form.Field>
             {/* <Form.Field
               id='form-input-control-recom-paper'
               control={Input}
@@ -437,10 +571,25 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-university' }}
               />
               <Form.Field
+                name="university_letter"
+                control={Input}
+                label='Upload KTM'
+                value={university_letter}
+                placeholder='Upload KTM'
+              >
+                <Input 
+                type="file" 
+                name="file"
+                onChange={(e)=>this.onChangeKTM(e)} 
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Field
                 control={Input}
                 value={faculty}
                 placeholder='contoh : Digital Design'
-                label='Fakultas'
+                label='Fakultas / Jurusan'
                 name="faculty"
                 type="username"
                 onChange={this.handleChange}                
@@ -448,7 +597,7 @@ class Formregister extends Component {
               <Form.Field
                 control={Input}
                 value={score}
-                placeholder='contoh : 3.52 / 4.00'
+                placeholder='contoh : 3.52'
                 label='IPK'
                 name="score"
                 type="number"
@@ -475,15 +624,19 @@ class Formregister extends Component {
                 type="username"
                 onChange={this.handleChange}
               />
-              {/* <Form.Field
-                id='form-input-control-essay-topic'
+              <Form.Field
+                name="proposed_essay"
                 control={Input}
-                value={score}
-                placeholder='upload draft proposal'
-                label='Upload Draft Proposal'
-                name="essay_topic-proposal"
-                required
-              /> */}
+                label='Upload Draft Essay'
+                value={proposed_essay}
+                placeholder='Upload Draft Essay'
+              >
+                <Input 
+                type="file" 
+                name="file"
+                onChange={(e)=>this.onChangeProposedEssay(e)} 
+                />
+              </Form.Field>
               </Form.Group>
             <Form.Button 
               style={{
@@ -506,11 +659,13 @@ class Formregister extends Component {
                 </Message>
               )}
           
-          <strong>onChange:</strong>
-          <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre>
+          {/* <strong>onChange:</strong>
+          <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,scholarship_letter, university_letter, sex, scientific_works, competencies, achievements_1, achievements_2, achievements_3, university_id, essay_topic, essay_topic_other, score, faculty, photo, recommendation_paper, proposed_essay }, null, 23)}</pre>
           <strong>dataSubmitted:</strong>
-          <pre>{JSON.stringify({ submittedName, submittedNickname, submittedBirth_place, submittedBirth_date,submittedAddress, submittedEmail, submittedPhone, submittedEmegency_Phone, submittedSocial_media, submittedReligion, submittedHobby, submittedScholarship, submittedScholarship_Other, submittedSex, submittedScientific_works,submittedCompetencies, submittedAchievements, submittedRecommendation_paper, submittedUniversity_id,submittedProposed_essay, submittedEssay_topic,submittedEssay_topic_other, submittedScore, submittedFaculty }, null, 20)}</pre>
+          <pre>{JSON.stringify({ submittedName, submittedNickname, submittedBirth_place, submittedBirth_date,submittedAddress, submittedEmail, submittedPhone, submittedEmegency_Phone, submittedSocial_media, submittedReligion, submittedHobby, submittedScholarship, submittedScholarship_Other, submittedScholarship_letter, submittedUniversity_letter, submittedSex, submittedScientific_works, submittedCompetencies, submittedAchievements, submittedUniversity_id, submittedEssay_topic, submittedEssay_topic_other, submittedScore, submittedFaculty, submittedPhoto, submittedRecommendation_paper, submittedProposed_essay }, null, 23)}</pre> */}
+
         </Container>
+        <Footer />
       </div>
     );
   }

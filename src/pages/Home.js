@@ -55,21 +55,6 @@ const tncStyles = {
 };
 TnCModal.setAppElement('#root');
 
-
-// const NotificationPanel = (props) => 
-// <header>
-//   <div className="notif-container">
-//     <div className="notif-details">
-//       By accessing and using this website, you acknowledge that you have read and understand our <a href=".">Cookie Policy</a>, <a href=".">Privacy Policy</a>, and our <a href=".">Term of Service</a>.
-//     </div>
-//     <button onClick={props.onClose} className="notif-button">
-//       Got it
-//     </button>
-//   </div>
-// </header>;
-
-
-
 class Home extends Component {
 
   constructor(props){
@@ -92,30 +77,6 @@ class Home extends Component {
       isTncCheck: !state.isTncCheck 
     }))
   }
-  /*
-    Show the isNewsletterHide after scrolling 1/3 of page
-  */
-
-  // isNewsletterHide(){
-  //   let {isHide} = this.state;
-  //   window.scrollY > 500 && this.prev ?
-  //   isHide && this.setState({isHide:false})
-  //   :
-  //   !isHide && this.setState({isHide:false})
-  //   this.prev = window.scrollY;
-  // }
-
-  /*
-    Calling the isNewsletterHide function & Unmount it
-  */
-
-  // componentDidMount(){
-  //   window.addEventListener('scroll',this.isNewsletterHide);
-  // }
-
-  // componentWillUnmount() {
-  //   window.addEventListener('scroll',this.isNewsletterHide);
-  // }
 
   /*
     Close the Notification Panel
@@ -127,19 +88,6 @@ class Home extends Component {
     })
     document.getElementsByClassName("notif-panel")[0].style.padding = "0px";
   };
-
-  // closeNewsletter = () => {
-  //   this.setState({
-  //     isHide: true,
-  //   })
-  //   let newsletterPanel = document.getElementById('newsletter-container')
-  //   if (newsletterPanel.style.display !== "none") {
-  //     newsletterPanel.style.display = "none";
-  //     setTimeout(function() {       
-  //       newsletterPanel.style.display = "fixed";
-  //     }, 100 * 6000);
-  //   }
-  // };
 
   /*
     T&C Modal Related
@@ -180,18 +128,8 @@ class Home extends Component {
   
 
   render() {
-    // Checklist on Click label
-    // const [tncCheck, setTncCheck] = useState(false);
-    // const onClickTncCheck = ()=>{
-    //   setTncCheck(!tncCheck)
-    // }
     return (
       <div className="web-container">
-
-        {/* Notification Panel Content
-        <div className="notif-panel">
-          {this.state.showNotif && <NotificationPanel onClose={this.closeNotif} />}
-        </div> */}
 
         <Navbar/>
 
@@ -201,7 +139,7 @@ class Home extends Component {
             <div className="top-details">
               <h2
                 className="top-header"
-                style={{fontFamily:"Ubuntu", fontWeight:"lighter", marginTop:15, marginBottom:15}}
+                style={{fontFamily:"Ubuntu", fontWeight:"bold", marginTop:15, marginBottom:15}}
               >
                 YOUNG INNOVATORS FELLOWSHIP
               </h2>
@@ -215,11 +153,7 @@ class Home extends Component {
                 className="top-p"
                 style={{marginTop:15, marginBottom:15}}
               >
-                Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang
-                terintegrasi bagi pemimpin muda yang berasal dari kampus. Saat ini, pilot program
-                dikhususkan kepada mahasiswa tingkat akhir yang berada di Jakarta dan Bandung.
-                Program ini meliputi pendampingan riset/skripsi yang inovatif, mentoring keahlian, dan
-                pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan.
+               Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus di Jabodetabek dan Bandung.
               </p>
               <button className="cta-button" onClick={this.handleTnC_Open}>              
                 Daftar Sekarang

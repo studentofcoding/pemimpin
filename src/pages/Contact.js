@@ -25,12 +25,6 @@ class Contact extends Component {
 
   dispalyErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
 
-  // handleUserInput = input => {
-  //   this.setState({ [
-  //     input.target.name
-  //   ]: input.target.value });
-  // };
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
 
   handleSubmit = () => {
@@ -60,9 +54,6 @@ class Contact extends Component {
 
   render() {
     const { username, email, question, university, loading, errors } = this.state;
-
-    // const { username, email, question, university, 
-    //   submittedName, submittedEmail, submittedQuestion, submittedUniversity, loading, errors } = this.state;
 
     return (
       <div className="web-container">
@@ -134,17 +125,7 @@ class Contact extends Component {
                 type="question"
                 required
               />
-                  {/* <Button
-                      disabled={loading}
-                      className={loading ? 'loading' : ''}
-                      style={{background:"#E43F35", color:"#fff"}}
-                      fluid
-                      size="medium">
-                      Login
-                  </Button> */}
-            {/* <Message style={{fontSize:"14px"}}>
-                Don't have an account? <Link to="/register">Join here!</Link>
-            </Message> */}
+                  
               <Form.Button 
               style={{
                 background:"#1d1d2c", 
@@ -166,12 +147,6 @@ class Contact extends Component {
               )}
             </Form>
           </div>
-          {/* <strong>onChange:</strong>
-          <pre>{JSON.stringify({ username, email, university, question }, null, 4)}</pre>
-          <strong>onSubmit:</strong>
-          <pre>{JSON.stringify({ submittedName, submittedEmail, submittedQuestion, submittedUniversity }, null, 4)}</pre> */}
-          {/* </Grid>
-          <Grid textAlign="center" verticalAlign="middle" className="registerlogin"> */}
         </div>
 
         <Footer />
