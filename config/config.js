@@ -1,3 +1,3 @@
 config = {
-    endpoint: 'fellowship.pemimpin.co:3000'
+    endpoint: process.env.ENDPOINT
 }
