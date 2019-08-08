@@ -6,8 +6,9 @@ import Home from './pages/Home';
 
 // import nothinghere from './components/nothinghere';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import TnC_Page from './pages/T&C';
 import About from './pages/About';
+import Formregister from './components/Formregister';
+import TnCPage from './pages/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 class App extends Component {
@@ -29,7 +30,8 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/kontak" component={Contact} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/tnc" component={TnC_Page} />
+            <Route exact path="/tnc" component={TnCPage} />
+            <Route exact path="/form" component={Formregister} />
           </Switch>
         </div>
       </Router>

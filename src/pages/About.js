@@ -20,7 +20,7 @@ export default class About extends Component {
         <div className="pages-header">
           <div className="pages-header_header">
             <div className="pages-header_content">
-              Tentang Kami
+              About Us
             </div>
           </div>
         </div>

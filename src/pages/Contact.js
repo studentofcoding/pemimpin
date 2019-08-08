@@ -74,7 +74,7 @@ class Contact extends Component {
         <div className="pages-header">
           <div className="pages-header_header">
             <div className="pages-header_content">
-              Kontak Kami
+              Contact Us
             </div>
           </div>
         </div>
@@ -146,7 +146,13 @@ class Contact extends Component {
                 Don't have an account? <Link to="/register">Join here!</Link>
             </Message> */}
               <Form.Button 
-              style={{background:"#1d1d2c", color:"#fff"}} 
+              style={{
+                background:"#1d1d2c", 
+                color:"#fff", 
+                marginBottom: "1em", 
+                marginTop: "1em",
+                width: "100%"
+              }}
               size="medium" 
               content='Kirim Pertanyaan'
               disabled={loading}

@@ -5,7 +5,7 @@ import './Pages.css';
 import Footer from '../components/Footer';
 import Tncmodul from '../components/Tncmodul';
 
-const TnC_Page = () => (
+const TnCPage = () => (
   <div className="web-container">
     <Navbar/>
 
@@ -252,4 +252,4 @@ const TnC_Page = () => (
   </div>
 )
 
-export default TnC_Page;
+export default TnCPage;

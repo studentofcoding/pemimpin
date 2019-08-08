@@ -3,6 +3,9 @@ import { Button } from 'semantic-ui-react';
 
 // T&C Modal
 import Modal from 'react-modal';
+import { NavLink } from 'react-router-dom';
+import './tncModul.css';
+
 var TnCModal = Modal;
 
 const tncStyles = {
@@ -196,18 +199,22 @@ handleHideButton_TnC () {
               </label>
             <span class="checkmark">
             </span>
-            <button 
-            style={{
-              alignItems: "center", 
-              color: "white",
-              backgroundColor: "#e40c2b", 
-              border: "1px solid #e40c2b",
-              borderRadius: "10%",
-              cursor: "pointer"
-              }} 
-              onClick={this.handleTnC_Close}>
-              Daftar Sekarang!
-            </button>
+            <div className="button-tncmodul">
+              <NavLink
+                style={{
+                  alignItems: "center", 
+                  color: "white",
+                  backgroundColor: "#e40c2b", 
+                  border: "1px solid #e40c2b",
+                  borderRadius: "5%",
+                  cursor: "pointer",
+                  fontSize: "0.6em",
+                  padding: 8,
+                }} 
+                exact to="/form">
+                  Daftar Sekarang
+                </NavLink>
+            </div>
           </div>
         </TnCModal>
       </div>
