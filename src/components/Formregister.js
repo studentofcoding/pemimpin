@@ -210,7 +210,7 @@ class Formregister extends Component {
 
     const submittedAchievements = a_1.concat(";", a_2, ";", a_3);
 
-    const { username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,  sex, scientific_works, competencies, achievements, recommendation_paper, university_id, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
+    const { username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,  sex, scientific_works, competencies, achievements, recommendation_paper, university_id, university_letter, scholarship_letter, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
 
     const formData = new FormData();
     formData.set('name', this.state.username)
