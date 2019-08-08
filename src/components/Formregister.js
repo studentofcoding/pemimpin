@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Message, Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
 
-// import axios from 'axios';
+import axios from 'axios';
+import config from '../config'
 
 import Navbar from '../Navbar';
 
@@ -106,22 +107,58 @@ class Formregister extends Component {
   handleEssayDropdown = (e, { value }) => this.setState({ essay_topic: value });
 
   handleFormSubmit = () => {
-    const { 
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,  sex, scientific_works, competencies, achievements, recommendation_paper, university_id, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
 
+    const { username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other,  sex, scientific_works, competencies, achievements, recommendation_paper, university_id, photo, proposed_essay, essay_topic, essay_topic_other, score, faculty } = this.state;
+
+    const formData = new FormData();
+    formData.set('name', this.state.username)
+    formData.set('nickname', this.state.nickname)
+    formData.set('birth_place', this.state.birth_place)
+    formData.set('birth_date', this.state.birth_date)
+    formData.set('address', this.state.address)
+    formData.set('email', this.state.email)
+    formData.set('phone', this.state.phone)
+    formData.set('social_media', this.state.social_media)
+    formData.set('emergency_phone', this.state.emergency_phone)
+    formData.set('religion', this.state.religion)
+    formData.set('sex', this.state.sex)
+    formData.set('hobby', this.state.hobby)
+    formData.set('competencies', this.state.competencies)
+    formData.set('achievements', this.state.achievements)
+    formData.set('scientific_works', this.state.scientific_works)
+    formData.set('scholarships', this.state.scholarship)
+    formData.set('faculty', this.state.faculty)
+    formData.set('score', this.state.score)
+    formData.set('essay_topic', this.state.essay_topic)
+    formData.set('proposed_essay', this.state.proposed_essay)
+    formData.set('universities_id', 1)
+
+    axios({
+      method: 'POST',
+      url: config.endpoint + '/api/v1/registration',
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+    }).then((response) => {
+      // TODO, show to user that request is success
+      console.log('request success')
+    }).catch((response) => {
+      // TODO, show to user that request is failed
+      console.log('request failed', response)
+    })
+    
     this.setState({ 
-      username: "",
-      nickname: "",
-      birth_place: "",
-      birth_date: "",
-      address: "",
-      email: "",
-      phone: "",
-      emergency_phone: "",
-      social_media: "",
-      religion: "",
-      hobby: "",
-      sex: "",
+      // username: "",
+      // nickname: "",
+      // birth_place: "",
+      // birth_date: "",
+      // address: "",
+      // email: "",
+      // phone: "",
+      // emergency_phone: "",
+      // social_media: "",
+      // religion: "",
+      // hobby: "",
+      // sex: "",
       submittedName: username,
       submittedNickname: nickname,
       submittedBirth_place: birth_place,
