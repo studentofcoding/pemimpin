@@ -3,11 +3,20 @@ import React, { Component } from 'react';
 // import Imgtujuan_1 from '../image/Tujuan_1-small.png';
 // import Imgtujuan_2 from '../image/Tujuan_2-small.png';
 
+import footer_1 from '../image/Footer_1.png';
+import footer_2 from '../image/Footer_2.png';
+
 export default class Footer extends Component {
   render() {
     return (
       <div>
         {/* Footer Content */}
+        <div className="footer_grid_inner">
+          <div className="footer-logo-container">
+            <img src={footer_1} alt="Pemimpin.co" className="footer-logo_1"/>
+            <img src={footer_2} alt="Pemimpin.co" className="footer-logo_2"/>
+          </div>
+        </div>
         <footer className="footer_grid">
           <div className="footer-about-container">
             <div className="footer-about_header">
