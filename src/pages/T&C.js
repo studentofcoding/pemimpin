@@ -5,7 +5,7 @@ import './Pages.css';
 import Footer from '../components/Footer';
 import Tncmodul from '../components/Tncmodul';
 
-const TnC_Page = () => (
+const TnCPage = () => (
   <div className="web-container">
     <Navbar/>
 
@@ -25,7 +25,7 @@ const TnC_Page = () => (
       <h2>KETENTUAN UMUM</h2>
       <ol>
         <li>
-          Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
+          Mahasiswa S1 dari universitas di Jabodetabek dan Bandung
         </li>
         <li>
           Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
@@ -252,4 +252,4 @@ const TnC_Page = () => (
   </div>
 )
 
-export default TnC_Page;
+export default TnCPage;

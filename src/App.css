@@ -1,17 +1,3 @@
-/**
- * This is the class name and for the corelated section of the page :
- * *  notif-panel               = Notification Panel content
- * *  herosho-section           = Hero-shot Section content
- * *  highlights-panel_grid     = Highlight Panel Grid
- * *                            ==> tujuan-header_header      = Header section of Highlight Panel
- * *                            ==> hp-body_column        = Body section of Highlight Panel
- * *                            ==> hp-body_container     = Container for body Highlight content
- * *                            ==> hp-content            = 6 content's of Highlight content
- * *  newsletter-container (id) = Sliding Panel
- * *  newsletterhide       (id) = Sliding Panel (when hidden)
- * *  footer                    = Footer content
- */
-
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
@@ -187,6 +173,7 @@ body {
 }
 
 .navigation_item {
+  color: #3a3a47;
   padding: 10px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -273,6 +260,7 @@ body {
 
 .top-header {
   font-size: 0.8em;
+  color: #e40c2b;
 }
 
 .top-details {

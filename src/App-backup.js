@@ -35,7 +35,7 @@ import './custom.css';
 // Demo styles, see 'Styles' section below for some notes on use.
 import 'react-accessible-accordion/dist/fancy-example.css';
 
-// ? FAQ Related 
+// ? FAQ Related
 import FAQ from './pages/FAQ';
 
 // T&C Modal
@@ -49,7 +49,7 @@ const tncStyles = {
 TnCModal.setAppElement('#root');
 
 
-// const NotificationPanel = (props) => 
+// const NotificationPanel = (props) =>
 // <header>
 //   <div className="notif-container">
 //     <div className="notif-details">
@@ -122,7 +122,7 @@ class App extends Component {
     let newsletterPanel = document.getElementById('newsletter-container')
     if (newsletterPanel.style.display !== "none") {
       newsletterPanel.style.display = "none";
-      setTimeout(function() {       
+      setTimeout(function() {
         newsletterPanel.style.display = "fixed";
       }, 100 * 6000);
     }
@@ -164,13 +164,13 @@ class App extends Component {
       isTnCOpen: false
     });
   }
-  
+
 
   render() {
     return (
 
       <div className="web-container">
-        
+
         {/* Notification Panel Content
         <div className="notif-panel">
           {this.state.showNotif && <NotificationPanel onClose={this.closeNotif} />}
@@ -218,7 +218,7 @@ class App extends Component {
               Program ini meliputi pendampingan riset/skripsi yang inovatif, mentoring keahlian, dan
               pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan.
             </p>
-            <button className="cta-button" onClick={this.handleTnC_Open}>              
+            <button className="cta-button" onClick={this.handleTnC_Open}>
               Enroll now
             </button>
 
@@ -231,7 +231,7 @@ class App extends Component {
               contentLabel="Term and Conditions"
             >
               <h2 ref={tnc_header => this.tnc_header = tnc_header}>Term and Conditions</h2>
-              <div className="TnC_container-outer"> 
+              <div className="TnC_container-outer">
                 <div className="TnC_container-inner">
                   <div className="TnC-container_header-H1">
                     KETENTUAN UMUM
@@ -260,12 +260,12 @@ class App extends Component {
                     </li>
                     <li className="TnC-container-body_list">
                       Jika pernah menerima beasiswa berikut akan diprioritaskan:
-                      <span>-></span>Bidik Misi, 
-                      <span>-></span>Rumah Kepemimpinan, 
-                      <span>-></span>Bakti Nusa, 
-                      <span>-></span>Beastudi Etos, 
-                      <span>-></span>Karya Salemba Empat, 
-                      <span>-></span>Kader Surau YBM BRI, dan 
+                      <span>-></span>Bidik Misi,
+                      <span>-></span>Rumah Kepemimpinan,
+                      <span>-></span>Bakti Nusa,
+                      <span>-></span>Beastudi Etos,
+                      <span>-></span>Karya Salemba Empat,
+                      <span>-></span>Kader Surau YBM BRI, dan
                       <span>-></span>LAZ Salman.
                     </li>
                   </div>
@@ -315,17 +315,17 @@ class App extends Component {
                   <label className="TnC-checkmark_label">
                     Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
                   </label>
-                <span class="checkmark">
+                <span className="checkmark">
                 </span>
-                <button 
+                <button
                 style={{
-                  alignItems: "center", 
+                  alignItems: "center",
                   color: "white",
-                  backgroundColor: "#e40c2b", 
+                  backgroundColor: "#e40c2b",
                   border: "1px solid #e40c2b",
                   borderRadius: "10%",
                   cursor: "pointer"
-                  }} 
+                  }}
                   onClick={this.handleTnC_Close}>
                   Enroll now!
                 </button>
@@ -333,14 +333,14 @@ class App extends Component {
             </TnCModal>
           </div>
         </div>
-  
+
         {/* Tujuan Section */}
-        <div 
+        <div
           className="tujuan-header-container_grid"
         >
 
           {/* Tujuan Header  */}
-          <div 
+          <div
           className="hp-header_column"
           style={{
               marginTop:80,
@@ -377,7 +377,7 @@ class App extends Component {
                       <p className="t-section_paragraph">
                         Program ini akan membantu kamu menghasilkan riset yang inovatif melalui tugas akhir
                         yang kamu kerjakan. Kami harap dengan ini riset kamu bisa lebih berdampak di
-                        masyarakat.                
+                        masyarakat.
                       </p>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ class App extends Component {
                       <p className="t-section_paragraph">
                         Program ini akan membantu kamu bertemu dengan mentor-mentor yang sesuai dengan
                         tujuan karir kamu, melalui magang profesional kamu juga akan dapat pengalaman kerja
-                        baru sebagai modal menghadapi dunia kerja yang sesungguhnya.                
+                        baru sebagai modal menghadapi dunia kerja yang sesungguhnya.
                       </p>
                     </div>
                   </div>
@@ -421,7 +421,7 @@ class App extends Component {
                       <p className="t-section_paragraph">
                         Program ini akan membekali kamu dengan materi-materi persiapan pasca kampus
                         sehingga pengetahuan kamu tentang dunia kerja akan lebih kaya, dengan itu kamu juga
-                        jadi lebih siap untuk menghadapi dunia kerja.                
+                        jadi lebih siap untuk menghadapi dunia kerja.
                       </p>
                     </div>
                   </div>
@@ -435,7 +435,7 @@ class App extends Component {
         <div className="highlights-panel-tujuan_grid">
 
           {/* Program Development Header  */}
-          <div 
+          <div
             className="program-development-section-header_column"
             style={{
                 marginTop:10,
@@ -490,13 +490,13 @@ class App extends Component {
         </div>
 
         {/* FAQ Section */}
-        <div 
+        <div
           className="faq-section"
-          style={{backgroundColor:"#c11032"}}  
+          style={{backgroundColor:"#c11032"}}
         >
           <div className="faq-section_container">
             {/* FAQ Header */}
-            <div 
+            <div
               className="faq-section-header_column"
               style={{
                   marginTop:10,
@@ -511,7 +511,7 @@ class App extends Component {
                 </h2>
               </div>
 
-            {/* FAQ Body */}  
+            {/* FAQ Body */}
             <div className="faq-section-body_column">
               <FAQ />
             </div>
@@ -520,14 +520,14 @@ class App extends Component {
 
 
         {/* Sliding Panel (Newsletter) Content
-        <div 
+        <div
         id={classwhenHide||"newsletter-container"}
         >
           <div className="newsletter-details">
             <h3 style={{margin:0, fontSize:"0.9em"}}>
               Get latest updates in web technologies
             </h3>
-            <i 
+            <i
               style={{fontSize:"0.6em"}}
               className="fa"
               onClick={this.closeNewsletter}
@@ -539,13 +539,13 @@ class App extends Component {
             </p>
           </div>
           <div className="newsletter-form">
-            <input 
-              name="email" 
-              type="email" 
-              placeholder="Email address" 
+            <input
+              name="email"
+              type="email"
+              placeholder="Email address"
               className="newsletter-input"
             />
-            <button 
+            <button
               className="newsletter-button"
               onClick={this.closeNewsletter}
             >
@@ -565,7 +565,7 @@ class App extends Component {
               untuk perubahan sosial di Indonesia.
             </div>
             <div className="footer-about_alamat">
-              Jln. Melawai X No.9, RT.2/RW.6, Melawai, Kota Jakarta Selatan, 
+              Jln. Melawai X No.9, RT.2/RW.6, Melawai, Kota Jakarta Selatan,
               DKI Jakarta 12160
             </div>
           </div>

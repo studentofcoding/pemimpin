@@ -37,7 +37,7 @@
   bottom:0;
   right:0;
   animation:floating 1.5s ease-in-out infinite !important;
-  z-index:6;
+  z-index: 0 !important;
   -webkit-animation:floating 1.5s ease-in-out infinite !important;
 }
 

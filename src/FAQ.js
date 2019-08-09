@@ -148,11 +148,11 @@ export default function Example() {
                 >
                     <p>
                         Program Young Innovative Fellowship akan melewati serangkaian tahapan, antara lain:
-                        <li>Registrasi berkas (10 - 31 Agustus 2019)</li>
-                        <li>Proses seleksi (1 - 5 September 2019)</li>
-                        <li>Pengumuman peserta lolos 20 September 2019</li>
-                        <li>Bootcamp peserta terpilih (30 September - 4 Oktober 2019)</li>
-                        <li>Periode fellowship (30 September 2019 - 31 Mei 2020)</li>
+                        <li>Registrasi berkas (29 Juli - 10 Agustus 2019)</li>
+                        <li>Proses seleksi (5-13 Agustus 2019)</li>
+                        <li>Pengumuman peserta yang lolos (24 Agustus 2019)</li>
+                        <li>Bootcamp peserta terpilih (5 - 8 September 2019)</li>
+                        <li>Periode fellowship (5 September 2019 - 31 Mei 2020)</li>
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -330,7 +330,7 @@ export default function Example() {
                             borderTopLeftRadius:"0px",
                         }}
                     >
-                        Saya masih memiliki pertanyaan spesifik, 
+                        Saya masih memiliki pertanyan spesifik, 
                         bagaimana cara saya menkontak panitia?
                     </AccordionItemButton>
                 </AccordionItemHeading>
@@ -345,7 +345,7 @@ export default function Example() {
                 >
                     <p> 
                         Kamu dapat menghubungi tim dari pemimpin.id yang bertanggung jawa menjalankan program ini, Reza melalui 
-                        Oktora (0811 1699 930).
+                        nomor (0812 9821 9099).
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>

@@ -6,7 +6,7 @@
  * *                            ==> hp-header_column      = Header section of Highlight Panel
  * *                            ==> hp-body_column        = Body section of Highlight Panel
  * *                            ==> hp-body_container     = Container for body Highlight content
- * *                            ==> ht-section_paragraph            = 6 content's of Highlight content
+ * *                            ==> ht-section_paragraph  = 6 content's of Highlight content
  * *  newsletter-container (id) = Sliding Panel
  * *  newsletterhide       (id) = Sliding Panel (when hidden)
  * *  footer                    = Footer content
@@ -38,12 +38,15 @@ import '../custom.css';
 // Demo styles, see 'Styles' section below for some notes on use.
 import 'react-accessible-accordion/dist/fancy-example.css';
 
-// ? FAQ Related 
+// ? FAQ Related
 import FAQ from './FAQ';
 
 // T&C Modal
+// import Tncmodul from '../components/Tncmodul';
 import Modal from 'react-modal';
+import { NavLink } from 'react-router-dom';
 import Footer from '../components/Footer';
+
 var TnCModal = Modal;
 const tncStyles = {
   content : {
@@ -51,21 +54,6 @@ const tncStyles = {
   }
 };
 TnCModal.setAppElement('#root');
-
-
-// const NotificationPanel = (props) => 
-// <header>
-//   <div className="notif-container">
-//     <div className="notif-details">
-//       By accessing and using this website, you acknowledge that you have read and understand our <a href=".">Cookie Policy</a>, <a href=".">Privacy Policy</a>, and our <a href=".">Term of Service</a>.
-//     </div>
-//     <button onClick={props.onClose} className="notif-button">
-//       Got it
-//     </button>
-//   </div>
-// </header>;
-
-
 
 class Home extends Component {
 
@@ -79,40 +67,15 @@ class Home extends Component {
       isTncCheck: false,
     };
     this.toggleTncCheck = this.toggleTncCheck.bind(this);
-    this.isNewsletterHide = this.isNewsletterHide.bind(this);
     this.handleTnC_Open = this.handleTnC_Open.bind(this);
     this.handleAfterTnC_Open = this.handleAfterTnC_Open.bind(this);
     this.handleTnC_Close = this.handleTnC_Close.bind(this);
   }
-  
+
   toggleTncCheck(){
     this.setState(state=> ({
-      isTncCheck: !state.isTncCheck 
+      isTncCheck: !state.isTncCheck
     }))
-  }
-  /*
-    Show the isNewsletterHide after scrolling 1/3 of page
-  */
-
-  isNewsletterHide(){
-    let {isHide} = this.state;
-    window.scrollY > 500 && this.prev ?
-    isHide && this.setState({isHide:false})
-    :
-    !isHide && this.setState({isHide:false})
-    this.prev = window.scrollY;
-  }
-
-  /*
-    Calling the isNewsletterHide function & Unmount it
-  */
-
-  componentDidMount(){
-    window.addEventListener('scroll',this.isNewsletterHide);
-  }
-
-  componentWillUnmount() {
-    window.addEventListener('scroll',this.isNewsletterHide);
   }
 
   /*
@@ -124,19 +87,6 @@ class Home extends Component {
       showNotif: false,
     })
     document.getElementsByClassName("notif-panel")[0].style.padding = "0px";
-  };
-
-  closeNewsletter = () => {
-    this.setState({
-      isHide: true,
-    })
-    let newsletterPanel = document.getElementById('newsletter-container')
-    if (newsletterPanel.style.display !== "none") {
-      newsletterPanel.style.display = "none";
-      setTimeout(function() {       
-        newsletterPanel.style.display = "fixed";
-      }, 100 * 6000);
-    }
   };
 
   /*
@@ -175,21 +125,11 @@ class Home extends Component {
       isTnCOpen: false
     });
   }
-  
+
 
   render() {
-    // Checklist on Click label
-    // const [tncCheck, setTncCheck] = useState(false);
-    // const onClickTncCheck = ()=>{
-    //   setTncCheck(!tncCheck)
-    // }
     return (
       <div className="web-container">
-
-        {/* Notification Panel Content
-        <div className="notif-panel">
-          {this.state.showNotif && <NotificationPanel onClose={this.closeNotif} />}
-        </div> */}
 
         <Navbar/>
 
@@ -199,7 +139,7 @@ class Home extends Component {
             <div className="top-details">
               <h2
                 className="top-header"
-                style={{fontFamily:"Ubuntu", fontWeight:"lighter", marginTop:15, marginBottom:15}}
+                style={{fontFamily:"Ubuntu", fontWeight:"bold", marginTop:15, marginBottom:15}}
               >
                 YOUNG INNOVATORS FELLOWSHIP
               </h2>
@@ -213,141 +153,141 @@ class Home extends Component {
                 className="top-p"
                 style={{marginTop:15, marginBottom:15}}
               >
-                Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang
-                terintegrasi bagi pemimpin muda yang berasal dari kampus. Saat ini, pilot program
-                dikhususkan kepada mahasiswa tingkat akhir yang berada di Jakarta dan Bandung.
-                Program ini meliputi pendampingan riset/skripsi yang inovatif, mentoring keahlian, dan
-                pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan.
+               Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus di Jabodetabek dan Bandung.
               </p>
-              <button className="cta-button" onClick={this.handleTnC_Open}>              
+              <button className="cta-button" onClick={this.handleTnC_Open}>
                 Daftar Sekarang
               </button>
 
               {/* Term and Condition Section */}
-              <TnCModal
-                isOpen={this.state.isTnCOpen}
-                onAfterOpen={this.handleAfterTnC_Open}
-                onRequestClose={this.handleTnC_Close}
-                style={tncStyles}
-                contentLabel="Term and Conditions"
-              >
-                <h2 ref={tnc_header => this.tnc_header = tnc_header}>Term and Conditions</h2>
-                <div className="TnC_container-outer"> 
-                  <div className="TnC_container-inner">
-                    <div className="TnC-container_header-H1">
-                      KETENTUAN UMUM
-                    </div>
-                    <div className="TnC-container_body">
-                      <ol>
-                        <li className="TnC-container-body_list">
-                          Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Inovatif, berkomitmen, persisten, dan bersemangat
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Memiliki kemampuan menganalisa masalah yang baik
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Siap mengikuti program pembinaan selama 9 bulan
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
-                        </li>
-                        <li className="TnC-container-body_list">
-                          Jika pernah menerima beasiswa berikut akan diprioritaskan :
-                          <ul>
-                          <li>Bidik Misi,</li>
-                          <li>Rumah Kepemimpinan,</li> 
-                          <li>Bakti Nusa,</li> 
-                          <li>Beastudi Etos,</li> 
-                          <li>Karya Salemba Empat,</li> 
-                          <li>Kader Surau YBM BRI, dan</li> 
-                          <li>LAZ Salman.</li>
-                          </ul>
-                        </li>
-                      </ol>
-                    </div>
+        <TnCModal
+          isOpen={this.state.isTnCOpen}
+          onAfterOpen={this.handleAfterTnC_Open}
+          onRequestClose={this.handleTnC_Close}
+          style={tncStyles}
+          contentLabel="Term and Conditions"
+        >
+          <h2 ref={tnc_header => this.tnc_header = tnc_header}>Term and Conditions</h2>
+          <div className="TnC_container-outer">
+            <div className="TnC_container-inner">
+              <div className="TnC-container_header-H1">
+                KETENTUAN UMUM
+              </div>
+              <div className="TnC-container_body">
+                <ol>
+                  <li className="TnC-container-body_list">
+                    Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Inovatif, berkomitmen, persisten, dan bersemangat
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Memiliki kemampuan menganalisa masalah yang baik
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Siap mengikuti program pembinaan selama 9 bulan
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
+                  </li>
+                  <li className="TnC-container-body_list">
+                    Jika pernah menerima beasiswa berikut akan diprioritaskan :
+                    <ul>
+                    <li>Bidik Misi,</li>
+                    <li>Rumah Kepemimpinan,</li>
+                    <li>Bakti Nusa,</li>
+                    <li>Beastudi Etos,</li>
+                    <li>Karya Salemba Empat,</li>
+                    <li>Kader Surau YBM BRI, dan</li>
+                    <li>LAZ Salman.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
 
-                    <div className="TnC-container_header">
-                      PERSYARATAN ADMINISTRATIF
-                    </div>
-                    <div className="TnC-container_body">
-                      <li className="TnC-container-body_list">
-                        Mengisi formulir yang disediakan
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Melampirkan pas foto formal
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Melampirkan surat pernyataan telah menerima beasiswa dari lembaga pemberi beasiswa sebelumnya
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Melampirkan surat rekomendasi (optional)
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Melampirkan fotocopy Kartu Tanda Mahasiswa (KTM)
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Melampirkan proposal penelitian sesuai dengan sistematika proposal penelitian yang ditentukan
-                      </li>
-                    </div>
+              <div className="TnC-container_header">
+                PERSYARATAN ADMINISTRATIF
+              </div>
+              <div className="TnC-container_body">
+                <li className="TnC-container-body_list">
+                  Mengisi formulir yang disediakan
+                </li>
+                <li className="TnC-container-body_list">
+                  Melampirkan pas foto formal
+                </li>
+                <li className="TnC-container-body_list">
+                  Melampirkan surat pernyataan telah menerima beasiswa dari lembaga pemberi beasiswa sebelumnya
+                </li>
+                <li className="TnC-container-body_list">
+                  Melampirkan surat rekomendasi (optional)
+                </li>
+                <li className="TnC-container-body_list">
+                  Melampirkan fotocopy Kartu Tanda Mahasiswa (KTM)
+                </li>
+                <li className="TnC-container-body_list">
+                  Melampirkan proposal penelitian sesuai dengan sistematika proposal penelitian yang ditentukan
+                </li>
+              </div>
 
-                    <div className="TnC-container_header">
-                      KEWAJIBAN PESERTA SELAMA PROGRAM
-                    </div>
-                    <div className="TnC-container_body">
-                      <li className="TnC-container-body_list">
-                        Wajib mengikuti seluruh rangkaian program YIF
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Wajib mengerjakan seluruh tugas yang telah diberikan selama rangakian program YIF
-                      </li>
-                      <li className="TnC-container-body_list">
-                        Selama mengikuti program wajib menaati semua peraturan dan norma yang diberlakukan
-                      </li>
-                    </div>
-                  </div>
-                </div>
-                <div ref={tnc_checklistLabel => this.tnc_checklistLabel = tnc_checklistLabel}>
-                  <input onClick={this.toggleTncCheck} checked={this.state.isTncCheck} type="checkbox"/>
-                  {/* <input type="checkbox"/> */}
-                    <label onClick={this.toggleTncCheck} className="TnC-checkmark_label">
-                    {/* <label className="TnC-checkmark_label"> */}
-                      Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
-                    </label>
-                  <span class="checkmark">
-                  </span>
-                  <button 
-                  style={{
-                    alignItems: "center", 
-                    color: "white",
-                    backgroundColor: "#e40c2b", 
-                    border: "1px solid #e40c2b",
-                    borderRadius: "10%",
-                    cursor: "pointer"
-                    }} 
-                    onClick={this.handleTnC_Close}>
-                    Daftar Sekarang!
-                  </button>
-                </div>
-              </TnCModal>
+              <div className="TnC-container_header">
+                KEWAJIBAN PESERTA SELAMA PROGRAM
+              </div>
+              <div className="TnC-container_body">
+                <li className="TnC-container-body_list">
+                  Wajib mengikuti seluruh rangkaian program YIF
+                </li>
+                <li className="TnC-container-body_list">
+                  Wajib mengerjakan seluruh tugas yang telah diberikan selama rangakian program YIF
+                </li>
+                <li className="TnC-container-body_list">
+                  Selama mengikuti program wajib menaati semua peraturan dan norma yang diberlakukan
+                </li>
+              </div>
             </div>
           </div>
-    
+          <div ref={tnc_checklistLabel => this.tnc_checklistLabel = tnc_checklistLabel}>
+            <input onClick={this.toggleTncCheck} checked={this.state.isTncCheck} type="checkbox"/>
+            {/* <input type="checkbox"/> */}
+              <label onClick={this.toggleTncCheck} className="TnC-checkmark_label">
+              {/* <label className="TnC-checkmark_label"> */}
+                Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
+              </label>
+            <span className="checkmark">
+            </span>
+            <div className="button-tncmodul">
+              <NavLink
+                style={{
+                  alignItems: "center",
+                  color: "white",
+                  backgroundColor: "#e40c2b",
+                  border: "1px solid #e40c2b",
+                  borderRadius: "5%",
+                  cursor: "pointer",
+                  fontSize: "0.6em",
+                  padding: 8,
+                }}
+                exact to="/form">
+                  Daftar Sekarang
+                </NavLink>
+            </div>
+          </div>
+        </TnCModal>
+            </div>
+          </div>
+
           {/* Tujuan Section */}
-          <div 
+          <div
             className="tujuan-header-container_grid"
           >
 
             {/* Tujuan Header  */}
-            <div 
+            <div
             className="hp-header_column"
             style={{
                 marginTop:80,
@@ -384,7 +324,7 @@ class Home extends Component {
                         <p className="t-section_paragraph">
                           Program ini akan membantu kamu menghasilkan riset yang inovatif melalui tugas akhir
                           yang kamu kerjakan. Kami harap dengan ini riset kamu bisa lebih berdampak di
-                          masyarakat.                
+                          masyarakat.
                         </p>
                       </div>
                     </div>
@@ -407,7 +347,7 @@ class Home extends Component {
                         <p className="t-section_paragraph">
                           Program ini akan membantu kamu bertemu dengan mentor-mentor yang sesuai dengan
                           tujuan karir kamu, melalui magang profesional kamu juga akan dapat pengalaman kerja
-                          baru sebagai modal menghadapi dunia kerja yang sesungguhnya.                
+                          baru sebagai modal menghadapi dunia kerja yang sesungguhnya.
                         </p>
                       </div>
                     </div>
@@ -428,7 +368,7 @@ class Home extends Component {
                         <p className="t-section_paragraph">
                           Program ini akan membekali kamu dengan materi-materi persiapan pasca kampus
                           sehingga pengetahuan kamu tentang dunia kerja akan lebih kaya, dengan itu kamu juga
-                          jadi lebih siap untuk menghadapi dunia kerja.                
+                          jadi lebih siap untuk menghadapi dunia kerja.
                         </p>
                       </div>
                     </div>
@@ -442,7 +382,7 @@ class Home extends Component {
           <div className="highlights-panel-tujuan_grid">
 
             {/* Program Development Header  */}
-            <div 
+            <div
               className="program-development-section-header_column"
               style={{
                   marginTop:10,
@@ -497,13 +437,13 @@ class Home extends Component {
           </div>
 
           {/* FAQ Section */}
-          <div 
+          <div
             className="faq-section"
-            style={{backgroundColor:"#c11032"}}  
+            style={{backgroundColor:"#c11032"}}
           >
             <div className="faq-section_container">
               {/* FAQ Header */}
-              <div 
+              <div
                 className="faq-section-header_column"
                 style={{
                     marginTop:10,
@@ -518,7 +458,7 @@ class Home extends Component {
                   </h2>
                 </div>
 
-              {/* FAQ Body */}  
+              {/* FAQ Body */}
               <div className="faq-section-body_column">
                 <FAQ />
               </div>

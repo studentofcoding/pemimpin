@@ -3,6 +3,9 @@ import { Button } from 'semantic-ui-react';
 
 // T&C Modal
 import Modal from 'react-modal';
+import { NavLink } from 'react-router-dom';
+import './tncModul.css';
+
 var TnCModal = Modal;
 
 const tncStyles = {
@@ -28,10 +31,10 @@ class Tncmodul extends Component {
     this.handleAfterTnC_Open = this.handleAfterTnC_Open.bind(this);
     this.handleTnC_Close = this.handleTnC_Close.bind(this);
   }
-  
+
   toggleTncCheck(){
     this.setState(state=> ({
-      isTncCheck: !state.isTncCheck 
+      isTncCheck: !state.isTncCheck
     }))
   }
 
@@ -82,18 +85,18 @@ handleHideButton_TnC () {
   render() {
     return (
       <div>
-        <Button 
+        <Button
         style={{
           position: "fixed",
           margin: "2em",
           animation: "floating 1.5s ease-in-out infinite",
           bottom: 0,
-          right: 0
+          right: 0,
         }}
-        color='red' 
-        className="Button-Daftar" 
-        onClick={this.handleTnC_Open} 
-        content='Daftar Sekarang' 
+        color='red'
+        className="Button-Daftar"
+        onClick={this.handleTnC_Open}
+        content='Daftar Sekarang'
         />
         {/* Term and Condition Section */}
         <TnCModal
@@ -104,7 +107,7 @@ handleHideButton_TnC () {
           contentLabel="Term and Conditions"
         >
           <h2 ref={tnc_header => this.tnc_header = tnc_header}>Term and Conditions</h2>
-          <div className="TnC_container-outer"> 
+          <div className="TnC_container-outer">
             <div className="TnC_container-inner">
               <div className="TnC-container_header-H1">
                 KETENTUAN UMUM
@@ -112,7 +115,7 @@ handleHideButton_TnC () {
               <div className="TnC-container_body">
                 <ol>
                   <li className="TnC-container-body_list">
-                    Mahasiswa S1 dari ITB, UI, IPB, UNJ, Unpad, dan UPI
+                    Mahasiswa S1 dari universitas di Jabodetabek dan Bandung
                   </li>
                   <li className="TnC-container-body_list">
                     Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020
@@ -136,11 +139,11 @@ handleHideButton_TnC () {
                     Jika pernah menerima beasiswa berikut akan diprioritaskan :
                     <ul>
                     <li>Bidik Misi,</li>
-                    <li>Rumah Kepemimpinan,</li> 
-                    <li>Bakti Nusa,</li> 
-                    <li>Beastudi Etos,</li> 
-                    <li>Karya Salemba Empat,</li> 
-                    <li>Kader Surau YBM BRI, dan</li> 
+                    <li>Rumah Kepemimpinan,</li>
+                    <li>Bakti Nusa,</li>
+                    <li>Beastudi Etos,</li>
+                    <li>Karya Salemba Empat,</li>
+                    <li>Kader Surau YBM BRI, dan</li>
                     <li>LAZ Salman.</li>
                     </ul>
                   </li>
@@ -194,20 +197,24 @@ handleHideButton_TnC () {
               {/* <label className="TnC-checkmark_label"> */}
                 Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
               </label>
-            <span class="checkmark">
+            <span className="checkmark">
             </span>
-            <button 
-            style={{
-              alignItems: "center", 
-              color: "white",
-              backgroundColor: "#e40c2b", 
-              border: "1px solid #e40c2b",
-              borderRadius: "10%",
-              cursor: "pointer"
-              }} 
-              onClick={this.handleTnC_Close}>
-              Daftar Sekarang!
-            </button>
+            <div className="button-tncmodul">
+              <NavLink
+                style={{
+                  alignItems: "center",
+                  color: "white",
+                  backgroundColor: "#e40c2b",
+                  border: "1px solid #e40c2b",
+                  borderRadius: "5%",
+                  cursor: "pointer",
+                  fontSize: "0.6em",
+                  padding: 8,
+                }}
+                exact to="/form">
+                  Daftar Sekarang
+                </NavLink>
+            </div>
           </div>
         </TnCModal>
       </div>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// import Imgtujuan_1 from '../image/Tujuan_1-small.png';
+// import Imgtujuan_2 from '../image/Tujuan_2-small.png';
+
 export default class Footer extends Component {
   render() {
     return (
@@ -25,11 +28,21 @@ export default class Footer extends Component {
                 Kontak kami
               </div>
               <div className="footer-contact_item">
-                <div className="footer-contact-item_1">
-                  0812-9821-9099
+                <div className="contact-container_grid">
+                  {/* <div className="footer-contact_container_icon">
+                  </div> */}
+                  <div className="footer-contact-item">
+                    <i class="material-icons md-light">smartphone</i>
+                    0812-9821-9099
+                  </div>
                 </div>
-                <div className="footer-contact-item_1">
-                  program@pemimpin.co
+                <div className="contact-container_grid">
+                  {/* <div className="footer-contact_container_icon">
+                  </div> */}
+                  <div className="footer-contact-item">
+                    <i class="material-icons md-light">email</i>
+                    program@pemimpin.co
+                  </div>
                 </div>
               </div>
             </div>

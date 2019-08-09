@@ -26,9 +26,9 @@ class Navbar extends Component {
           </div>
         </div> */}
           <div className="menu_container">
-            <NavLink className="navigation_item" exact to="/about">About Us</NavLink>
+            <NavLink className="navigation_item" exact to="/about">About</NavLink>
             <NavLink className="navigation_item" exact to="/tnc">T&C</NavLink>
-            <NavLink className="navigation_item" exact to="/kontak">Kontak</NavLink>
+            <NavLink className="navigation_item" exact to="/contact">Contact</NavLink>
             <NavLink className="navigation_item" exact to="/login">Login</NavLink>
           </div>
       </header>
