@@ -651,8 +651,8 @@ body {
 }
 
 .footer-icon {
-  width: 7% !important;
-  height: 7% !important;
+  width: 6vh !important;
+  height: 6vh !important;
   padding: 5px;
   text-align: left;
 }
