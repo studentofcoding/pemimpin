@@ -58,6 +58,11 @@ export default class Footer extends Component {
                       <div className="content-icon">
                         program@pemimpin.co
                       </div>
+                      {/* <img src={icon_1} href="" alt="youtube" className="footer-icon"/>
+                      <img src={icon_2} href="" alt="instagram" className="footer-icon"/>
+                      <img src={icon_3} href="" alt="spotify" className="footer-icon"/> */}
+                    </div>
+                    <div className="footer-icon-container">
                       <img src={icon_1} href="" alt="youtube" className="footer-icon"/>
                       <img src={icon_2} href="" alt="instagram" className="footer-icon"/>
                       <img src={icon_3} href="" alt="spotify" className="footer-icon"/>
