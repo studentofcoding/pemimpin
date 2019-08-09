@@ -20,10 +20,10 @@ export default class Footer extends Component {
         <footer className="footer_grid">
           <div className="footer-about-container">
             <div className="footer-about_header">
-              PEMIMPIN.CO
+              PEMIMPIN.ID
             </div>
             <div className="footer-about_body">
-              Pemimpin.co adalah salah satu inisiatif dari DeepSpace konsorsium
+              Pemimpin.id adalah salah satu inisiatif dari DeepSpace konsorsium
               untuk perubahan sosial di Indonesia.
             </div>
             <div className="footer-about_alamat">

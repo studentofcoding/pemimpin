@@ -1,5 +1,5 @@
 const config = {
-    endpoint: 'http://localhost:3003'
+    endpoint: 'http://fellowship.pemimpin.id:3000'
 }
 
-export default config
+export default config;
