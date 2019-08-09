@@ -611,7 +611,7 @@ body {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "footer-about-container" "footer-contact-container";
-  grid-area: tujuan-container_grid;
+  grid-area: footer_grid;
   align-items: left;
   justify-content: space-evenly;
   color: white;
@@ -660,6 +660,7 @@ body {
   padding-top: 25px;
   font-size: 1em;
   font-weight: normal;
+  margin-left: 1em;
 }
 
 

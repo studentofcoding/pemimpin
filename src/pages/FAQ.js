@@ -344,8 +344,7 @@ export default function Example() {
                     }}
                 >
                     <p> 
-                        Kamu dapat menghubungi tim dari pemimpin.id yang bertanggung jawa menjalankan program ini, Reza melalui 
-                        Oktora (0811 1699 930).
+                        Kamu dapat menghubungi tim dari pemimpin.id yang bertanggung jawa menjalankan program ini, melalui Oktora (0811 1699 930).
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>

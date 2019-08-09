@@ -34,15 +34,19 @@ const universityOptions = [
   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' }
+  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
+  { key: '7', text: 'Lainnya', value: '' }
 ]
+
+// Univ MAP
 const UNIVERSITY_MAP = {
   'Universitas Indonesia': 1,
   'Institut Pertanian Bogor': 2,
   'Universitas Negeri Jakarta': 3,
   'Institut Teknologi Bandung': 4,
   'Universitas Padjajaran': 5,
-  'Universitas Pendidikan Indonesia': 6
+  'Universitas Pendidikan Indonesia': 6,
+  '': 7
 }
 
 // essaytopicOptions dropdown
@@ -55,48 +59,71 @@ const essaytopicOptions = [
   { key: 'f', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' },
   { key: 'g', text: 'Lainnya', value: '' }
 ]
-const initialState = {
-  username: "",
-  nickname: "",
-  birth_place: "",
-  birth_date: "",
-  address: "",
-  email: "",
-  phone: "",
-  photo: "",
-  emergency_phone: "",
-  social_media: "",
-  religion: "",
-  hobby: "",
-  sex: "",
-  scholarship: "",
-  scholarship_other: "",
-  recommendation_paper: "",
-  competencies: "",
-  achievements: ["","",""],
-  scientific_works: "",
-  university_id: "",
-  university_letter: "",
-  scholarship_letter: "",
-  faculty: "",
-  score: "",
-  essay_topic: "",
-  essay_topic_other: "",
-  proposed_essay: "",
-  errors: [],
-  loading: false
- };
 
 class Formregister extends Component {
-  state = initialState
+  state = { 
+    username: "",
+    nickname: "",
+    birth_place: "",
+    birth_date: "",
+    address: "",
+    email: "",
+    phone: "",
+    photo: "",
+    emergency_phone: "",
+    social_media: "",
+    religion: "",
+    hobby: "",
+    sex: "",
+    scholarship: "",
+    scholarship_other: "",
+    recommendation_paper: "",
+    competencies: "",
+    achievements_1: "",
+    achievements_2: "",
+    achievements_3: "",
+    scientific_works: "",
+    university_id: "",
+    university_letter: "",
+    scholarship_letter: "",
+    faculty: "",
+    score: "",
+    essay_topic: "",
+    essay_topic_other: "",
+    proposed_essay: "",
+    submittedName: "", 
+    submittedNickname: "", 
+    submittedBirth_place: "", 
+    submittedBirth_date: "",
+    submittedAddress: "", 
+    submittedEmail: "", 
+    submittedPhone: "",
+    submittedPhoto: "",  
+    submittedEmegency_Phone: "", 
+    submittedSocial_media: "", 
+    submittedReligion: "", 
+    submittedHobby: "", 
+    submittedScholarship: "", 
+    submittedScholarship_letter: "",
+    submittedSex: "", 
+    submittedScientific_works: "", 
+    submittedCompetencies: "", 
+    submittedAchievements: "", 
+    submittedRecommendation_paper: "", 
+    submittedUniversity_id: "",
+    submittedUniversity_letter: "",
+    submittedProposed_essay: "", 
+    submittedEssay_topic: "", 
+    submittedScore: "", 
+    submittedFaculty: "",
+    errors: [],
+    loading: false
+   };
 
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
-  handleDateBirth = (date) => this.setState({birth_date:date})
-  handleAchievment = (idx,value) => {
-    this.state.achievements[idx] = value
-    this.setState({ achievements: this.state.achievements})
-  };
+
   handleSexDropdown = (e, { value }) => this.setState({ sex: value });
   handleScholarshipDropdown = (e, { value }) => this.setState({ scholarship: value });
   handleUnivDropdown = (e, { value }) => this.setState({ university_id: value });
@@ -557,7 +584,6 @@ class Formregister extends Component {
                     {this.displayErrors(errors)}
                 </Message>
               )}
-
           {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
           {/* <strong>dataSubmitted:</strong> */}
           {/* <pre>{JSON.stringify({ submittedName, submittedNickname, submittedBirth_place, submittedBirth_date,submittedAddress, submittedEmail, submittedPhone, submittedEmegency_Phone, submittedSocial_media, submittedReligion, submittedHobby, submittedScholarship, submittedScholarship_Other, submittedSex, submittedScientific_works,submittedCompetencies, submittedAchievements, submittedRecommendation_paper, submittedUniversity_id,submittedProposed_essay, submittedEssay_topic,submittedEssay_topic_other, submittedScore, submittedFaculty }, null, 20)}</pre> */}
