@@ -6,6 +6,10 @@ import React, { Component } from 'react';
 import footer_1 from '../image/Footer_1.png';
 import footer_2 from '../image/Footer_2.png';
 
+import icon_1 from '../image/icon_1.png';
+import icon_2 from '../image/icon_2.png';
+import icon_3 from '../image/icon_3.png';
+
 export default class Footer extends Component {
   render() {
     return (
@@ -13,8 +17,8 @@ export default class Footer extends Component {
         {/* Footer Content */}
         <div className="footer_grid_inner">
           <div className="footer-logo-container">
-            <img src={footer_1} alt="Pemimpin.co" className="footer-logo_1"/>
-            <img src={footer_2} alt="Pemimpin.co" className="footer-logo_2"/>
+            <img src={footer_1} alt="logo-1" className="footer-logo_1"/>
+            <img src={footer_2} alt="logo-2" className="footer-logo_2"/>
           </div>
         </div>
         <footer className="footer_grid">
@@ -38,19 +42,26 @@ export default class Footer extends Component {
               </div>
               <div className="footer-contact_item">
                 <div className="contact-container_grid">
-                  {/* <div className="footer-contact_container_icon">
-                  </div> */}
                   <div className="footer-contact-item">
-                    <i class="material-icons md-light">smartphone</i>
+                  <div className="footer-icon-container">
+                    <i style={{padding: "6px"}} className="material-icons md-light">smartphone</i>
+                    <div className="content-icon">
                     0812-9821-9099
+                    </div>
+                  </div>
                   </div>
                 </div>
                 <div className="contact-container_grid">
-                  {/* <div className="footer-contact_container_icon">
-                  </div> */}
                   <div className="footer-contact-item">
-                    <i class="material-icons md-light">email</i>
-                    program@pemimpin.co
+                    <div className="footer-icon-container">
+                      <i style={{padding: "6px"}} className="material-icons md-light">email</i>
+                      <div className="content-icon">
+                        program@pemimpin.co
+                      </div>
+                      <img src={icon_1} href="" alt="youtube" className="footer-icon"/>
+                      <img src={icon_2} href="" alt="instagram" className="footer-icon"/>
+                      <img src={icon_3} href="" alt="spotify" className="footer-icon"/>
+                    </div>
                   </div>
                 </div>
               </div>
