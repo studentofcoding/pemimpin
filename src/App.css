@@ -624,7 +624,7 @@ body {
   left:0;
   display: grid;
   display: -ms-grid;
-  grid-template-columns: 0.5fr;
+  grid-template-columns: 1fr;
   grid-template-areas: "footer-logo-container";
   grid-area: footer_grid_inner;
   align-items: center;
@@ -632,7 +632,7 @@ body {
   color: white;
   background-color: #1d1d2c;
   font-size: 0.6em;
-  height: 14vh;
+  height: 15vh;
 }
 
 .footer-logo-container {
@@ -663,16 +663,16 @@ body {
 }
 
 .footer-logo_1 {
-  width: 28vh !important;
-  height: 8vh !important;
+  width: 32vh !important;
+  height: 10vh !important;
   padding: 1%;
   padding-right: 0px;
   align-content: center;
 }
 
 .footer-logo_2 {
-  width: 28vh !important;
-  height: 8vh !important;
+  width: 32vh !important;
+  height: 10vh !important;
   padding: 1%;
   padding-left: 0px;
   align-content: center;
