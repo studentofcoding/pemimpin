@@ -34,7 +34,7 @@ const universityOptions = [
   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' }
+  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
   { key: '7', text: 'Lainnya', value: '' }
 ]
 const UNIVERSITY_MAP = {
