@@ -57,6 +57,7 @@ const essaytopicOptions = [
   { key: 'f', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' },
   { key: 'g', text: 'Lainnya', value: '' }
 ]
+
 const initialState = {
   username: "",
   nickname: "",
@@ -198,7 +199,7 @@ class Formregister extends Component {
         </div>
 
         <Container style={{marginTop:"-1em"}} text textAlign='justified'>
-          <Form style={{marginBottom: "3em", marginTop:"3em"}} unstackable onSubmit={this.handleFormSubmit && this.successRegisnotif}>
+          <Form style={{marginBottom: "3em", marginTop:"3em"}} unstackable onSubmit={this.handleFormSubmit}>
 
           {/* Form UMUM Section */}
           <Header>UMUM</Header>
