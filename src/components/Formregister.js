@@ -57,6 +57,7 @@ const essaytopicOptions = [
   { key: 'f', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' },
   { key: 'g', text: 'Lainnya', value: '' }
 ]
+
 const initialState = {
   username: "",
   nickname: "",
