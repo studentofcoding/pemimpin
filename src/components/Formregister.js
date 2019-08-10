@@ -87,7 +87,8 @@ const initialState = {
   essay_topic_other: "",
   proposed_essay: "",
   errors: [],
-  loading: false
+  loading: false,
+  submit: false,
  };
 
 class Formregister extends Component {
@@ -158,7 +159,7 @@ class Formregister extends Component {
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     }).then((response) => {
       // TODO, show to user that request is success
-      this.setState(initialState);
+      this.setState({...initialState,submit:true});
       console.log('request success')
     }).catch((response) => {
       // TODO, show to user that request is failed
@@ -182,7 +183,8 @@ class Formregister extends Component {
     const {
       username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, photo, scholarship_letter, university_letter,
       loading,
-      errors
+      errors,
+      submit
     } = this.state;
 
     return (
@@ -383,7 +385,7 @@ class Formregister extends Component {
                 placeholder='contoh : Nama Pencapaian | Penyelenggara | Tahun'
                 name={"achievements_"+(idx+1)}
                 onChange={ (e, {name,value}) => this.handleAchievment(idx,value)}
-                required
+                required={idx===0}
               />)
             })}
             <Form.Field
@@ -394,6 +396,7 @@ class Formregister extends Component {
               placeholder='contoh : Judul Karya Ilmiah | Tahun'
               name="scientific_works"
               type="username"
+              required
               onChange={this.handleChange}
             />
             <Form.Group widths='equal'>
@@ -440,6 +443,7 @@ class Formregister extends Component {
               label='Surat Rekomendasi'
               value={recommendation_paper}
               placeholder='Upload Surat Rekomendasi'
+              required
             >
               <Input
               type="file"
@@ -560,6 +564,7 @@ class Formregister extends Component {
                     {this.displayErrors(errors)}
                 </Message>
               )}
+              {errors.length < 1 && submit && (this.successRegisnotif)}
 
           {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
           {/* <strong>dataSubmitted:</strong> */}

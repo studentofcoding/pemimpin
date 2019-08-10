@@ -1,5 +1,5 @@
 const config = {
-    endpoint: 'http://localhost:3000'
+    endpoint: process.env.API_URL || 'http://localhost:3003'
 }
 
 export default config;
