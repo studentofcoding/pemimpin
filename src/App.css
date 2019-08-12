@@ -180,6 +180,26 @@ body {
   font-size: 0.9em;
   text-decoration: none;
   align-content: center;
+  display: flex;
+  display: -webkit-flex;
+}
+
+.menu_button {
+  color: #fff;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 0.9em;
+  text-decoration: none;
+  align-content: center;
+  display: none;
+}
+
+.menu_item {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  align-content: center;
 }
 
 /*
@@ -899,5 +919,22 @@ body {
   
   .newsletter-button {
     width: 100%;
+  }
+}
+
+/* 
+  ##Device = Tab, Mobile
+  ##Screen = B/w 320px to 1024px
+*/
+
+@media (min-width: 320px) and (max-width: 1024px) {
+  
+  .menu_button {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .navigation_item {
+    display: none;
   }
 }
