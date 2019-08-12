@@ -7,7 +7,7 @@ import { Button, Dimmer, Menu } from 'semantic-ui-react';
 
 class Navbar extends Component {
   state = {
-    activePage: 'home'
+    activePage: ''
   }
 
   menuOpen = () => this.setState({ active: true })
@@ -43,13 +43,15 @@ class Navbar extends Component {
                     as={NavLink}
                     name='Home'
                     active={activePage === 'home'}
-                    exact to='/home'
+                    onClick={this.handleItemClick}
+                    exact to='/'
                   />
                   <Menu.Item
                     className="menu_item"
                     as={NavLink}
                     name='About'
                     active={activePage === 'about'}
+                    onClick={this.handleItemClick}
                     exact to='/about'
                   />
                   <Menu.Item
