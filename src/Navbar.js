@@ -31,7 +31,7 @@ class Navbar extends Component {
         {/*This is the function to Show the Menu Page*/}
           <div className="menu_container">
             <NavLink className="navigation_item" exact to="/about">About</NavLink>
-            <NavLink className="navigation_item" exact to="/tnc">T&C</NavLink>
+            <NavLink className="navigation_item" exact to="/tnc">Term</NavLink>
             <NavLink className="navigation_item" exact to="/contact">Contact</NavLink>
             <NavLink className="navigation_item" exact to="/login">Login</NavLink>
             <div className="menu_button">
@@ -48,7 +48,7 @@ class Navbar extends Component {
                   <Menu.Item
                     className="menu_item"
                     as={NavLink}
-                    name='T&C'
+                    name='Term and Condition'
                     active={activePage === 'tnc'}
                     onClick={this.handleItemClick}
                     exact to='/tnc'
