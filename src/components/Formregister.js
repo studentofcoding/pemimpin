@@ -95,11 +95,11 @@ const initialState = {
 
 class Formregister extends Component {
   state = initialState
-
+  
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
   handleDateBirth = (date) => this.setState({birth_date:date})
-  handleAchievment = (idx,value) => {
+  handleAchievement = (idx,value) => {
     this.state.achievements[idx] = value
     this.setState({ achievements: this.state.achievements})
   };
@@ -119,7 +119,7 @@ class Formregister extends Component {
       <Message
         success
         header='Welcome to Young Innovators Fellowship, Next Leader!'
-        content='Kami akan memberi update jika kamu terpilih ke tahap selanjutnya.'
+        content='Kami akan memberi update via E-mail jika kamu terpilih ke tahap selanjutnya.'
       />
     );
   }
@@ -389,7 +389,7 @@ class Formregister extends Component {
                 value={achievements[idx]}
                 placeholder='contoh : Nama Pencapaian | Penyelenggara | Tahun'
                 name={"achievements_"+(idx+1)}
-                onChange={ (e, {name,value}) => this.handleAchievment(idx,value)}
+                onChange={ (e, {name,value}) => this.handleAchievement(idx,value)}
                 required={idx===0}
               />)
             })}
@@ -572,7 +572,7 @@ class Formregister extends Component {
                 <Message
                   success
                   header='Welcome to Young Innovators Fellowship, Next Leader!'
-                  content='Kami akan memberi update ke-emailmu jika kamu terpilih ke tahap selanjutnya.'
+                  content='Kami akan memberi update ke-Emailmu jika kamu terpilih ke tahap selanjutnya.'
                 />
               )}
 

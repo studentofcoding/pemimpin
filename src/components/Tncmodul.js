@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react';
+import { Button, Form, Checkbox } from 'semantic-ui-react';
 
 // T&C Modal
 import Modal from 'react-modal';
@@ -59,14 +59,15 @@ handleAfterTnC_Open() {
   this.tnc_header.style.top = '-50px';
   this.tnc_header.style.backgroundColor = 'white';
 
-  this.tnc_checklistLabel.style.display = 'flex';
-  this.tnc_checklistLabel.style.flexFlow = 'row';
-  this.tnc_checklistLabel.style.paddingTop = '10px';
-  this.tnc_checklistLabel.style.paddingBottom = '80px';
-  this.tnc_checklistLabel.style.position = 'sticky';
-  this.tnc_checklistLabel.style.bottom = '-80px';
-  this.tnc_checklistLabel.style.marginBottom = '-80px';
-  this.tnc_checklistLabel.style.backgroundColor = 'white';
+  this.tnc_checklist.style.display = 'flex';
+  this.tnc_checklist.style.justifyContent = 'space-between';
+  this.tnc_checklist.style.flexFlow = 'row';
+  this.tnc_checklist.style.paddingTop = '10px';
+  this.tnc_checklist.style.paddingBottom = '80px';
+  this.tnc_checklist.style.position = 'sticky';
+  this.tnc_checklist.style.bottom = '-80px';
+  this.tnc_checklist.style.marginBottom = '-80px';
+  this.tnc_checklist.style.backgroundColor = 'white';
 }
 
 handleTnC_Close () {
@@ -190,30 +191,27 @@ handleHideButton_TnC () {
               </div>
             </div>
           </div>
-          <div ref={tnc_checklistLabel => this.tnc_checklistLabel = tnc_checklistLabel}>
-            <input onClick={this.toggleTncCheck} checked={this.state.isTncCheck} type="checkbox"/>
-            {/* <input type="checkbox"/> */}
-              <label onClick={this.toggleTncCheck} className="TnC-checkmark_label">
-              {/* <label className="TnC-checkmark_label"> */}
-                Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku
-              </label>
-            <span className="checkmark">
-            </span>
+          <div ref={tnc_checklist => this.tnc_checklist = tnc_checklist}>
+          <Form.Field>
+            <Checkbox label='Saya mengerti, tunduk, dan bersedia mengikuti semua Ketentuan dan Kondisi yang berlaku' />
+          </Form.Field>
             <div className="button-tncmodul">
               <NavLink
                 style={{
-                  alignItems: "center",
+                  justifyContent: "end",
                   color: "white",
                   backgroundColor: "#e40c2b",
                   border: "1px solid #e40c2b",
                   borderRadius: "5%",
                   cursor: "pointer",
                   fontSize: "0.6em",
-                  padding: 8,
+                  padding: 5,
+                  marginLeft: "8%",
+                  textAlign: "center"
                 }}
                 exact to="/form">
                   Daftar Sekarang
-                </NavLink>
+              </NavLink>
             </div>
           </div>
         </TnCModal>
