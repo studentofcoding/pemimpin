@@ -556,7 +556,6 @@ class Formregister extends Component {
                 width: "100%"
               }}
               size="medium"
-              content='Kirim Datamu'
               disabled={loading}
               className={loading ? 'loading' : ''}
               >
