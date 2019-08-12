@@ -38,6 +38,13 @@ class Navbar extends Component {
             <Button icon='align justify' inverted color='red' onClick={this.menuOpen} />
               <Dimmer active={active} onClickOutside={this.menuClose} page>
                 <Menu size='massive' inverted secondary vertical>
+                <Menu.Item
+                    className="menu_item"
+                    as={NavLink}
+                    name='Home'
+                    active={activePage === 'home'}
+                    exact to='/home'
+                  />
                   <Menu.Item
                     className="menu_item"
                     as={NavLink}
