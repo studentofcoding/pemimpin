@@ -4,10 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Message, Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
 import dateFormat from'dateformat';
 import axios from 'axios';
-import config from '../config'
+import config from '../config';
 
 import Navbar from '../Navbar';
 import Footer from './Footer';
+
+import './Formregister.css';
 
 // sexOptions dropdown
 const sexOptions = [
@@ -123,6 +125,7 @@ class Formregister extends Component {
   }
 
   handleFormSubmit = () => {
+    this.setState({ loading: true});
 
     const formData = new FormData();
     formData.set('name', this.state.username)
@@ -160,10 +163,12 @@ class Formregister extends Component {
     }).then((response) => {
       // TODO, show to user that request is success
       this.setState({...initialState,submit:true});
+      this.setState({ loading: false});
       console.log('request success')
     }).catch((response) => {
       // TODO, show to user that request is failed
       this.setState({errors:[response]})
+      this.setState({ loading: false});
       console.log('request failed', response)
     });
   }
@@ -396,9 +401,21 @@ class Formregister extends Component {
               placeholder='contoh : Judul Karya Ilmiah | Tahun'
               name="scientific_works"
               type="username"
-              required
               onChange={this.handleChange}
             />
+            <Form.Field
+              name="recommendation_paper"
+              control={Input}
+              label='Surat Rekomendasi'
+              value={recommendation_paper}
+              placeholder='Upload Surat Rekomendasi'
+            >
+              <Input
+              type="file"
+              name="recommendation_paper"
+              onChange={this.onUploadChange}
+              />
+            </Form.Field>
             <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
@@ -437,20 +454,6 @@ class Formregister extends Component {
                 />
               </Form.Field>
             </Form.Group>
-            <Form.Field
-              name="recommendation_paper"
-              control={Input}
-              label='Surat Rekomendasi'
-              value={recommendation_paper}
-              placeholder='Upload Surat Rekomendasi'
-              required
-            >
-              <Input
-              type="file"
-              name="recommendation_paper"
-              onChange={this.onUploadChange}
-              />
-            </Form.Field>
 
             <Divider />
 
@@ -532,9 +535,9 @@ class Formregister extends Component {
               <Form.Field
                 name="proposed_essay"
                 control={Input}
-                label='Upload Draft Essay'
+                label='Upload Proposal Skripisi'
                 value={proposed_essay}
-                placeholder='Upload Draft Essay'
+                placeholder='Upload Proposal Skripisi'
                 required
               >
                 <Input
@@ -553,10 +556,12 @@ class Formregister extends Component {
                 width: "100%"
               }}
               size="medium"
-              content='Kirim Data'
+              content='Kirim Datamu'
               disabled={loading}
               className={loading ? 'loading' : ''}
-              />
+              >
+                {loading ? 'Mengirim Datamu ke Server...' : 'Kirim Datamu'}
+              </Form.Button>
           </Form>
               {errors.length > 0 && (
                 <Message error>
@@ -564,7 +569,13 @@ class Formregister extends Component {
                     {this.displayErrors(errors)}
                 </Message>
               )}
-              {errors.length < 1 && submit && (this.successRegisnotif)}
+              {errors.length < 1 && submit === true && (
+                <Message
+                  success
+                  header='Welcome to Young Innovators Fellowship, Next Leader!'
+                  content='Kami akan memberi update jika kamu terpilih ke tahap selanjutnya.'
+                />
+              )}
 
           {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
           {/* <strong>dataSubmitted:</strong> */}

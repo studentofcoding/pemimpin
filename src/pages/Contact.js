@@ -9,37 +9,48 @@ import { Form, Input, TextArea, Message } from 'semantic-ui-react';
 import Footer from '../components/Footer';
 import Tncmodul from '../components/Tncmodul';
 
+import axios from 'axios';
+import config from '../config';
+
+const contactState = { 
+  username: "",
+  email: "",
+  university: "",
+  question: "",
+  errors: [],
+  loading: false,
+  submit: false
+};
+
 class Contact extends Component {
-  state = { 
-    username: "",
-    email: "",
-    university: "",
-    question: "",
-    submittedName: "",
-    submittedEmail: "",
-    submittedUniversity: "",
-    submittedQuestion: "",
-    errors: [],
-    loading: false,
-   };
+  state = contactState;
 
   dispalyErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
 
   handleSubmit = () => {
-    const { username, email, university, question } = this.state
 
-    this.setState({ 
-      username: "",
-      email: "",
-      university: "",
-      question: "",
-      submittedName: username, 
-      submittedEmail: email,
-      submittedUniversity: university,
-      submittedQuestion: question
-     })
+    const formData = new FormData();
+    formData.set('username', this.state.username)
+    formData.set('email', this.state.email)
+    formData.set('university', this.state.university)
+    formData.set('question', this.state.question)
+
+    axios({
+      method: 'POST',
+      url: config.endpoint + '/api/v1/contact',
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+    }).then((response) => {
+      // TODO, show to user that request is success
+      this.setState({...contactState,submit:true});
+      console.log('question sended')
+    }).catch((response) => {
+      // TODO, show to user that request is failed
+      this.setState({errors:[response]})
+      console.log('question error', response)
+    });
   }
 
   formisValid = ({ username, email, university, question }) => username && email && university && question;
