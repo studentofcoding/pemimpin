@@ -573,7 +573,7 @@ class Formregister extends Component {
                 <Message
                   success
                   header='Welcome to Young Innovators Fellowship, Next Leader!'
-                  content='Kami akan memberi update jika kamu terpilih ke tahap selanjutnya.'
+                  content='Kami akan memberi update ke-emailmu jika kamu terpilih ke tahap selanjutnya.'
                 />
               )}
 
