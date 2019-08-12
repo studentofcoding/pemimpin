@@ -402,28 +402,31 @@ class Home extends Component {
               <Carousel
                   slidesPerPage={3}
                   arrows
-                  infinite
                   centered
+                  infinite
                   animationSpeed={1500}
                   autoPlay={3500}
                   stopAutoPlayOnHover
-                  offset={20}
+                  offset={0}
                   breakpoints={{
-                    1000: { // these props will be applied when screen width is less than 1000px
-                      slidesPerPage: 2,
+                    768: { // these props will be applied when screen width is less than 1000px
+                      slidesPerPage: 1,
+                      slidesPerScroll: 1,
                       clickToChange: false,
                       centered: true,
-                      arrows: true,
+                      offset: 0,
                       infinite: true,
+                      arrows: true,
                       animationSpeed: 2000,
                     },
-                    500: {
+                    400: {
                       slidesPerPage: 1,
                       slidesPerScroll: 1,
                       clickToChange: false,
                       centered: true,
                       animationSpeed: 2000,
                       infinite: true,
+                      offset: 0,
                     },
                   }}
                 >
