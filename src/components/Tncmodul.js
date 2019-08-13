@@ -131,10 +131,10 @@ handleHideButton_TnC () {
                     Siap mengikuti program pembinaan selama 9 bulan
                   </li>
                   <li className="TnC-container-body_list">
-                    Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
+                    Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.id diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
                   </li>
                   <li className="TnC-container-body_list">
-                    Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
+                    Pemimpin.id memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
                   </li>
                   <li className="TnC-container-body_list">
                     Jika pernah menerima beasiswa berikut akan diprioritaskan :

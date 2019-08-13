@@ -56,7 +56,7 @@ export default class Footer extends Component {
                     <div className="footer-icon-container">
                       <i style={{padding: "6px"}} className="material-icons md-light">email</i>
                       <div className="content-icon">
-                        program@pemimpin.co
+                        program@pemimpin.id
                       </div>
                       {/* <img src={icon_1} href="" alt="youtube" className="footer-icon"/>
                       <img src={icon_2} href="" alt="instagram" className="footer-icon"/>

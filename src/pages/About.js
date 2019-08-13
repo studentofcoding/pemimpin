@@ -35,7 +35,7 @@ export default class About extends Component {
           Menjadi mahasiswa tingkat akhir merupakan sebuah tantangan tersendiri bagi seluruh mahasiswa di Indonesia. Fase ini menjadi fase yang penting untuk mahasiswa bisa memberikan karya terbaiknya melalui riset pada tugas akhirnya, namun sayangnya momentum ini tidak dimanfaatkan oleh kebanyakan mahasiswa sehingga tugas akhir yang dihasilkan hanya dijadikan prasyarat untuk lulus saja.
           </p>
           <p>
-          Melalui program ini pemimpin.co mendorong mahasiswa tingkat akhir untuk melakukan riset yang innovatif dan berdampak melalui tugas akhir yang dikerjakannya. Peserta program akan dibekali ilmu-ilmu mengenai penulisan naskah akademik dan ilmu-ilmu yang memperkaya pengetahuannya terkait karir.
+          Melalui program ini pemimpin.id mendorong mahasiswa tingkat akhir untuk melakukan riset yang innovatif dan berdampak melalui tugas akhir yang dikerjakannya. Peserta program akan dibekali ilmu-ilmu mengenai penulisan naskah akademik dan ilmu-ilmu yang memperkaya pengetahuannya terkait karir.
           </p>
           <p>
           Pemimpin.id mengundang mahasiswa tingkat akhir dari Universitas di Jakarta, Bogor, Depok, dan Bandung untuk mengikuti program ini. Secara khusus kami mengundang mahasiswa tingkat akhir yang memiliki idealisme untuk menghasilkan tugas akhir yang berdampak bagi masyarakat.
@@ -120,7 +120,7 @@ export default class About extends Component {
           <div className="pages-section_header">
         <Container text textAlign='justified'>
             <div className="pages-section_content">
-            <h2>Founders Pemimpin.co</h2>
+            <h2>Founders Pemimpin.id</h2>
             <Divider/>
             <div className="pages-section-content_inner">
               <img src={founderPic} alt="Founder Face" height="70%" width="70%"/>
