@@ -46,7 +46,7 @@ export default class Footer extends Component {
                   <div className="footer-icon-container">
                     <i style={{padding: "6px"}} className="material-icons md-light">smartphone</i>
                     <div className="content-icon">
-                    0812-9821-9099
+                      0811-1699-930
                     </div>
                   </div>
                   </div>
@@ -64,7 +64,7 @@ export default class Footer extends Component {
                     </div>
                     <div className="footer-icon-container">
                       <img src={icon_1} href="" alt="youtube" className="footer-icon"/>
-                      <img src={icon_2} href="" alt="instagram" className="footer-icon"/>
+                      <img src={icon_2} href="https://www.instagram.com/pemimpin.indonesia/" alt="instagram" className="footer-icon"/>
                       <img src={icon_3} href="" alt="spotify" className="footer-icon"/>
                     </div>
                   </div>

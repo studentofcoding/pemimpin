@@ -46,33 +46,7 @@ const TnCPage = () => (
           Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
         </li>
         <li>
-          Jika pernah menerima beasiswa berikut akan diprioritaskan:
-          <ul>
-            <li>
-              Bidik Misi
-            </li>
-            <li>
-              Rumah Kepemimpinan
-            </li>
-            <li>
-              Bakti Nusa
-            </li>
-            <li>
-              Bidik Misi
-            </li>
-            <li>
-              Beastudi Etos
-            </li>
-            <li>
-              Karya Salemba Empat
-            </li>
-            <li>
-              Kader Surau YBM BRI
-            </li>
-            <li>
-              LAZ Salman
-            </li>
-          </ul>
+          Bagi yang pernah mendapatkan beasiswa ataupun alumni program/pelatihan kepemimpinan tingkat nasional akan diutamakan
         </li>
       </ol>
 
@@ -128,9 +102,31 @@ const TnCPage = () => (
             </li>
             <li>
               Kesejahteraan Sosial
+              <ol>
+                <li>
+                  Kesejahteraan sosial dan pengaruhnya terhadap pengembangan SDM di Indonesia
+                </li>
+                <li>
+                  Community development sebagai strategi pemerataan kesejahteraan sosial di Indonesia
+                </li>
+                <li>
+                  Dampak dari kebijakan sosial terhadap peningkatan kesejahteraan sosial di Indonesia
+                </li>
+              </ol>
             </li>
             <li>
               Kepemimpinan
+              <ol>
+                <li>
+                  Social impact leadership (character, ability, dan skill)
+                </li>
+                <li>
+                  Peran Pemimpin untuk menciptakan dampak sosial dan tantangannya
+                </li>
+                <li>
+                  Kajian hubungan antara pimpinan perusahaan dan corporate social responsibility
+                </li>
+              </ol>
             </li>
             <li>
               Lingkungan
@@ -193,6 +189,9 @@ const TnCPage = () => (
             </li>
             <li>
               Tujuan,
+            </li>
+            <li>
+              Dampak ke masyarakat,
             </li>
             <li>
               Ruang lingkup, 

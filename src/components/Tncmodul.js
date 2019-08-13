@@ -136,7 +136,8 @@ handleHideButton_TnC () {
                   <li className="TnC-container-body_list">
                     Pemimpin.id memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
                   </li>
-                  <li className="TnC-container-body_list">
+                  {/* Untuk supaya dipakai Nanti */}
+                  {/* <li className="TnC-container-body_list">
                     Jika pernah menerima beasiswa berikut akan diprioritaskan :
                     <ul>
                     <li>Bidik Misi,</li>
@@ -147,6 +148,9 @@ handleHideButton_TnC () {
                     <li>Kader Surau YBM BRI, dan</li>
                     <li>LAZ Salman.</li>
                     </ul>
+                  </li> */}
+                  <li className="TnC-container-body_list">
+                    Bagi yang pernah mendapatkan beasiswa ataupun alumni program/pelatihan kepemimpinan tingkat nasional akan diutamakan
                   </li>
                 </ol>
               </div>

@@ -23,13 +23,16 @@ class Navbar extends Component {
       <header className="navigation-container_grid">
         <div className="logo-container">
           <div className="logo-container_container">
-            <NavLink exact to="/">
+            <a href="www.pemimpin.id">
               <img src={logo_pemimpin} alt="Pemimpin.co" className="app-logo"/>
-            </NavLink>
+            </a>
+            {/* <NavLink exact to="pemimpin.id">
+            </NavLink> */}
           </div>
         </div>
         {/*This is the function to Show the Menu Page*/}
           <div className="menu_container">
+            <NavLink className="navigation_item" exact to="/">Home</NavLink>
             <NavLink className="navigation_item" exact to="/about">About</NavLink>
             <NavLink className="navigation_item" exact to="/tnc">Term</NavLink>
             <NavLink className="navigation_item" exact to="/contact">Contact</NavLink>

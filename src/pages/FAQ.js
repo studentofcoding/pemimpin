@@ -182,8 +182,8 @@ export default function Example() {
                     }}
                 >
                     <p>
-                        Total peserta fellowship yang akan diterima adalah 60 orang, dengan 
-                        pembagian 30 orang di regional Jakarta dan 30 orang di regional Bandung.
+                        Total peserta fellowship yang akan diterima adalah 20 orang, dengan 
+                        pembagian 10 orang di regional Jakarta dan 10 orang di regional Bandung.
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -213,8 +213,7 @@ export default function Example() {
                     }}
                 >
                     <p>
-                        Pendaftaran akan ditutup pada 10 Agustus 2019. Kami menyarankan agar mendaftar 
-                        seawal mungkin. Berkas akan dievaluasi berdasarkan waktu masuk.
+                        Pendaftaran akan ditutup pada 31 Agustus 2019. Kami menyarankan agar mendaftar seawal mungkin. Berkas akan dievaluasi berdasarkan waktu masuk.
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -331,7 +330,7 @@ export default function Example() {
                         }}
                     >
                         Saya masih memiliki pertanyaan spesifik, 
-                        bagaimana cara saya menkontak panitia?
+                        bagaimana cara saya menghubungi panitia?
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel style=

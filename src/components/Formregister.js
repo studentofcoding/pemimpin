@@ -330,7 +330,7 @@ class Formregister extends Component {
             <Form.Field
               id='form-input-control-sosmed'
               control={Input}
-              label='Instagram account'
+              label='Instagram Account'
               value={social_media}
               placeholder='contoh : yonathan.evan'
               name="social_media"
@@ -380,7 +380,7 @@ class Formregister extends Component {
               required
             />
             {achievements.map( (element,idx) => {
-              const labels = idx === 0 ? '3 prestasi terbaik' : "";
+              const labels = idx === 0 ? '3 Prestasi Terbaik' : "";
               return(<Form.Field
                 key={'form-input-control-achievements_'+(idx+1)}
                 id={'form-input-control-achievements_'+(idx+1)}
@@ -396,7 +396,7 @@ class Formregister extends Component {
             <Form.Field
               id='form-input-control-scientific-works  '
               control={TextArea}
-              label='Karya Ilmiah yang pernah dipublikasikan'
+              label='Karya Ilmiah Yang Pernah Dipublikasikan'
               value={scientific_works}
               placeholder='contoh : Judul Karya Ilmiah | Tahun'
               name="scientific_works"
@@ -420,7 +420,7 @@ class Formregister extends Component {
               <Form.Field
                 control={Select}
                 options={scholarshipOptions}
-                label={{ children: 'Beasiswa yang pernah diterima', htmlFor: 'form-select-control-beasiswa' }}
+                label={{ children: 'Beasiswa Yang Pernah Diterima', htmlFor: 'form-select-control-beasiswa' }}
                 placeholder='Bidik Misi'
                 search
                 onChange={this.handleScholarshipDropdown}
