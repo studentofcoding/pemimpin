@@ -117,15 +117,10 @@ class Formregister extends Component {
     this.setState({[name]:files[0]});
   }
 
-  successRegisnotif = () => {
-    return (
-      <Message
-        success
-        header='Welcome to Young Innovators Fellowship, Next Leader!'
-        content='Kami akan memberi update via E-mail jika kamu terpilih ke tahap selanjutnya.'
-      />
-    );
-  }
+  
+  // componentDidUpdate(){
+  //   setTimeout(() => this.setState({submit:false}), 3000);
+  // }
 
   handleFormSubmit = () => {
     this.setState({ loading: true});
@@ -169,6 +164,8 @@ class Formregister extends Component {
       // TODO, show to user that request is success
       this.setState({...initialState,submit:true});
       this.setState({ loading: false});
+      // Hide message after 3 seconds
+      setTimeout(() => this.setState({submit:false}), 3000);
       console.log('request success')
     }).catch((response) => {
       // TODO, show to user that request is failed
