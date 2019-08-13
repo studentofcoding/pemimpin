@@ -198,16 +198,7 @@ class Home extends Component {
                     Pemimpin.id memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
                   </li>
                   <li className="TnC-container-body_list">
-                    Jika pernah menerima beasiswa berikut akan diprioritaskan :
-                    <ul>
-                    <li>Bidik Misi,</li>
-                    <li>Rumah Kepemimpinan,</li>
-                    <li>Bakti Nusa,</li>
-                    <li>Beastudi Etos,</li>
-                    <li>Karya Salemba Empat,</li>
-                    <li>Kader Surau YBM BRI, dan</li>
-                    <li>LAZ Salman.</li>
-                    </ul>
+                    Bagi yang pernah mendapatkan beasiswa ataupun alumni program/pelatihan kepemimpinan tingkat nasional akan diutamakan.
                   </li>
                 </ol>
               </div>

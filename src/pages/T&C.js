@@ -40,10 +40,10 @@ const TnCPage = () => (
           Siap mengikuti program pembinaan selama 9 bulan
         </li>
         <li>
-          Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.co diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
+          Hak cipta hasil penelitian tetap berada pada peneliti dan kampus, akan tetapi pemimpin.id diberikan hak untuk mempublikasikan sebagian atau seluruh hasil skripsi.
         </li>
         <li>
-          Pemimpin.co memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
+          Pemimpin.id memiliki hak menggunakan hasil penelitian tersebut untuk kepentingan pengembangan ekosistem kepemipinan di Indonesia dengan tetap memperhatikan etika ilmiah dan bebas dari unsur kejahatan akademik.
         </li>
         <li>
           Bagi yang pernah mendapatkan beasiswa ataupun alumni program/pelatihan kepemimpinan tingkat nasional akan diutamakan
