@@ -164,7 +164,7 @@ class Formregister extends Component {
       // TODO, show to user that request is success
       this.setState({...initialState,submit:true});
       this.setState({ loading: false});
-      // Hide message after 3 seconds
+      // Hide message after 3s
       setTimeout(() => this.setState({submit:false}), 3000);
       console.log('request success')
     }).catch((response) => {
