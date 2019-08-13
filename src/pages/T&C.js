@@ -176,40 +176,40 @@ const TnCPage = () => (
           Sistematika proposal penelitian terdiri dari :
           <ul>
             <li>
-              Judul,
+              Judul
             </li>
             <li>
-              Ringkasan Eksekutif (Executive Summary), 
+              Ringkasan eksekutif (executive summary)
             </li>
             <li>
-              Latar belakang masalah,
+              Latar belakang masalah
             </li>
             <li>
-              Perumusan masalah, 
+              Perumusan masalah
             </li>
             <li>
-              Tujuan,
+              Tujuan
             </li>
             <li>
-              Dampak ke masyarakat,
+              Dampak ke masyarakat
             </li>
             <li>
-              Ruang lingkup, 
+              Ruang lingkup
             </li>
             <li>
-              Kerangka teori, 
+              Kerangka teori 
             </li>
             <li>
-              Metodologi (teknik pengumpulan data, sasaran riset, data yang dihimpun, teknik analisis data), 
+              Metodologi (teknik pengumpulan data, sasaran riset, data yang dihimpun, dan teknik analisis data) 
             </li>
             <li>
-              Jadwal penelitian, 
+              Jadwal penelitian
             </li>
             <li>
-              Anggaran dana, dan 
+              Anggaran dana 
             </li>
             <li>
-              Daftar pustaka.
+              Daftar pustaka
             </li>
           </ul>
         </li>
