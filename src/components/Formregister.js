@@ -26,7 +26,8 @@ const scholarshipOptions = [
   { key: 'e', text: 'Karya Salemba Empat', value: 'Karya Salemba Empat' },
   { key: 'f', text: 'Kader Surau YBM BRI', value: 'Kader Surau YBM BRI' },
   { key: 'g', text: 'LAZ Salman', value: 'LAZ Salman' },
-  { key: 'h', text: 'Lainnya', value: '' }
+  { key: 'h', text: 'Forum Indonesia Muda', value: 'Forum Indonesia Muda' },
+  { key: 'i', text: 'Lainnya', value: '' }
 ]
 
 // universityOptions dropdown
@@ -81,6 +82,7 @@ const initialState = {
   achievements: ["","",""],
   scientific_works: "",
   university_id: "",
+  university_other: "",
   university_letter: "",
   scholarship_letter: "",
   faculty: "",
@@ -88,6 +90,7 @@ const initialState = {
   essay_topic: "",
   essay_topic_other: "",
   proposed_essay: "",
+  head_essay: "",
   errors: [],
   loading: false,
   submit: false,
@@ -147,7 +150,9 @@ class Formregister extends Component {
     formData.set('faculty', this.state.faculty)
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
+    formData.set('head_essay', this.state.head_essay)
     formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
+    formData.set('university_other', this.state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', this.state.proposed_essay)
     formData.set('university_letter', this.state.university_letter)
@@ -186,7 +191,7 @@ class Formregister extends Component {
   render() {
     console.log(this.state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
@@ -472,6 +477,17 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-university' }}
                 required
               />
+              {/* {university_other === universityOptions[universityOptions.length-1].value && (
+                <Form.Field
+                control={Input}
+                value={university_other}
+                placeholder='Universitas Lainnya'
+                label="Universitas Lainnya"
+                name="university_other"
+                type="username"
+                onChange={this.handleChange}
+              />
+              )} */}
               <Form.Field
                 name="university_letter"
                 control={Input}
@@ -509,6 +525,16 @@ class Formregister extends Component {
                 required
               />
             </Form.Group>
+            <Form.Field
+              name="head_essay"
+              control={TextArea}
+              value={head_essay}
+              placeholder='contoh : Dampak IOT terhadap akses Internet di masyarakat'
+              label='Judul Skripsi'
+              type="username"
+              onChange={this.handleChange}
+              required
+            />
             <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
@@ -522,45 +548,47 @@ class Formregister extends Component {
                 required
               />
               {essay_topic === essaytopicOptions[essaytopicOptions.length-1].value && (
-                <Form.Field
-                control={Input}
-                value={essay_topic_other}
-                placeholder='contoh : Genetika'
-                label='Topik Lainnya'
-                name="essay_topic_other"
-                type="username"
-                onChange={this.handleChange}
-              />
-              )}
               <Form.Field
-                name="proposed_essay"
-                control={Input}
-                label='Upload Proposal Skripisi'
-                value={proposed_essay}
-                placeholder='Upload Proposal Skripisi'
-                required
-              >
-                <Input
-                type="file"
-                name="proposed_essay"
-                onChange={this.onUploadChange}
-                />
-              </Form.Field>
-              </Form.Group>
-            <Form.Button
-              style={{
-                background:"#e40c2b",
-                color:"#fff",
-                marginBottom: "1em",
-                marginTop: "1em",
-                width: "100%"
-              }}
-              size="medium"
-              disabled={loading}
-              className={loading ? 'loading' : ''}
-              >
-                {loading ? 'Mengirim Datamu ke Server...' : 'Kirim Datamu'}
-              </Form.Button>
+              control={Input}
+              value={essay_topic_other}
+              placeholder='contoh : Genetika'
+              label='Topik Lainnya'
+              name="essay_topic_other"
+              type="username"
+              onChange={this.handleChange}
+            />
+              )}
+          </Form.Group>
+          <Form.Group widths='equal'>
+            <Form.Field
+              name="proposed_essay"
+              control={Input}
+              label='Upload Proposal Skripisi'
+              value={proposed_essay}
+              placeholder='Upload Proposal Skripisi'
+              required
+            >
+              <Input
+              type="file"
+              name="proposed_essay"
+              onChange={this.onUploadChange}
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Button
+            style={{
+              background:"#e40c2b",
+              color:"#fff",
+              marginBottom: "1em",
+              marginTop: "1em",
+              width: "100%"
+            }}
+            size="medium"
+            disabled={loading}
+            className={loading ? 'loading' : ''}
+            >
+              {loading ? 'Mengirim Datamu ke Server...' : 'Kirim Datamu'}
+          </Form.Button>
           </Form>
               {errors.length > 0 && (
                 <Message error>
