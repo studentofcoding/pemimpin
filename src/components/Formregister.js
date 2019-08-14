@@ -31,23 +31,24 @@ const scholarshipOptions = [
 ]
 
 // universityOptions dropdown
-const universityOptions = [
-  { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
-  { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
-  { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
-  { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
-  { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-  { key: '7', text: 'Lainnya', value: '' }
-]
+// TODO Value ambil dari API Database
+// const universityOptions = [
+//   { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
+//   { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
+//   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
+//   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
+//   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
+//   { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
+//   { key: '7', text: 'Lainnya', value: '' }
+// ]
+
 const UNIVERSITY_MAP = {
   'Universitas Indonesia': 1,
   'Institut Pertanian Bogor': 2,
   'Universitas Negeri Jakarta': 3,
-  'Institut Teknologi Bandung': 4,
+  'Insitut Teknologi Bandung': 4,
   'Universitas Padjajaran': 5,
-  'Universitas Pendidikan Indonesia': 6,
-  '': 7
+  'Universitas Pendidikan Indonesia': 6
 }
 
 // essaytopicOptions dropdown
@@ -82,6 +83,7 @@ const initialState = {
   achievements: ["","",""],
   scientific_works: "",
   university_id: "",
+  university_list: "",
   university_other: "",
   university_letter: "",
   scholarship_letter: "",
@@ -97,14 +99,36 @@ const initialState = {
  };
 
 class Formregister extends Component {
-  state = initialState
+  state = initialState;
+
+  componentDidMount() {
+    const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
+    // university_list state
+    univFetch.then(res => {
+      if( res.status === 200)
+      return res.json() 
+    }).then( univJson => {
+      const universityList = univJson.data.map(univ => ({
+        key: univ.id.toString(),
+        text: univ.name,
+        value: univ.name
+      }));
+
+      this.setState({
+        university_list: universityList
+      })
+      console.log(universityList);
+    })
+  }
+
   
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
   handleDateBirth = (date) => this.setState({birth_date:date})
   handleAchievement = (idx,value) => {
-    this.state.achievements[idx] = value
-    this.setState({ achievements: this.state.achievements})
+    let acv = this.state.achievements
+    acv[idx] = value
+    this.setState({ achievements: acv})
   };
   handleSexDropdown = (e, { value }) => this.setState({ sex: value });
   handleScholarshipDropdown = (e, { value }) => this.setState({ scholarship: value });
@@ -146,7 +170,8 @@ class Formregister extends Component {
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
     formData.set('head_essay', this.state.head_essay)
-    formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
+    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
+    formData.set('universities_id', UNIVERSITY_MAP[this.state.university_list])
     formData.set('university_other', this.state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', this.state.proposed_essay)
@@ -188,7 +213,7 @@ class Formregister extends Component {
   render() {
     console.log(this.state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
@@ -381,7 +406,8 @@ class Formregister extends Component {
               onChange={this.handleChange}
               required
             />
-            {achievements.map( (element,idx) => {
+            {/* Jika dia memilih scholarship lainnya (length-1) valuenya menjadi scholarship_other */}
+            {achievements.map((element,idx) => {
               const labels = idx === 0 ? '3 Prestasi Terbaik' : "";
               return(<Form.Field
                 key={'form-input-control-achievements_'+(idx+1)}
@@ -392,7 +418,7 @@ class Formregister extends Component {
                 placeholder='contoh : Nama Pencapaian | Penyelenggara | Tahun'
                 name={"achievements_"+(idx+1)}
                 onChange={ (e, {name,value}) => this.handleAchievement(idx,value)}
-                required={idx===0}
+                required
               />)
             })}
             <Form.Field
@@ -430,6 +456,7 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-beasiswa'}}
                 required
               />
+              {/* Jika dia memilih scholarship lainnya (length-1) valuenya menjadi scholarship_other */}
               {scholarship === scholarshipOptions[scholarshipOptions.length-1].value && (
                 <Form.Field
                 control={Input}
@@ -465,7 +492,7 @@ class Formregister extends Component {
             <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
-                options={universityOptions}
+                options={university_list}
                 label={{ children: 'Daftar Universitas', htmlFor: 'form-select-control-university' }}
                 placeholder='Pilih Universitas'
                 search
@@ -474,7 +501,7 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-university' }}
                 required
               />
-              {/* {university_other === universityOptions[universityOptions.length-1].value && (
+              {/* {university_id === '' && university_list.value && (
                 <Form.Field
                 control={Input}
                 value={university_other}
