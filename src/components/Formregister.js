@@ -32,23 +32,24 @@ const scholarshipOptions = [
 
 // universityOptions dropdown
 // TODO Value ambil dari API Database
-// const universityOptions = [
-//   { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
-//   { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
-//   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
-//   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
-//   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-//   { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-//   { key: '7', text: 'Lainnya', value: '' }
-// ]
+const universityOptions = [
+  { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
+  { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
+  { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
+  { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
+  { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
+  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
+  { key: '7', text: 'Lainnya', value: '' }
+]
 
 const UNIVERSITY_MAP = {
   'Universitas Indonesia': 1,
   'Institut Pertanian Bogor': 2,
   'Universitas Negeri Jakarta': 3,
-  'Insitut Teknologi Bandung': 4,
+  'Institut Teknologi Bandung': 4,
   'Universitas Padjajaran': 5,
-  'Universitas Pendidikan Indonesia': 6
+  'Universitas Pendidikan Indonesia': 6,
+  '':7
 }
 
 // essaytopicOptions dropdown
@@ -101,25 +102,25 @@ const initialState = {
 class Formregister extends Component {
   state = initialState;
 
-  componentDidMount() {
-    const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
-    // university_list state
-    univFetch.then(res => {
-      if( res.status === 200)
-      return res.json() 
-    }).then( univJson => {
-      const universityList = univJson.data.map(univ => ({
-        key: univ.id.toString(),
-        text: univ.name,
-        value: univ.name
-      }));
+  // componentDidMount() {
+  //   const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
+  //   // university_list state
+  //   univFetch.then(res => {
+  //     if( res.status === 200)
+  //     return res.json() 
+  //   }).then( univJson => {
+  //     const universityList = univJson.data.map(univ => ({
+  //       key: univ.id.toString(),
+  //       text: univ.name,
+  //       value: univ.name
+  //     }));
 
-      this.setState({
-        university_list: universityList
-      })
-      console.log(universityList);
-    })
-  }
+  //     this.setState({
+  //       university_list: universityList
+  //     })
+  //     console.log(universityList);
+  //   })
+  // }
 
   
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
@@ -170,8 +171,8 @@ class Formregister extends Component {
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
     formData.set('head_essay', this.state.head_essay)
-    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
-    formData.set('universities_id', UNIVERSITY_MAP[this.state.university_list])
+    formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
+    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_list])
     formData.set('university_other', this.state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', this.state.proposed_essay)
@@ -492,7 +493,7 @@ class Formregister extends Component {
             <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
-                options={university_list}
+                options={universityOptions}
                 label={{ children: 'Daftar Universitas', htmlFor: 'form-select-control-university' }}
                 placeholder='Pilih Universitas'
                 search

@@ -48,14 +48,14 @@ const scholarshipOptions = [
 //   { key: '7', text: 'Lainnya', value: '' }
 // ]
 
-const UNIVERSITY_MAP = {
-  'Universitas Indonesia': 1,
-  'Institut Pertanian Bogor': 2,
-  'Universitas Negeri Jakarta': 3,
-  'Insitut Teknologi Bandung': 4,
-  'Universitas Padjajaran': 5,
-  'Universitas Pendidikan Indonesia': 6
-}
+const UNIVERSITY_MAP = [
+  {'Universitas Indonesia': 1},
+  {'Institut Pertanian Bogor': 2},
+  {'Universitas Negeri Jakarta': 3},
+  {'Insitut Teknologi Bandung': 4},
+  {'Universitas Padjajaran': 5},
+  {'Universitas Pendidikan Indonesia': 6}
+]
 
 // essaytopicOptions dropdown
 const essaytopicOptions = [
@@ -88,6 +88,7 @@ const initialState = {
   competencies: "",
   achievements: ["","",""],
   scientific_works: "",
+  university: "",
   university_id: "",
   university_list: "",
   university_other: "",
@@ -107,7 +108,7 @@ const initialState = {
 const Formregisterhook = props => {
   const [ state, setState ] = useState({ initialState });
 
-  const fetchUniversity = () => {
+  useState(() => {
     const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
     // university_list state
     univFetch.then(res => {
@@ -126,7 +127,7 @@ const Formregisterhook = props => {
       })
       console.log(universityList);
     })
-  }
+  })
 
   
   const displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
@@ -139,7 +140,8 @@ const Formregisterhook = props => {
   };
   const handleSexDropdown = (e, { value }) => setState({ ...state, sex: value });
   const handleScholarshipDropdown = (e, { value }) => setState({ ...state, scholarship: value });
-  const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
+  // const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
+  const handleUnivDropdown = (e, { value }) => setState({ ...state, university: value });
   const handleEssayDropdown = (e, { value }) => setState({ ...state, essay_topic: value });
 
   const onUploadChange = (e, {name}) =>{
@@ -165,7 +167,7 @@ const Formregisterhook = props => {
     formData.set('sex', state.sex)
     formData.set('hobby', state.hobby)
     formData.set('competencies', state.competencies)
-    formData.set('achievements', state.achievements.join("\n"))
+    // formData.set('achievements', state.achievements.join("\n"))
     formData.set('scientific_works', state.scientific_works)
     formData.set('scholarships', state.scholarship || state.scholarship_other)
     formData.set('faculty', state.faculty)
@@ -173,7 +175,7 @@ const Formregisterhook = props => {
     formData.set('essay_topic', state.essay_topic || state.essay_topic_other)
     formData.set('head_essay', state.head_essay)
     // formData.set('universities_id', UNIVERSITY_MAP[state.university_id])
-    formData.set('universities_id', UNIVERSITY_MAP[state.university_list])
+    formData.set('university', UNIVERSITY_MAP[state.university])
     formData.set('university_other', state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', state.proposed_essay)
@@ -212,7 +214,7 @@ const Formregisterhook = props => {
 
     console.log(state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university, university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
@@ -221,7 +223,6 @@ const Formregisterhook = props => {
   return (
     <div className="web-container">
       <Navbar/>
-      {fetchUniversity}
       {/* Pages Header */}
       <div className="pages-header">
         <div className="pages-header_header">
@@ -404,7 +405,7 @@ const Formregisterhook = props => {
             required
           />
           {/* Jika dia memilih scholarship lainnya (length-1) valuenya menjadi scholarship_other */}
-          {achievements.map((element,idx) => {
+          {/* {achievements.map((element,idx) => {
             const labels = idx === 0 ? '3 Prestasi Terbaik' : "";
             return(<Form.Field
               key={'form-input-control-achievements_'+(idx+1)}
@@ -417,7 +418,7 @@ const Formregisterhook = props => {
               onChange={ (e, {name,value}) => handleAchievement(idx,value)}
               required
             />)
-          })}
+          })} */}
           <Form.Field
             id='form-input-control-scientific-works  '
             control={TextArea}
@@ -494,7 +495,8 @@ const Formregisterhook = props => {
               placeholder='Pilih Universitas'
               search
               onChange={handleUnivDropdown}
-              value={university_id}
+              // value={university_id}
+              value={university}
               searchInput={{ id: 'form-select-control-university' }}
               required
             />
@@ -611,19 +613,19 @@ const Formregisterhook = props => {
             {loading ? 'Mengirim Datamu ke Server...' : 'Kirim Datamu'}
         </Form.Button>
         </Form>
-            {errors.length > 0 && (
+            {/* {...state.errors.length > 0 && (
               <Message error>
                   <h3>Error</h3>
                   {displayErrors(errors)}
               </Message>
             )}
-            {errors.length < 1 && submit === true && (
+            {...state.errors.length < 1 && submit === true && (
               <Message
                 success
                 header='Welcome to Young Innovators Fellowship, Next Leader!'
                 content='Kami akan memberi update ke-Emailmu jika kamu terpilih ke tahap selanjutnya.'
               />
-            )}
+            )} */}
 
         {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
         {/* <strong>dataSubmitted:</strong> */}
