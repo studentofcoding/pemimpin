@@ -5,16 +5,17 @@ import customStyles from 'semantic-ui-css/semantic.min.css';
 import './Contact.css';
 import './Pages.css';
 
-import { Form, Input, TextArea, Message } from 'semantic-ui-react';
+import { Form, Input, TextArea, Message, Container } from 'semantic-ui-react';
 import Footer from '../components/Footer';
 import Tncmodul from '../components/Tncmodul';
 
 import axios from 'axios';
-import config from '../config';
+// import config from '../config';
 
 const contactState = { 
   username: "",
   email: "",
+  phone: "",
   university: "",
   question: "",
   errors: [],
@@ -27,33 +28,31 @@ class Contact extends Component {
 
   dispalyErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value});
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    this.setState({ loading: true});
 
-    const formData = new FormData();
-    formData.set('username', this.state.username)
-    formData.set('email', this.state.email)
-    formData.set('university', this.state.university)
-    formData.set('question', this.state.question)
-
-    axios({
-      method: 'POST',
-      url: config.endpoint + '/api/v1/contact',
-      data: formData,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}
-    }).then((response) => {
+    axios.post(
+      "https://formcarry.com/s/2SRW1H-nRZs", 
+      this.state, 
+      {headers: {"Accept": "application/json"}}
+      ).then((response) => {
       // TODO, show to user that request is success
-      this.setState({...contactState,submit:true});
+      this.setState({ ...contactState, submit:true });
+      console.log(response);
+      this.setState({ loading: false});
+      setTimeout(() => this.setState({submit:false}), 3000);
       console.log('question sended')
     }).catch((response) => {
       // TODO, show to user that request is failed
       this.setState({errors:[response]})
+      this.setState({ loading: false});
       console.log('question error', response)
     });
-  }
 
-  formisValid = ({ username, email, university, question }) => username && email && university && question;
+    e.preventDefault();
+  }
 
   handleInputError = (errors, inputName) => {
     return errors.some(error =>
@@ -64,7 +63,7 @@ class Contact extends Component {
   };
 
   render() {
-    const { username, email, question, university, loading, errors } = this.state;
+    const { username, email, phone, question, university, loading, submit, errors } = this.state;
 
     return (
       <div className="web-container">
@@ -81,10 +80,12 @@ class Contact extends Component {
           </div>
         </div>
         <div style={customStyles}>
-          <div className="contact_container">
+          {/* <div className="contact_container"> */}
+          <Container text style={{ marginBottom: '5em', marginTop: '1em' }}>
+
             <Form unstackable onSubmit={this.handleSubmit}>
               {/* Form for Contact */}
-              <Form.Group onSubmit={this.handleSubmit} widths="equal">
+              <Form.Group widths="equal">
                 <Form.Field
                     fluid
                     name="username"
@@ -110,7 +111,9 @@ class Contact extends Component {
                     type="email"
                     required
                 />
+              </Form.Group>
 
+              <Form.Group widths="equal">
                 <Form.Field
                     fluid
                     name="university"
@@ -123,9 +126,20 @@ class Contact extends Component {
                     type="username"
                     required
                 />
+
+                <Form.Field
+                  fluid
+                  name="phone"
+                  control={Input}
+                  label='Nomor Whatsapp'
+                  value={phone}
+                  placeholder='Jika kamu ingin dihubungi via whatsapp'
+                  name="phone"
+                  type="number"
+                  onChange={this.handleChange}
+                />
               </Form.Group>
               <Form.Field
-                fluid
                 name="question"
                 control={TextArea}
                 value={question}
@@ -146,18 +160,27 @@ class Contact extends Component {
                 width: "100%"
               }}
               size="medium" 
-              content='Kirim Pertanyaan'
               disabled={loading}
               className={loading ? 'loading' : ''}
-              />
+              >
+                {loading ? 'Mengirim Pertanyaanmu ke Server...' : 'Kirim Pertanyaan'}
+              </Form.Button>
+            </Form>
               {errors.length > 0 && (
                 <Message error>
                     <h3>Error</h3>
                     {this.dispalyErrors(errors)}
                 </Message>
               )}
-            </Form>
-          </div>
+              {errors.length < 1 && submit === true && (
+                <Message
+                  success
+                  header='Pertanyaan kamu telah kami terima Leader!'
+                  content='Kami akan menghubungimu secepatnya.'
+                />
+              )}
+          </Container>
+          {/* </div> */}
         </div>
 
         <Footer />
