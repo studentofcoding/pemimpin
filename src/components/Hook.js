@@ -191,7 +191,7 @@ const Formregisterhook = props => {
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     }).then((response) => {
       // TODO, show to user that request is success
-      setState({ ...state, ...initialState, submit:true});
+      setState({ ...state, initialState, submit:true});
       setState({ ...state, loading: false});
       // Hide message after 3s
       setTimeout(() => setState({ ...state, submit:false}), 3000);

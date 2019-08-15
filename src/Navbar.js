@@ -23,7 +23,7 @@ class Navbar extends Component {
       <header className="navigation-container_grid">
         <div className="logo-container">
           <div className="logo-container_container">
-            <a href="www.pemimpin.id">
+            <a href="http://www.pemimpin.id">
               <img src={logo_pemimpin} alt="Pemimpin.co" className="app-logo"/>
             </a>
             {/* <NavLink exact to="pemimpin.id">

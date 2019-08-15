@@ -444,7 +444,7 @@ class Home extends Component {
                 >
                   <h2
                     className="faq-header"
-                    style={{color:"white", marginTop:80, fontSize:"1.8em"}}
+                    style={{color:"white", marginTop:80}}
                   >
                     F.A.Q
                   </h2>

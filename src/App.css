@@ -517,6 +517,24 @@ body {
   padding-bottom: 100px;
 }
 
+.faq-header {
+  font-size: 1.8em;
+}
+
+.faq-body {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* .faq-item_header {
+  font-size: 0.7em;
+}
+
+.faq-item_content {
+  font-size: 0.6em;
+} */
+
 .faq-section_container {
   display: flex;
   flex-flow: column;
@@ -676,6 +694,7 @@ body {
   height: 6vh !important;
   padding: 5px;
   text-align: left;
+  cursor: pointer;
 }
 
 .content-icon {
@@ -684,23 +703,23 @@ body {
 }
 
 .footer-logo_1 {
-  width: 32vh !important;
-  height: 10vh !important;
+  width: 32vh;
+  height: 10vh;
   padding: 1%;
   padding-right: 0px;
   align-content: center;
 }
 
 .footer-logo_2 {
-  width: 32vh !important;
-  height: 10vh !important;
+  width: 32vh;
+  height: 10vh;
   padding: 1%;
   padding-left: 0px;
   align-content: center;
 }
 
 .footer-about-container {
-  padding: 5%;
+  padding: 10%;
   padding-top: 3%;
   align-items: left;
   justify-content: left;
@@ -725,7 +744,7 @@ body {
 }
 
 .footer-contact-container {
-  padding: 5%;
+  padding: 10%;
   padding-top: 3%;
   align-items: left;
   justify-content: left;
@@ -936,6 +955,67 @@ body {
   }
 
   .navigation_item {
+    display: none;
+  }
+}
+
+@media (max-width:500px) {
+  .cta-button {
+    font-size: 0.8em;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .heroshot-section {
+    text-align: center;
+    font-size: 1em;
+    background-image: url(./image/Header-m.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+  }
+
+  .highlights-panel-tujuan_grid {
+    background-image: url(./image/PD-bg-top-left.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: relative;
+  }
+
+  .tujuan-header-container_grid {
+    background-image: url(./image/Tujuan-bg-top-m.png), url(./image/Tujuan-bg-bottom-left.png);
+    background-position: right top, left bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: relative, relative;
+  }
+
+  .tujuan-section_container {
+    width: 90%;
+    font-size: 0.8em;
+  }
+
+  .faq-body {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 0.8em;
+  }
+
+  .footer-about-container {
+    padding: 8%;
+    align-items: left;
+    justify-content: left;
+    font-size: 0.8em;
+  }
+
+  .footer-contact-container {
+    padding: 8%;
+    align-items: left;
+    justify-content: left;
+    font-size: 0.8em;
+  }
+
+  .footer_grid_inner {
     display: none;
   }
 }

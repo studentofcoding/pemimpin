@@ -8,18 +8,11 @@ import Home from './pages/Home';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import About from './pages/About';
 import Formregister from './components/Formregister';
-import Formregisterhook from './components/Hook';
+// import Formregisterhook from './components/Hook';
 import TnCPage from './pages/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 class App extends Component {
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     if (user) {
-  //       this.props.history.push('/');
-  //     }
-  //   })
-  // }
 
   render() {
     return (

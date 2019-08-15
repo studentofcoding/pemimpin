@@ -13,13 +13,8 @@ import 'react-accessible-accordion/dist/fancy-example.css';
  
 export default function Example() {
     return (
-        <Accordion 
-            style=
-            {{
-                width:"78%",
-                marginLeft:"11%",
-                marginRight:"11%"
-            }}
+        <Accordion
+            className="faq-body" 
         >
             <AccordionItem>
                 <AccordionItemHeading>
@@ -40,7 +35,8 @@ export default function Example() {
                         Apa itu YOUNG INNOVATORS FELLOWSHIP?
                     </AccordionItemButton>
                 </AccordionItemHeading>
-                <AccordionItemPanel style=
+                <AccordionItemPanel 
+                style=
                     {{
                         width:"100%",
                         fontFamily:"Lato", 
@@ -75,7 +71,8 @@ export default function Example() {
                         Saya mahasiswa semester 9, apakah saya boleh daftar?
                     </AccordionItemButton>
                 </AccordionItemHeading>
-                <AccordionItemPanel style=
+                <AccordionItemPanel 
+                style=
                     {{
                         width:"100%",
                         fontFamily:"Lato", 
