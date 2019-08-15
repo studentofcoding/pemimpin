@@ -84,7 +84,6 @@ const initialState = {
   achievements: ["","",""],
   scientific_works: "",
   university_id: "",
-  university_list: "",
   university_other: "",
   university_letter: "",
   scholarship_letter: "",
@@ -102,25 +101,26 @@ const initialState = {
 class Formregister extends Component {
   state = initialState;
 
-  // componentDidMount() {
-  //   const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
-  //   // university_list state
-  //   univFetch.then(res => {
-  //     if( res.status === 200)
-  //     return res.json() 
-  //   }).then( univJson => {
-  //     const universityList = univJson.data.map(univ => ({
-  //       key: univ.id.toString(),
-  //       text: univ.name,
-  //       value: univ.name
-  //     }));
+  componentDidMount() {
+    const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
+    // university_list state
+    univFetch.then(res => {
+      if( res.status === 200)
+      return res.json() 
+    }).then( univJson => {
+      var universityList = univJson.data.map(univ => ({
+        // key: univ.id.toString(),
+        key: univ.id.toString(),
+        text: univ.name,
+        value: univ.name
+      }));
 
-  //     this.setState({
-  //       university_list: universityList
-  //     })
-  //     console.log(universityList);
-  //   })
-  // }
+      this.setState({
+        university_list: universityList
+      })
+      console.log(universityList);
+    })
+  }
 
   
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
@@ -171,8 +171,8 @@ class Formregister extends Component {
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
     formData.set('head_essay', this.state.head_essay)
+    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
     formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
-    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_list])
     formData.set('university_other', this.state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', this.state.proposed_essay)
@@ -493,7 +493,7 @@ class Formregister extends Component {
             <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
-                options={universityOptions}
+                options={university_list}
                 label={{ children: 'Daftar Universitas', htmlFor: 'form-select-control-university' }}
                 placeholder='Pilih Universitas'
                 search
@@ -502,7 +502,7 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-university' }}
                 required
               />
-              {/* {university_id === '' && university_list.value && (
+              {university_id === universityOptions[universityOptions.length-1].value && (
                 <Form.Field
                 control={Input}
                 value={university_other}
@@ -512,7 +512,7 @@ class Formregister extends Component {
                 type="username"
                 onChange={this.handleChange}
               />
-              )} */}
+              )}
               <Form.Field
                 name="university_letter"
                 control={Input}
