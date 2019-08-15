@@ -246,7 +246,7 @@ class Formregister extends Component {
                 value={username}
                 placeholder='contoh : Yonathan Evan C.'
                 onChange={this.handleChange}
-                className={this.handleInputError(errors, 'username')}
+                // className={this.handleInputError(errors, 'username')}
                 required
               />
               <Form.Field
@@ -256,7 +256,7 @@ class Formregister extends Component {
                 value={nickname}
                 placeholder='contoh: Evan'
                 onChange={this.handleChange}
-                className={this.handleInputError(errors, 'nickname')}
+                // className={this.handleInputError(errors, 'nickname')}
                 required
               />
             </Form.Group>
@@ -273,6 +273,7 @@ class Formregister extends Component {
                 required
               />
               <Form.Field
+                // error={{ content: 'Mohon masukan foto terbarumu', pointing: 'below' }}
                 name="photo"
                 control={Input}
                 label='Pas Photo'
@@ -471,6 +472,7 @@ class Formregister extends Component {
               )}
               <Form.Field
                 name="scholarship_letter"
+                // error={{ content: 'Mohon masukan surat pernyataan beasiswamu', pointing: 'below' }}
                 control={Input}
                 label='Surat Pernyataan Beasiswa'
                 value={scholarship_letter}
@@ -515,6 +517,7 @@ class Formregister extends Component {
               )}
               <Form.Field
                 name="university_letter"
+                // error={{ content: 'Mohon masukan foto ktm-mu', pointing: 'below' }}
                 control={Input}
                 label='Upload KTM'
                 value={university_letter}
@@ -587,6 +590,7 @@ class Formregister extends Component {
           <Form.Group widths='equal'>
             <Form.Field
               name="proposed_essay"
+              // error={{ content: 'Mohon masukan proposal skripsimu', pointing: 'below' }}
               control={Input}
               label='Upload Proposal Skripisi'
               value={proposed_essay}
@@ -616,10 +620,11 @@ class Formregister extends Component {
           </Form.Button>
           </Form>
               {errors.length > 0 && (
-                <Message error>
-                    <h3>Error</h3>
-                    {this.displayErrors(errors)}
-                </Message>
+                <Message 
+                  error
+                  header='Masukkan datamu dengan lengkap'
+                  content='Mohon cek semua data yang perlu kamu upload kembali (Pas Photo, Surat Pernyataan Beasiswa, KTM, dan Proposal Skripsi)'
+                />
               )}
               {errors.length < 1 && submit === true && (
                 <Message
