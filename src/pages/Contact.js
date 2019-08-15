@@ -134,7 +134,6 @@ class Contact extends Component {
                   label='Nomor Whatsapp'
                   value={phone}
                   placeholder='Jika kamu ingin dihubungi via whatsapp'
-                  name="phone"
                   type="number"
                   onChange={this.handleChange}
                 />
