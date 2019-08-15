@@ -38,24 +38,25 @@ const scholarshipOptions = [
 
 // universityOptions dropdown
 // TODO Value ambil dari API Database
-// const universityOptions = [
-//   { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
-//   { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
-//   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
-//   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
-//   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-//   { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-//   { key: '7', text: 'Lainnya', value: '' }
-// ]
-
-const UNIVERSITY_MAP = [
-  {'Universitas Indonesia': 1},
-  {'Institut Pertanian Bogor': 2},
-  {'Universitas Negeri Jakarta': 3},
-  {'Insitut Teknologi Bandung': 4},
-  {'Universitas Padjajaran': 5},
-  {'Universitas Pendidikan Indonesia': 6}
+const universityOptions = [
+  { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
+  { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
+  { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
+  { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
+  { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
+  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
+  { key: '7', text: 'Lainnya', value: '' }
 ]
+
+const UNIVERSITY_MAP = {
+  'Universitas Indonesia': 1,
+  'Institut Pertanian Bogor': 2,
+  'Universitas Negeri Jakarta': 3,
+  'Institut Teknologi Bandung': 4,
+  'Universitas Padjajaran': 5,
+  'Universitas Pendidikan Indonesia': 6,
+  '':7
+}
 
 // essaytopicOptions dropdown
 const essaytopicOptions = [
@@ -88,9 +89,7 @@ const initialState = {
   competencies: "",
   achievements: ["","",""],
   scientific_works: "",
-  university: "",
   university_id: "",
-  university_list: "",
   university_other: "",
   university_letter: "",
   scholarship_letter: "",
@@ -141,7 +140,7 @@ const Formregisterhook = props => {
   const handleSexDropdown = (e, { value }) => setState({ ...state, sex: value });
   const handleScholarshipDropdown = (e, { value }) => setState({ ...state, scholarship: value });
   // const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
-  const handleUnivDropdown = (e, { value }) => setState({ ...state, university: value });
+  const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
   const handleEssayDropdown = (e, { value }) => setState({ ...state, essay_topic: value });
 
   const onUploadChange = (e, {name}) =>{
@@ -174,8 +173,8 @@ const Formregisterhook = props => {
     formData.set('score', state.score)
     formData.set('essay_topic', state.essay_topic || state.essay_topic_other)
     formData.set('head_essay', state.head_essay)
-    // formData.set('universities_id', UNIVERSITY_MAP[state.university_id])
-    formData.set('university', UNIVERSITY_MAP[state.university])
+    formData.set('universities_id', UNIVERSITY_MAP[state.university_id])
+    // formData.set('university', UNIVERSITY_MAP[state.university])
     formData.set('university_other', state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', state.proposed_essay)
@@ -191,7 +190,7 @@ const Formregisterhook = props => {
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     }).then((response) => {
       // TODO, show to user that request is success
-      setState({ ...state, ...initialState, submit:true});
+      setState({ ...initialState, submit:true});
       setState({ ...state, loading: false});
       // Hide message after 3s
       setTimeout(() => setState({ ...state, submit:false}), 3000);
@@ -214,7 +213,7 @@ const Formregisterhook = props => {
 
     console.log(state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university, university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
@@ -495,12 +494,11 @@ const Formregisterhook = props => {
               placeholder='Pilih Universitas'
               search
               onChange={handleUnivDropdown}
-              // value={university_id}
-              value={university}
+              value={university_id}
               searchInput={{ id: 'form-select-control-university' }}
               required
             />
-            {/* {university_id === '' && university_list.value && (
+            {university_id === universityOptions[universityOptions.length-1].value && (
               <Form.Field
               control={Input}
               value={university_other}
@@ -510,21 +508,21 @@ const Formregisterhook = props => {
               type="username"
               onChange={handleChange}
             />
-            )} */}
-            <Form.Field
-              name="university_letter"
-              control={Input}
-              label='Upload KTM'
-              value={university_letter}
-              placeholder='Upload KTM'
-              required
-            >
-              <Input
-              type="file"
-              name="university_letter"
-              onChange={onUploadChange}
-              />
-            </Form.Field>
+            )}
+          <Form.Field
+            name="university_letter"
+            control={Input}
+            label='Upload KTM'
+            value={university_letter}
+            placeholder='Upload KTM'
+            required
+          >
+            <Input
+            type="file"
+            name="university_letter"
+            onChange={onUploadChange}
+            />
+          </Form.Field>
           </Form.Group>
           <Form.Group widths='equal'>
             <Form.Field
@@ -571,15 +569,15 @@ const Formregisterhook = props => {
               required
             />
             {essay_topic === essaytopicOptions[essaytopicOptions.length-1].value && (
-            <Form.Field
-            control={Input}
-            value={essay_topic_other}
-            placeholder='contoh : Genetika'
-            label='Topik Lainnya'
-            name="essay_topic_other"
-            type="username"
-            onChange={handleChange}
-          />
+              <Form.Field
+                control={Input}
+                value={essay_topic_other}
+                placeholder='contoh : Genetika'
+                label='Topik Lainnya'
+                name="essay_topic_other"
+                type="username"
+                onChange={handleChange}
+              />
             )}
         </Form.Group>
         <Form.Group widths='equal'>
@@ -613,7 +611,7 @@ const Formregisterhook = props => {
             {loading ? 'Mengirim Datamu ke Server...' : 'Kirim Datamu'}
         </Form.Button>
         </Form>
-            {/* {...state.errors.length > 0 && (
+        {/* {...state.errors.length > 0 && (
               <Message error>
                   <h3>Error</h3>
                   {displayErrors(errors)}
@@ -626,6 +624,7 @@ const Formregisterhook = props => {
                 content='Kami akan memberi update ke-Emailmu jika kamu terpilih ke tahap selanjutnya.'
               />
             )} */}
+            
 
         {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
         {/* <strong>dataSubmitted:</strong> */}

@@ -33,7 +33,7 @@ class App extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/tnc" component={TnCPage} />
             <Route exact path="/form" component={Formregister} />
-            {/* <Route exact path="/hook" component={Formregisterhook} /> */}
+            <Route exact path="/hook" component={Formregisterhook} />
           </Switch>
         </div>
       </Router>
