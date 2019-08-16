@@ -959,6 +959,14 @@ body {
   }
 }
 
+@media (max-width:768px) {
+  /* Pages Section */
+
+  .pages-header_content {
+    font-size: 2.5em !important;
+  }
+}
+
 @media (max-width:500px) {
   .cta-button {
     font-size: 0.8em;
@@ -1001,6 +1009,16 @@ body {
     font-size: 0.8em;
   }
 
+  /* Pages Section */
+
+  .pages-header_content {
+    font-size: 1.5em !important;
+  }
+
+  .ui.text.container  {
+    font-size: 0.5em;
+  }
+
   .footer-about-container {
     padding: 8%;
     align-items: left;
@@ -1017,5 +1035,15 @@ body {
 
   .footer_grid_inner {
     display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .pages-header_content {
+    font-size: 1em !important;
+  }
+
+  .ui.text.container  {
+    font-size: 0.5em;
   }
 }

@@ -112,6 +112,7 @@ class Home extends Component {
     this.tnc_header.style.backgroundColor = 'white';
 
     this.tnc_checklistLabel.style.display = 'flex';
+    this.tnc_checklistLabel.style.justifyContent = 'space-between';
     this.tnc_checklistLabel.style.flexFlow = 'row';
     this.tnc_checklistLabel.style.paddingTop = '10px';
     this.tnc_checklistLabel.style.paddingBottom = '80px';
@@ -154,7 +155,7 @@ class Home extends Component {
                 className="top-p"
                 style={{marginTop:15, marginBottom:15}}
               >
-               Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus di Jabodetabek dan Bandung.
+               Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus di seluruh Indonesia.
               </p>
               <button className="cta-button" onClick={this.handleTnC_Open}>
                 Daftar Sekarang
@@ -177,7 +178,7 @@ class Home extends Component {
               <div className="TnC-container_body">
                 <ol>
                   <li className="TnC-container-body_list">
-                    Mahasiswa S1 dari universitas di Jabodetabek dan Bandung
+                    Mahasiswa S1 dari universitas di seluruh Indonesia
                   </li>
                   <li className="TnC-container-body_list">
                     Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020

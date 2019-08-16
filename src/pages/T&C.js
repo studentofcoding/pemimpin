@@ -25,7 +25,7 @@ const TnCPage = () => (
       <h2>KETENTUAN UMUM</h2>
       <ol>
         <li>
-          Mahasiswa S1 dari universitas di Jabodetabek dan Bandung
+          Mahasiswa S1 dari universitas di seluruh Indonesia
         </li>
         <li>
           Mahasiswa tingkat akhir yang sedang menyelesaikan skripsi pada tahun 2019-2020

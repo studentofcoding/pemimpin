@@ -49,7 +49,7 @@ export default function Example() {
                         Young Innovators Fellowship merupakan program akselerasi inovasi 
                         kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus. 
                         Saat ini, pilot program dikhususkan kepada mahasiswa tingkat akhir yang 
-                        berada di Jakarta dan Bandung. Program ini meliputi pendampingan riset/skripsi 
+                        berada di seluruh Indonesia. Program ini meliputi pendampingan riset/skripsi 
                         yang inovatif, mentoring keahlian, dan pembekalan karir professional pasca kampus, 
                         yang akan berlangsung selama 9 bulan. 
                     </p>
@@ -179,8 +179,7 @@ export default function Example() {
                     }}
                 >
                     <p>
-                        Total peserta fellowship yang akan diterima adalah 20 orang, dengan 
-                        pembagian 10 orang di regional Jakarta dan 10 orang di regional Bandung.
+                        Total peserta fellowship yang akan diterima adalah 20 orang pendaftar terbaik
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
