@@ -29,7 +29,7 @@ export default class About extends Component {
         <Container style={{marginTop:"1em"}} text textAlign='justified'>
           <h2>PENJELASAN PROGRAM</h2>
           <p>
-          Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus. Saat ini, pilot program dikhususkan kepada mahasiswa tingkat akhir yang berada di Jakarta dan Bandung. Program ini meliputi pendampingan riset/skripsi yang inovatif, mentoring keahlian, dan pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan. 
+          Young Innovators Fellowship merupakan program akselerasi inovasi kepemimpinan yang terintegrasi bagi pemimpin muda yang berasal dari kampus di seluruh Indonesia. Program ini meliputi pendampingan riset/skripsi yang inovatif, mentoring keahlian, dan pembekalan karir professional pasca kampus, yang akan berlangsung selama 9 bulan. 
           </p>
           <p>
           Menjadi mahasiswa tingkat akhir merupakan sebuah tantangan tersendiri bagi seluruh mahasiswa di Indonesia. Fase ini menjadi fase yang penting untuk mahasiswa bisa memberikan karya terbaiknya melalui riset pada tugas akhirnya, namun sayangnya momentum ini tidak dimanfaatkan oleh kebanyakan mahasiswa sehingga tugas akhir yang dihasilkan hanya dijadikan prasyarat untuk lulus saja.
@@ -38,7 +38,7 @@ export default class About extends Component {
           Melalui program ini pemimpin.id mendorong mahasiswa tingkat akhir untuk melakukan riset yang innovatif dan berdampak melalui tugas akhir yang dikerjakannya. Peserta program akan dibekali ilmu-ilmu mengenai penulisan naskah akademik dan ilmu-ilmu yang memperkaya pengetahuannya terkait karir.
           </p>
           <p>
-          Pemimpin.id mengundang mahasiswa tingkat akhir dari Universitas di Jakarta, Bogor, Depok, dan Bandung untuk mengikuti program ini. Secara khusus kami mengundang mahasiswa tingkat akhir yang memiliki idealisme untuk menghasilkan tugas akhir yang berdampak bagi masyarakat.
+          Pemimpin.id mengundang mahasiswa tingkat akhir dari seluruh Indonesia untuk mengikuti program ini. Secara khusus kami mengundang mahasiswa tingkat akhir yang memiliki idealisme untuk menghasilkan tugas akhir yang berdampak bagi masyarakat.
           </p>
 
           <h2>PROGRAM DETAIL</h2>
