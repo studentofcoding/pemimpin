@@ -276,7 +276,7 @@ class Formregister extends Component {
                 // error={{ content: 'Mohon masukan foto terbarumu', pointing: 'below' }}
                 name="photo"
                 control={Input}
-                label='Pas Photo'
+                label='Upload Pas Photo'
                 value={photo}
                 placeholder='Upload Pas Photo 3x4'
                 required
@@ -436,7 +436,7 @@ class Formregister extends Component {
             <Form.Field
               name="recommendation_paper"
               control={Input}
-              label='Surat Rekomendasi'
+              label='Upload Surat Rekomendasi'
               value={recommendation_paper}
               placeholder='Upload Surat Rekomendasi'
             >
@@ -474,7 +474,7 @@ class Formregister extends Component {
                 name="scholarship_letter"
                 // error={{ content: 'Mohon masukan surat pernyataan beasiswamu', pointing: 'below' }}
                 control={Input}
-                label='Surat Pernyataan Beasiswa'
+                label='Upload Surat Pernyataan Beasiswa'
                 value={scholarship_letter}
                 placeholder='Upload Surat Pernyataan Beasiswa'
                 required
