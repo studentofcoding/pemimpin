@@ -61,7 +61,7 @@ class Login extends React.Component {
                 <img src={logo_pemimpin} alt="Pemimpin.co" className="logogram"/>
                     <Header as="h1" icon color="black" textAlign="center" 
                     style={{marginBottom:"20px", marginTop:"10px"}}>
-                        Login to Pemimpin.co
+                        Login to Pemimpin.id
                     </Header>
 
                     {/* Form for Login */}
