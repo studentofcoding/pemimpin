@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Divider } from 'semantic-ui-react';
 import './Pages.css';
-import Navbar from '../Navbar';
-import Tncmodul from '../components/Tncmodul';
-import Footer from '../components/Footer';
-import founderPic from '../image/pages-section-founder.png';
+import Navbar from '../../components/Navbar';
+import Tncmodul from '../../components/Tncmodul';
+import Footer from '../../components/Footer';
+import founderPic from '../../../image/pages-section-founder.png';
 
 // import buttonDaftar from '../components/buttonDaftar';
 

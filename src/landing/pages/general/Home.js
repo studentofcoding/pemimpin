@@ -13,28 +13,28 @@
  */
 
 import React, { Component } from 'react';
-import '../App.css';
+import '../../../App.css';
 // import logo_pemimpin from '../image/Logo.png';
 
 // Navbar related
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 
 // Program Development Import & related
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import PD_1 from '../image/PD-1.png';
-import PD_2 from '../image/PD-2.png';
-import PD_3 from '../image/PD-3.png';
-import PD_4 from '../image/PD-4.png';
-import PD_5 from '../image/PD-5.png';
+import PD_1 from '../../../image/PD-1.png';
+import PD_2 from '../../../image/PD-2.png';
+import PD_3 from '../../../image/PD-3.png';
+import PD_4 from '../../../image/PD-4.png';
+import PD_5 from '../../../image/PD-5.png';
 
 // Tujuan section import & related
-import Imgtujuan_1 from '../image/Tujuan_1-small.png';
-import Imgtujuan_2 from '../image/Tujuan_2-small.png';
-import Imgtujuan_3 from '../image/Tujuan_3-small.png';
+import Imgtujuan_1 from '../../../image/Tujuan_1-small.png';
+import Imgtujuan_2 from '../../../image/Tujuan_2-small.png';
+import Imgtujuan_3 from '../../../image/Tujuan_3-small.png';
 
 // Custom CSS (for Carousel arrow etc)
-import '../custom.css';
+import './custom.css';
 // Demo styles, see 'Styles' section below for some notes on use.
 import 'react-accessible-accordion/dist/fancy-example.css';
 
@@ -45,7 +45,7 @@ import FAQ from './FAQ';
 // import Tncmodul from '../components/Tncmodul';
 import Modal from 'react-modal';
 import { NavLink } from 'react-router-dom';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 import { Form, Checkbox } from 'semantic-ui-react';
 
 var TnCModal = Modal;

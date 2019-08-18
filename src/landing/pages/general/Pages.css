@@ -1,5 +1,5 @@
 .pages-header {
-  background-image: url(../image/Header-Page.png);
+  background-image: url(../../../image/Header-Page.png);
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
@@ -44,7 +44,7 @@
 /* Pages Section */
 
 .pages-section {
-  background-image: url(../image/pages-section-a.png);
+  background-image: url(../../../image/pages-section-a.png);
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
