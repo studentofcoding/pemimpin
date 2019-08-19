@@ -12,6 +12,17 @@ import Formregister from './landing/components/Formregister';
 import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-48910414-11', {
+  debug: true
+});
+ReactGA.pageview('/');
+ReactGA.pageview('/about');
+ReactGA.pageview('/contact');
+ReactGA.pageview('/form');
+ReactGA.pageview('/tnc');
+ReactGA.pageview('/login');
+
 class App extends Component {
 
   render() {
@@ -21,11 +32,11 @@ class App extends Component {
           {/*This is the function to Route to Page (via switch)*/}
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/contact" component={Contact} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/tnc" component={TnCPage} />
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/form" component={Formregister} />
+            <Route exact path="/tnc" component={TnCPage} />
+            <Route exact path="/login" component={Login} />
             {/* <Route exact path="/hook" component={Formregisterhook} /> */}
           </Switch>
         </div>
