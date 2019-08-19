@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Message, Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
 import dateFormat from'dateformat';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
 import Navbar from '../components/Navbar';
 import Footer from './Footer';
