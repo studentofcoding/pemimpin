@@ -10,9 +10,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Message, Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
 import dateFormat from'dateformat';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 import Footer from './Footer';
 
 import './Formregister.css';
@@ -105,7 +105,9 @@ const initialState = {
  };
 
 const Formregisterhook = props => {
-  const [ state, setState ] = useState({ initialState });
+  const [ state, setState ] = useState(initialState);
+
+  console.log(state);
 
   useState(() => {
     const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
@@ -138,7 +140,11 @@ const Formregisterhook = props => {
     setState({ achievements: acv})
   };
   const handleSexDropdown = (e, { value }) => setState({ ...state, sex: value });
-  const handleScholarshipDropdown = (e, { value }) => setState({ ...state, scholarship: value });
+  const handleScholarshipDropdown = (e, b) => 
+  {
+    setState({ ...state, scholarship: b.value });
+    console.log(e, b.value)
+  };
   // const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
   const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
   const handleEssayDropdown = (e, { value }) => setState({ ...state, essay_topic: value });
@@ -218,6 +224,8 @@ const Formregisterhook = props => {
       errors,
       submit
     } = state;
+
+    console.log(scholarship);
 
   return (
     <div className="web-container">

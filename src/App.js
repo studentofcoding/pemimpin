@@ -6,10 +6,10 @@ import Home from './pages/Home';
 
 // import nothinghere from './components/nothinghere';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import About from './pages/About';
-import Formregister from './components/Formregister';
-import Formregisterhook from './components/Hook';
-import TnCPage from './pages/T&C';
+import About from './landing/pages/general/About';
+import Formregister from './landing/components/Formregister';
+import Formregisterhook from './landing/components/Hook';
+import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 class App extends Component {
@@ -32,7 +32,11 @@ class App extends Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/about" component={About} />
             <Route exact path="/tnc" component={TnCPage} />
+<<<<<<< Updated upstream
             <Route exact path="/form" component={Formregister} />
+=======
+            <Route exact path="/login" component={Login} />
+>>>>>>> Stashed changes
             <Route exact path="/hook" component={Formregisterhook} />
           </Switch>
         </div>

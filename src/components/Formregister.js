@@ -102,7 +102,7 @@ class Formregister extends Component {
   state = initialState;
 
   componentDidMount() {
-    const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
+    const univFetch = fetch('http://localhost:3003/api/v1/universities')
     // university_list state
     univFetch.then(res => {
       if( res.status === 200)
