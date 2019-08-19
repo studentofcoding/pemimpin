@@ -13,9 +13,7 @@ import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-48910414-11', {
-  debug: true
-});
+ReactGA.initialize('UA-48910414-11');
 ReactGA.pageview('/');
 ReactGA.pageview('/about');
 ReactGA.pageview('/contact');
