@@ -32,11 +32,7 @@ class App extends Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/about" component={About} />
             <Route exact path="/tnc" component={TnCPage} />
-<<<<<<< Updated upstream
             <Route exact path="/form" component={Formregister} />
-=======
-            <Route exact path="/login" component={Login} />
->>>>>>> Stashed changes
             <Route exact path="/hook" component={Formregisterhook} />
           </Switch>
         </div>
