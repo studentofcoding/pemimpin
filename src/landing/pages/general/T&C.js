@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 import './Pages.css';
-import Footer from '../components/Footer';
-import Tncmodul from '../components/Tncmodul';
+import Footer from '../../components/Footer';
+import Tncmodul from '../../components/Tncmodul';
 
 const TnCPage = () => (
   <div className="web-container">

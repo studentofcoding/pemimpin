@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../../App.css';
 import { NavLink } from 'react-router-dom';
 
-import logo_pemimpin from '../src/image/Logo.png';
+import logo_pemimpin from '../../image/Logo.png';
 import { Button, Dimmer, Menu } from 'semantic-ui-react';
 
 class Navbar extends Component {

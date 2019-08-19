@@ -6,7 +6,7 @@ import dateFormat from'dateformat';
 import axios from 'axios';
 import config from '../config';
 
-import Navbar from '../Navbar';
+import Navbar from '../components/Navbar';
 import Footer from './Footer';
 
 import './Formregister.css';
@@ -222,7 +222,7 @@ class Formregister extends Component {
 
     return (
       <div className="web-container">
-        <Navbar/>
+        <Navbar />
 
         {/* Pages Header */}
         <div className="pages-header">

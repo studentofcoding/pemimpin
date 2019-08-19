@@ -7,7 +7,7 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Message, Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
+import { Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
 import dateFormat from'dateformat';
 import axios from 'axios';
 import config from '../config';
@@ -130,14 +130,14 @@ const Formregisterhook = props => {
   })
 
   
-  const displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
+  // const displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
   const handleChange = (e, { name, value }) => setState({ ...state, [name]: value});
   const handleDateBirth = (date) => setState({...state, birth_date:date })
-  const handleAchievement = (idx,value) => {
-    let acv = state.achievements
-    acv[idx] = value
-    setState({ achievements: acv})
-  };
+  // const handleAchievement = (idx,value) => {
+  //   let acv = state.achievements
+  //   acv[idx] = value
+  //   setState({ achievements: acv})
+  // };
   const handleSexDropdown = (e, { value }) => setState({ ...state, sex: value });
   const handleScholarshipDropdown = (e, { value }) => setState({ ...state, scholarship: value });
   // const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
@@ -214,10 +214,8 @@ const Formregisterhook = props => {
 
     console.log(state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university, university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
-      loading,
-      errors,
-      submit
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, university, university_list, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      loading
     } = state;
 
   return (

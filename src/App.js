@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 
-import Login from './pages/Auth/Login';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
+import Login from './landing/pages/auth/Login';
+import Contact from './landing/pages/general/Contact';
+import Home from './landing/pages/general/Home';
 
 // import nothinghere from './components/nothinghere';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import About from './pages/About';
-import Formregister from './components/Formregister';
+import About from './landing/pages/general/About';
+import Formregister from './landing/components/Formregister';
 // import Formregisterhook from './components/Hook';
-import TnCPage from './pages/T&C';
+import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
+
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-48910414-11', {
+  debug: true
+});
+ReactGA.pageview('/');
+ReactGA.pageview('/about');
+ReactGA.pageview('/contact');
+ReactGA.pageview('/form');
+ReactGA.pageview('/tnc');
+ReactGA.pageview('/login');
 
 class App extends Component {
 
@@ -21,11 +32,11 @@ class App extends Component {
           {/*This is the function to Route to Page (via switch)*/}
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/contact" component={Contact} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/tnc" component={TnCPage} />
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/form" component={Formregister} />
+            <Route exact path="/tnc" component={TnCPage} />
+            <Route exact path="/login" component={Login} />
             {/* <Route exact path="/hook" component={Formregisterhook} /> */}
           </Switch>
         </div>

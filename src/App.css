@@ -10,7 +10,7 @@ body {
 }
 
 /* 
-  Global setting
+  ? LANDING PAGE SECTION
 */
 
 .web-container {
@@ -22,56 +22,6 @@ body {
   -ms-flex-pack: left;
   justify-content: left;
   margin:0;
-}
-
-.notif-panel {
-  position: sticky;
-  position: -webkit-sticky;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  line-height: 1.2em;
-  text-align: left;
-  background-color:rgb(230, 230, 230);
-  color: rgb(60, 60, 60);
-  font-size: 0.6em;
-  padding: 15px;
-  transition:all .20s ease-out;
-  -webkit-transition:all .20s ease-out;
-  -moz-transition:all .20s ease-out;
-  -ms-transition:all .20s ease-out;
-  -o-transition:all .20s ease-out;
-}
-
-.notif-container {
-  display: flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
-.notif-details {
-  width: 85%;
-  height: auto;
-}
-
-.notif-button {
-  width: 10%;
-  height: auto;
-  justify-content: center;
-  align-items: center;
-  margin-left: 20px;
-  color: white;
-  cursor: pointer;
-  background-color: #007bc1;
-  border: #007bc1 1px solid;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
 }
 
 /*

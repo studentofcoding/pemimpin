@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 // import Imgtujuan_1 from '../image/Tujuan_1-small.png';
 // import Imgtujuan_2 from '../image/Tujuan_2-small.png';
 
-import footer_1 from '../image/Footer_1.png';
-import footer_2 from '../image/Footer_2.png';
+import footer_1 from '../../image/Footer_1.png';
+import footer_2 from '../../image/Footer_2.png';
 
-import icon_1 from '../image/icon_1.png';
-import icon_2 from '../image/icon_2.png';
-import icon_3 from '../image/icon_3.png';
+import icon_1 from '../../image/icon_1.png';
+import icon_2 from '../../image/icon_2.png';
+import icon_3 from '../../image/icon_3.png';
 
 export default class Footer extends Component {
   render() {

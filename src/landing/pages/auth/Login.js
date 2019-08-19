@@ -4,7 +4,7 @@ import { Grid, Form, Segment, Button, Header, Message } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import './registerLogin.css';
 import customStyles from 'semantic-ui-css/semantic.min.css';
-import logo_pemimpin from '../../image/Logo.png';
+import logo_pemimpin from '../../../image/Logo.png';
 
 class Login extends React.Component {
   state = {

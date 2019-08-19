@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 
 import customStyles from 'semantic-ui-css/semantic.min.css';
 import './Contact.css';
 import './Pages.css';
 
 import { Form, Input, TextArea, Message, Container } from 'semantic-ui-react';
-import Footer from '../components/Footer';
-import Tncmodul from '../components/Tncmodul';
+import Footer from '../../components/Footer';
+import Tncmodul from '../../components/Tncmodul';
 
 import axios from 'axios';
 // import config from '../config';
