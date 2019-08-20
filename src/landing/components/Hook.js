@@ -7,12 +7,12 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Header, Container, Form, Input, TextArea, Select, Divider } from 'semantic-ui-react';
+import { Header, Container, Form, Input, TextArea, Select, Divider, Message } from 'semantic-ui-react';
 import dateFormat from'dateformat';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 import Footer from './Footer';
 
 import './Formregister.css';
@@ -38,24 +38,26 @@ const scholarshipOptions = [
 
 // universityOptions dropdown
 // TODO Value ambil dari API Database
-// const universityOptions = [
-//   { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
-//   { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
-//   { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
-//   { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
-//   { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-//   { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-//   { key: '7', text: 'Lainnya', value: '' }
-// ]
-
-const UNIVERSITY_MAP = [
-  {'Universitas Indonesia': 1},
-  {'Institut Pertanian Bogor': 2},
-  {'Universitas Negeri Jakarta': 3},
-  {'Insitut Teknologi Bandung': 4},
-  {'Universitas Padjajaran': 5},
-  {'Universitas Pendidikan Indonesia': 6}
+const universityOptions = [
+  { key: '1', text: 'Universitas Indonesia', value: '1' },
+  { key: '2', text: 'Institut Pertanian Bogor', value: '2' },
+  { key: '3', text: 'Universitas Negeri Jakarta', value: '3' },
+  { key: '4', text: 'Institut Teknologi Bandung', value: '4' },
+  { key: '5', text: 'Universitas Padjajaran', value: '5' },
+  { key: '6', text: 'Universitas Pendidikan Indonesia', value: '6' },
+  { key: '7', text: 'Lainnya', value: '7' }
 ]
+
+
+
+// const UNIVERSITY_MAP = [
+//   {'Universitas Indonesia': 1},
+//   {'Institut Pertanian Bogor': 2},
+//   {'Universitas Negeri Jakarta': 3},
+//   {'Insitut Teknologi Bandung': 4},
+//   {'Universitas Padjajaran': 5},
+//   {'Universitas Pendidikan Indonesia': 6}
+// ]
 
 // essaytopicOptions dropdown
 const essaytopicOptions = [
@@ -105,43 +107,44 @@ const initialState = {
   submit: false,
  };
 
-const Formregisterhook = props => {
-  const [ state, setState ] = useState({ initialState });
+function Formregisterhook() {
+  const [ state, setState ] = useState(initialState);
 
   useState(() => {
-    const univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
+    var univFetch = fetch('http://fellowship.pemimpin.id:3003/api/v1/universities')
     // university_list state
     univFetch.then(res => {
       if( res.status === 200)
       return res.json() 
-    }).then( univJson => {
-      const universityList = univJson.data.map(univ => ({
-        key: univ.id.toString(),
-        text: univ.name,
-        value: univ.name
-      }));
-
+    }).then( res => { 
+      const universityList = res.data.map(univ => {
+        let text = univ.name;
+        if (!text) text = "Lainnya";
+        return {
+          key: univ.id.toString(),
+          text: text,
+          value: univ.id.toString()
+        }
+      })
       setState({
         ...state,
         university_list: universityList
       })
-      console.log(universityList);
+      // console.log(state.university_list);
     })
   })
 
-  
-  // const displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
+  const displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
   const handleChange = (e, { name, value }) => setState({ ...state, [name]: value});
   const handleDateBirth = (date) => setState({...state, birth_date:date })
-  // const handleAchievement = (idx,value) => {
-  //   let acv = state.achievements
-  //   acv[idx] = value
-  //   setState({ achievements: acv})
-  // };
+  const handleAchievement = (idx,value) => {
+    let acv = state.achievements
+    acv[idx] = value
+    setState({ ...state, achievements: acv})
+  };
   const handleSexDropdown = (e, { value }) => setState({ ...state, sex: value });
   const handleScholarshipDropdown = (e, { value }) => setState({ ...state, scholarship: value });
-  // const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
-  const handleUnivDropdown = (e, { value }) => setState({ ...state, university: value });
+  const handleUnivDropdown = (e, { value }) => setState({ ...state, university_id: value });
   const handleEssayDropdown = (e, { value }) => setState({ ...state, essay_topic: value });
 
   const onUploadChange = (e, {name}) =>{
@@ -175,7 +178,8 @@ const Formregisterhook = props => {
     formData.set('essay_topic', state.essay_topic || state.essay_topic_other)
     formData.set('head_essay', state.head_essay)
     // formData.set('universities_id', UNIVERSITY_MAP[state.university_id])
-    formData.set('university', UNIVERSITY_MAP[state.university])
+    // formData.set('university', UNIVERSITY_MAP[state.university])
+    formData.set('university', state.university_id)
     formData.set('university_other', state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', state.proposed_essay)
@@ -212,11 +216,14 @@ const Formregisterhook = props => {
   //       : '';
   // };
 
-    console.log(state,"currentState");
-    const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, university, university_list, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
-      loading
-    } = state;
+  console.log(state,"currentState");
+  const {
+    username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter, errors, submit,
+    loading
+  } = state;
+
+  // Waiting change in university_list
+  if (university_list === '') { return '' }
 
   return (
     <div className="web-container">
@@ -402,8 +409,7 @@ const Formregisterhook = props => {
             onChange={handleChange}
             required
           />
-          {/* Jika dia memilih scholarship lainnya (length-1) valuenya menjadi scholarship_other */}
-          {/* {achievements.map((element,idx) => {
+          {achievements.map((element,idx) => {
             const labels = idx === 0 ? '3 Prestasi Terbaik' : "";
             return(<Form.Field
               key={'form-input-control-achievements_'+(idx+1)}
@@ -416,7 +422,7 @@ const Formregisterhook = props => {
               onChange={ (e, {name,value}) => handleAchievement(idx,value)}
               required
             />)
-          })} */}
+          })}
           <Form.Field
             id='form-input-control-scientific-works  '
             control={TextArea}
@@ -490,15 +496,15 @@ const Formregisterhook = props => {
               control={Select}
               options={university_list}
               label={{ children: 'Daftar Universitas', htmlFor: 'form-select-control-university' }}
-              placeholder='Pilih Universitas'
+              placeholder='Universitas Indonesia'
               search
               onChange={handleUnivDropdown}
               // value={university_id}
-              value={university}
+              value={university_id}
               searchInput={{ id: 'form-select-control-university' }}
               required
             />
-            {/* {university_id === '' && university_list.value && (
+            {university_id === university_list[university_list.length-1].value && (
               <Form.Field
               control={Input}
               value={university_other}
@@ -508,7 +514,7 @@ const Formregisterhook = props => {
               type="username"
               onChange={handleChange}
             />
-            )} */}
+            )}
             <Form.Field
               name="university_letter"
               control={Input}
@@ -617,17 +623,13 @@ const Formregisterhook = props => {
                   {displayErrors(errors)}
               </Message>
             )}
-            {...state.errors.length < 1 && submit === true && (
+            {errors.length < 1 && submit === true && (
               <Message
                 success
                 header='Welcome to Young Innovators Fellowship, Next Leader!'
                 content='Kami akan memberi update ke-Emailmu jika kamu terpilih ke tahap selanjutnya.'
               />
             )} */}
-
-        {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
-        {/* <strong>dataSubmitted:</strong> */}
-        {/* <pre>{JSON.stringify({ submittedName, submittedNickname, submittedBirth_place, submittedBirth_date,submittedAddress, submittedEmail, submittedPhone, submittedEmegency_Phone, submittedSocial_media, submittedReligion, submittedHobby, submittedScholarship, submittedScholarship_Other, submittedSex, submittedScientific_works,submittedCompetencies, submittedAchievements, submittedRecommendation_paper, submittedUniversity_id,submittedProposed_essay, submittedEssay_topic,submittedEssay_topic_other, submittedScore, submittedFaculty }, null, 20)}</pre> */}
       </Container>
       <Footer />
     </div>

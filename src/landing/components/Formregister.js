@@ -11,13 +11,13 @@ import Footer from './Footer';
 
 import './Formregister.css';
 
-// sexOptions dropdown
+// ? sexOptions dropdown
 const sexOptions = [
   { key: 'm', text: 'Male', value: 'Male' },
   { key: 'f', text: 'Female', value: 'Female' },
 ]
 
-// scolarshipOption dropdown
+// ? scolarshipOption dropdown
 const scholarshipOptions = [
   { key: 'a', text: 'Bidik Misi', value: 'Bidik Misi' },
   { key: 'b', text: 'Rumah Kepemimpinan', value: 'Rumah Kepemimpinan' },
@@ -30,29 +30,7 @@ const scholarshipOptions = [
   { key: 'i', text: 'Lainnya', value: '' }
 ]
 
-// universityOptions dropdown
-// TODO Value ambil dari API Database
-const universityOptions = [
-  { key: '1', text: 'Universitas Indonesia', value: 'Universitas Indonesia' },
-  { key: '2', text: 'Institut Pertanian Bogor', value: 'Institut Pertanian Bogor' },
-  { key: '3', text: 'Universitas Negeri Jakarta', value: 'Universitas Negeri Jakarta' },
-  { key: '4', text: 'Institut Teknologi Bandung', value: 'Institut Teknologi Bandung' },
-  { key: '5', text: 'Universitas Padjajaran', value: 'Universitas Padjajaran' },
-  { key: '6', text: 'Universitas Pendidikan Indonesia', value: 'Universitas Pendidikan Indonesia' },
-  { key: '7', text: 'Lainnya', value: '' }
-]
-
-const UNIVERSITY_MAP = {
-  'Universitas Indonesia': 1,
-  'Institut Pertanian Bogor': 2,
-  'Universitas Negeri Jakarta': 3,
-  'Institut Teknologi Bandung': 4,
-  'Universitas Padjajaran': 5,
-  'Universitas Pendidikan Indonesia': 6,
-  '':7
-}
-
-// essaytopicOptions dropdown
+// ? essaytopicOptions dropdown
 const essaytopicOptions = [
   { key: 'a', text: 'Pendidikan', value: 'Pendidikan' },
   { key: 'b', text: 'Kesejahteraan Sosial', value: 'Kesejahteraan Sosial' },
@@ -84,6 +62,7 @@ const initialState = {
   achievements: ["","",""],
   scientific_works: "",
   university_id: "",
+  university_list: "",
   university_other: "",
   university_letter: "",
   scholarship_letter: "",
@@ -94,6 +73,7 @@ const initialState = {
   proposed_essay: "",
   head_essay: "",
   errors: [],
+  isUnivlist_assign: false,
   loading: false,
   submit: false,
  };
@@ -108,20 +88,24 @@ class Formregister extends Component {
       if( res.status === 200)
       return res.json() 
     }).then( univJson => {
-      var universityList = univJson.data.map(univ => ({
-        // key: univ.id.toString(),
-        key: univ.id.toString(),
-        text: univ.name,
-        value: univ.name
-      }));
-
-      this.setState({
-        university_list: universityList
+      const universityList = univJson.data.map(univ => {
+        let text = univ.name;
+        if (!text) text = "Lainnya";
+        return {
+          key: univ.id.toString(),
+          text: text,
+          value: univ.id.toString()
+        }
       })
-      console.log(universityList);
+      // ? set university_list value from API Database & use it in Dropdown 
+      this.setState({
+        university_list: universityList,
+        isUnivlist_assign: true
+      })
+
+      console.log(this.state.university_list);
     })
   }
-
   
   displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
   handleChange = (e, { name, value }) => this.setState({ [name]: value});
@@ -142,13 +126,8 @@ class Formregister extends Component {
     this.setState({[name]:files[0]});
   }
 
-  
-  // componentDidUpdate(){
-  //   setTimeout(() => this.setState({submit:false}), 3000);
-  // }
-
   handleFormSubmit = () => {
-    this.setState({ loading: true});
+    this.setState({ loading: true, isUnivlist_assign: true });
 
     const formData = new FormData();
     formData.set('name', this.state.username)
@@ -171,8 +150,7 @@ class Formregister extends Component {
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
     formData.set('head_essay', this.state.head_essay)
-    // formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
-    formData.set('universities_id', UNIVERSITY_MAP[this.state.university_id])
+    formData.set('universities_id', this.state.university_id)
     formData.set('university_other', this.state.university_other)
     // UPLOAD FILE
     formData.set('proposed_essay', this.state.proposed_essay)
@@ -187,38 +165,64 @@ class Formregister extends Component {
       data: formData,
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     }).then((response) => {
-      // TODO, show to user that request is success
-      this.setState({...initialState,submit:true});
+      // ? Keep university_list value and Change the other states to Initial
+      this.setState({ 
+        username: "",
+        nickname: "",
+        birth_place: "",
+        birth_date: "",
+        address: "",
+        email: "",
+        phone: "",
+        photo: "",
+        emergency_phone: "",
+        social_media: "",
+        religion: "",
+        hobby: "",
+        sex: "",
+        scholarship: "",
+        scholarship_other: "",
+        recommendation_paper: "",
+        competencies: "",
+        achievements: ["","",""],
+        scientific_works: "",
+        university_id: "",
+        university_other: "",
+        university_letter: "",
+        scholarship_letter: "",
+        faculty: "",
+        score: "",
+        essay_topic: "",
+        essay_topic_other: "",
+        proposed_essay: "",
+        head_essay: "",
+        errors: [],
+        loading: false,
+        submit: true
+      });
       this.setState({ loading: false});
-      // Hide message after 3s
-      setTimeout(() => this.setState({submit:false}), 3000);
+      // ? Hide Success message after 3s
+      setTimeout(() => this.setState({ submit:false }), 3000);
       console.log('request success')
     }).catch((response) => {
-      // TODO, show to user that request is failed
-      this.setState({errors:[response]})
-      this.setState({ loading: false});
+      // ? Show to user that request is failed
+      this.setState({ errors:[response ]})
+      this.setState({ loading: false });
       console.log('request failed', response)
     });
   }
 
-  // formisValid = ({ username, email, university, question }) => username && email && university && question;
-
-  handleInputError = (errors, inputName) => {
-    return errors.some(error =>
-        error.message.toLowerCase().includes(inputName)
-    )
-        ? 'error'
-        : '';
-  };
-
   render() {
     console.log(this.state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, isUnivlist_assign, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
     } = this.state;
+
+    // ? Waiting for API Fetch to university_list happen and only render it after that
+    if (university_list === '' && isUnivlist_assign === false) { return '' }
 
     return (
       <div className="web-container">
@@ -504,7 +508,7 @@ class Formregister extends Component {
                 searchInput={{ id: 'form-select-control-university' }}
                 required
               />
-              {university_id === universityOptions[universityOptions.length-1].value && (
+              {university_id === university_list[university_list.length-1].value && (
                 <Form.Field
                 control={Input}
                 value={university_other}
@@ -633,10 +637,6 @@ class Formregister extends Component {
                   content='Kami akan memberi update ke-Emailmu jika kamu terpilih ke tahap selanjutnya.'
                 />
               )}
-
-          {/* <pre>{JSON.stringify({ username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements, university_id, essay_topic, essay_topic_other, score, faculty }, null, 20)}</pre> */}
-          {/* <strong>dataSubmitted:</strong> */}
-          {/* <pre>{JSON.stringify({ submittedName, submittedNickname, submittedBirth_place, submittedBirth_date,submittedAddress, submittedEmail, submittedPhone, submittedEmegency_Phone, submittedSocial_media, submittedReligion, submittedHobby, submittedScholarship, submittedScholarship_Other, submittedSex, submittedScientific_works,submittedCompetencies, submittedAchievements, submittedRecommendation_paper, submittedUniversity_id,submittedProposed_essay, submittedEssay_topic,submittedEssay_topic_other, submittedScore, submittedFaculty }, null, 20)}</pre> */}
         </Container>
         <Footer />
       </div>
@@ -645,4 +645,3 @@ class Formregister extends Component {
 }
 
 export default Formregister;
-

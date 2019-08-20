@@ -8,7 +8,7 @@ import Home from './landing/pages/general/Home';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import About from './landing/pages/general/About';
 import Formregister from './landing/components/Formregister';
-// import Formregisterhook from './components/Hook';
+// import Formregisterhook from './landing/components/Hook';
 import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
 
