@@ -4,7 +4,7 @@
 // ? Functional Components
 // useState(...)
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Header, Container, Form, Input, TextArea, Select, Divider, Message } from 'semantic-ui-react';

@@ -8,11 +8,11 @@ import Home from './landing/pages/general/Home';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import About from './landing/pages/general/About';
 import Formregister from './landing/components/Formregister';
-// import Formregisterhook from './landing/components/Hook';
 import TnCPage from './landing/pages/general/T&C';
 // import '../semantic/dist/semantic.min.css';
 
 import ReactGA from 'react-ga';
+import Dashboard from './dashboard/admin/Dashboard';
 ReactGA.initialize('UA-48910414-11');
 ReactGA.pageview('/');
 ReactGA.pageview('/about');
@@ -35,6 +35,7 @@ class App extends Component {
             <Route exact path="/form" component={Formregister} />
             <Route exact path="/tnc" component={TnCPage} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/admin/dashboard" component={Dashboard} />
             {/* <Route exact path="/hook" component={Formregisterhook} /> */}
           </Switch>
         </div>

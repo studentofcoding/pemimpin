@@ -1,47 +1,70 @@
 import React from "react";
-// import firebase from '../firebase';
+
 import { Grid, Form, Segment, Button, Header, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './registerLogin.css';
 import customStyles from 'semantic-ui-css/semantic.min.css';
 import logo_pemimpin from '../../../image/Logo.png';
+import axios from 'axios';
+import config from '../../../config';
 
-class Login extends React.Component {
-  state = {
+const initialState = {
     email: "",
     password: "",
     errors: [],
     loading: false,
-  };
+    submit: false
+}
+
+class Login extends React.Component {
+  state = initialState
 
   dispalyErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
   handleUserInput = input => {
     this.setState({ [input.target.name]: input.target.value });
+    console.log(this.state.email + " " + this.state.password)
   };
 
   formisValid = ({ email, password }) => email && password;
 
-  // handleSubmit = input => {
-  //   input.preventDefault();
-  //   if (this.formisValid(this.state)) {
-  //     this.setState({ errors: [], loading: true });
-  //     firebase
-  //       .auth()
-  //       .signInWithEmailAndPassword(this.state.email, this.state.password)
-  //       .then(signInUser => {
-  //         console.log(signInUser);
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //         this.setState({
-  //           errors: this.state.errors.concat(err),
-  //           loading: false
-  //         });
-  //       })
-  //   }
-  // };
+  handleSubmit = input => {
+    this.setState({ loading: true });
+    input.preventDefault();
+
+    if (this.formisValid(this.state)) {
+      this.setState({ errors: [], loading: true });
+      axios({
+        method: 'POST',
+        url: config.endpoint + '/api/v1/admin',
+        data: JSON.stringify({
+          email    : this.state.email,
+          password : this.state.password
+        }),
+        config: {
+          headers: { 
+            'Content-Type': 'application/json' 
+          }
+        } 
+      }).then( user => {
+
+        this.setState({ 
+          initialState,
+          submit: true
+        });
+        this.setState({ loading: false});
+        console.log('User Login', user)
+        this.props.history.push('/');
+        
+      }).catch((response) => {
+        // ? Show to user that request is failed
+        this.setState({ errors:[response ]})
+        this.setState({ loading: false });
+        console.log('request failed', response)
+      });
+    }
+  };
 
   handleInputError = (errors, inputName) => {
       return errors.some(error =>
@@ -52,6 +75,7 @@ class Login extends React.Component {
   };
 
   render() {
+    console.log(this.state,"currentState");
     const { email, password, errors, loading } = this.state;
 
     return (
