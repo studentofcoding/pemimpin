@@ -14,7 +14,7 @@ const Navbarvertical = () => {
   const { activeItem } = state;
 
   return (
-    <Menu secondary vertical>
+    <Menu pointing secondary inverted sticky vertical>
       <Menu.Item
         name='Dashboard'
         active={activeItem === 'Dashboard'}
@@ -25,14 +25,6 @@ const Navbarvertical = () => {
         active={activeItem === 'Selected User'}
         onClick={handleItemClick}
       />
-      {/* <Dropdown item text='Display Options'>
-        <Dropdown.Menu>
-          <Dropdown.Header>Text Size</Dropdown.Header>
-          <Dropdown.Item>Small</Dropdown.Item>
-          <Dropdown.Item>Medium</Dropdown.Item>
-          <Dropdown.Item>Large</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown> */}
     </Menu>
   )
 }

@@ -35,7 +35,7 @@ const essaytopicOptions = [
   { key: 'a', text: 'Pendidikan', value: 'Pendidikan' },
   { key: 'b', text: 'Kesejahteraan Sosial', value: 'Kesejahteraan Sosial' },
   { key: 'c', text: 'Kepemimpinan', value: 'Kepemimpinan' },
-  { key: 'd', text: 'Linkungan', value: 'Linkungan' },
+  { key: 'd', text: 'Lingkungan', value: 'Lingkungan' },
   { key: 'e', text: 'Manajemen Bencana', value: 'Manajemen Bencana' },
   { key: 'f', text: 'IT, Teknologi Terapan, dan Inovasi', value: 'IT, Teknologi Terapan, dan Inovasi' },
   { key: 'g', text: 'Lainnya', value: '' }

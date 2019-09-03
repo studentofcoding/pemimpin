@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react';
+import { Checkbox, Table, Container } from 'semantic-ui-react';
+import './candidateList.css';
 
 const initialState = {
-  selected_status: false,
   datalist: '',
   activeMenu: 'Dashboard'
  };
@@ -22,7 +22,9 @@ function CandidateList() {
         let email = list.email;
         let score = list.score;
         let head_essay = list.head_essay;
+        let isAccepted = list.isAccepted;
         return {
+          isAccepted,
           name,
           university : university, 
           score,
@@ -47,6 +49,7 @@ function CandidateList() {
     return state.datalist.map((list, index) => {
       const { 
         id,
+        isAccepted,
         name,
         university, 
         score,
@@ -54,16 +57,16 @@ function CandidateList() {
         email 
       } = list
       return (
-        <Table.Row key={id} textAlign='center'>
-          <Table.Cell collapsing>
-            <Checkbox slider />
-          </Table.Cell>
-          <Table.Cell>{name}</Table.Cell>
-          <Table.Cell>{university}</Table.Cell>
-          <Table.Cell>{score}</Table.Cell>
-          <Table.Cell>{head_essay}</Table.Cell>
-          <Table.Cell>{email}</Table.Cell>
-        </Table.Row>
+      <Table.Row key={id} textAlign='left'>
+        <Table.Cell collapsing>
+          <Checkbox slider>{isAccepted}</Checkbox>
+        </Table.Cell>
+        <Table.Cell>{name}</Table.Cell>
+        <Table.Cell>{university}</Table.Cell>
+        <Table.Cell>{score}</Table.Cell>
+        <Table.Cell>{head_essay}</Table.Cell>
+        <Table.Cell>{email}</Table.Cell>
+      </Table.Row>
       )
     })
   }
@@ -72,43 +75,25 @@ function CandidateList() {
   if (datalist === '') { return '' }
 
   return (
-    <Table basic='very' celled definition>
-      <Table.Header >
-        <Table.Row textAlign='center'>
-          <Table.HeaderCell>Tandai Kandidat</Table.HeaderCell>
-          <Table.HeaderCell>Nama Kandidat</Table.HeaderCell>
-          <Table.HeaderCell>Universitas</Table.HeaderCell>
-          <Table.HeaderCell>IPK</Table.HeaderCell>
-          <Table.HeaderCell>Judul Skripsi</Table.HeaderCell>
-          <Table.HeaderCell>Email</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
+    <Container text>
+      <Table size='small'>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell />
+            <Table.HeaderCell>Nama</Table.HeaderCell>
+            <Table.HeaderCell>Universitas</Table.HeaderCell>
+            <Table.HeaderCell>IPK</Table.HeaderCell>
+            <Table.HeaderCell>Judul Skripsi</Table.HeaderCell>
+            <Table.HeaderCell>Email</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
 
-      <Table.Body>
-        {dataTable()}
-      </Table.Body>
-
-      <Table.Footer fullWidth>
-        <Table.Row>
-          <Table.HeaderCell />
-          <Table.HeaderCell colSpan='5'>
-            <Button
-              floated='right'
-              icon
-              labelPosition='left'
-              primary
-              size='small'
-            >
-              <Icon name='user' /> Add User
-            </Button>
-            <Button size='small'>Approve</Button>
-            <Button disabled size='small'>
-              Approve All
-            </Button>
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
+        <Table.Body>
+          {dataTable()}
+        </Table.Body>
+      </Table>
+    </Container>
+      
   );
 }
 

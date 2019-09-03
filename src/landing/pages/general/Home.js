@@ -141,13 +141,13 @@ class Home extends Component {
             <div className="top-details">
               <h2
                 className="top-header"
-                style={{fontFamily:"Ubuntu", fontWeight:"bold", marginTop:15, marginBottom:15}}
+                style={{fontFamily:"Ubuntu,sans serif", fontWeight:"bold", marginTop:15, marginBottom:15}}
               >
                 YOUNG INNOVATORS FELLOWSHIP
               </h2>
               <h2
               className="top-desc"
-              style={{fontFamily:"Ubuntu", fontSize:"2.4em", marginTop:15, marginBottom:15}}
+              style={{fontFamily:"Ubuntu,sans serif", fontSize:"2.4em", marginTop:15, marginBottom:15}}
               >
                 Indonesia want You !
               </h2>
@@ -286,7 +286,7 @@ class Home extends Component {
             >
               <h2
                 className="tujuan-header"
-                style={{fontFamily:"Ubuntu", fontSize:"1.8em", color:"white"}}
+                style={{fontFamily:"Ubuntu,sans serif", fontSize:"1.8em", color:"white"}}
               >
                 Tujuan
               </h2>
@@ -306,7 +306,7 @@ class Home extends Component {
                     </div>
                     <div className="t-section-container-inner">
                       <div className="t-section-container-inner_judul">
-                        <h3 style={{fontFamily:"Ubuntu", margin:0, fontSize:"0.9em"}}>
+                        <h3 style={{fontFamily:"Ubuntu,sans serif", margin:0, fontSize:"0.9em"}}>
                           Riset Inovatif
                         </h3>
                       </div>
@@ -329,7 +329,7 @@ class Home extends Component {
                     </div>
                     <div className="t-section-container-inner">
                       <div className="t-section-container-inner_judul">
-                        <h3 style={{fontFamily:"Ubuntu", margin:0, fontSize:"0.9em"}}>
+                        <h3 style={{fontFamily:"Ubuntu,sans serif", margin:0, fontSize:"0.9em"}}>
                           Pengembangan Keahlian
                         </h3>
                       </div>
@@ -350,7 +350,7 @@ class Home extends Component {
                     </div>
                     <div className="t-section-container-inner">
                       <div className="t-section-container-inner_judul">
-                        <h3 style={{fontFamily:"Ubuntu", margin:0, fontSize:"0.9em"}}>
+                        <h3 style={{fontFamily:"Ubuntu,sans serif", margin:0, fontSize:"0.9em"}}>
                           Pengayaan Karir
                         </h3>
                       </div>

@@ -24,6 +24,24 @@ body {
   margin:0;
 }
 
+.dashboard-container {
+  text-align: left;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: left;
+  justify-content: left;
+  margin:0;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  width: 20%;
+  background-color: #3a3a47;
+  padding: 1em;
+}
+
 /*
   Term and Condition Section
 */
