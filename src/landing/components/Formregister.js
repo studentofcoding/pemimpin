@@ -67,6 +67,7 @@ const initialState = {
   university_letter: "",
   scholarship_letter: "",
   faculty: "",
+  angkatan: "",
   score: "",
   essay_topic: "",
   essay_topic_other: "",
@@ -146,6 +147,7 @@ class Formregister extends Component {
     formData.set('achievements', this.state.achievements.join("\n"))
     formData.set('scientific_works', this.state.scientific_works)
     formData.set('scholarships', this.state.scholarship || this.state.scholarship_other)
+    formData.set('angkatan', this.state.angkatan)
     formData.set('faculty', this.state.faculty)
     formData.set('score', this.state.score)
     formData.set('essay_topic', this.state.essay_topic || this.state.essay_topic_other)
@@ -191,6 +193,7 @@ class Formregister extends Component {
         university_letter: "",
         scholarship_letter: "",
         faculty: "",
+        angkatan: "",
         score: "",
         essay_topic: "",
         essay_topic_other: "",
@@ -215,7 +218,7 @@ class Formregister extends Component {
   render() {
     console.log(this.state,"currentState");
     const {
-      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, isUnivlist_assign, university_other, essay_topic, essay_topic_other,score, faculty, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
+      username, nickname, birth_place, birth_date, address, email, phone, emergency_phone, social_media, religion, hobby, scholarship, scholarship_other, sex, scientific_works, competencies, achievements , university_id, university_list, isUnivlist_assign, university_other, essay_topic, essay_topic_other,score, faculty, angkatan, recommendation_paper, proposed_essay, head_essay, photo, scholarship_letter, university_letter,
       loading,
       errors,
       submit
@@ -543,6 +546,16 @@ class Formregister extends Component {
                 label='Fakultas / Jurusan'
                 name="faculty"
                 type="username"
+                onChange={this.handleChange}
+                required
+              />
+              <Form.Field
+                control={Input}
+                value={angkatan}
+                placeholder='contoh : 2014'
+                label='Tahun Angkatan'
+                name="angkatan"
+                type="number"
                 onChange={this.handleChange}
                 required
               />
