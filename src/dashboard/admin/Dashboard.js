@@ -9,14 +9,14 @@ import CandidateList from '../general/components/candidateList';
 function Dashboard() {
   return (
     <div className="dashboard-container">
-      <div className="sidebar-sticky">
-        <Navbarvertical />
-      </div>
-      <Container style={{padding:"1em", width: "80%"}}>
-        <div style={semanticStyle}>
+      <Navbarvertical />
+      <div className="main-container">
+        <div className="head_dashboard">
+          <Container>
             <CandidateList />
+          </Container>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }

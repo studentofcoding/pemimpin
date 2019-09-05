@@ -19,6 +19,7 @@ function CandidateList() {
       const dataList = res.data.map(list => {
         let name = list.name;
         let university = list.university_other || list.universities_id.toString();
+        let year_in = list.year_in;
         let email = list.email;
         let score = list.score;
         let head_essay = list.head_essay;
@@ -27,6 +28,7 @@ function CandidateList() {
           isAccepted,
           name,
           university : university, 
+          year_in,
           score,
           head_essay,
           email
@@ -51,7 +53,8 @@ function CandidateList() {
         id,
         isAccepted,
         name,
-        university, 
+        university,
+        year_in,
         score,
         head_essay,
         email 
@@ -63,6 +66,7 @@ function CandidateList() {
         </Table.Cell>
         <Table.Cell>{name}</Table.Cell>
         <Table.Cell>{university}</Table.Cell>
+        <Table.Cell>{year_in}</Table.Cell>
         <Table.Cell>{score}</Table.Cell>
         <Table.Cell>{head_essay}</Table.Cell>
         <Table.Cell>{email}</Table.Cell>
@@ -79,9 +83,10 @@ function CandidateList() {
       <Table size='small'>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell />
+            <Table.HeaderCell>Pilih Kandidat</Table.HeaderCell>
             <Table.HeaderCell>Nama</Table.HeaderCell>
             <Table.HeaderCell>Universitas</Table.HeaderCell>
+            <Table.HeaderCell>Tahun Angkatan</Table.HeaderCell>
             <Table.HeaderCell>IPK</Table.HeaderCell>
             <Table.HeaderCell>Judul Skripsi</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
