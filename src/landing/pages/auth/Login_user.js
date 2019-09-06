@@ -16,7 +16,7 @@ const initialState = {
     submit: false
 }
 
-class Login extends React.Component {
+class LoginUser extends React.Component {
   state = initialState
 
   dispalyErrors = errors =>
@@ -40,7 +40,7 @@ class Login extends React.Component {
 
       axios({
         method: 'POST',
-        url: config.endpoint + '/api/v1/admin',
+        url: config.endpoint + '/api/v1/users',
         data: formData,
         config: { headers: {'Content-Type': 'multipart/form-data' }}
       })
@@ -52,7 +52,7 @@ class Login extends React.Component {
         });
         this.setState({ loading: false});
         console.log('User Login', user)
-        this.props.history.push('/admin/dashboard');
+        this.props.history.push('/user/dashboard');
         
       }).catch((response) => {
         // ? Show to user that request is failed
@@ -129,7 +129,7 @@ class Login extends React.Component {
                         </Message>
                     )}
                     <Message style={{fontSize:"14px"}}>
-                        Bukan Admin? login ke <Link to="/login/user">Dashboard Peserta</Link> | <Link to="/">Home</Link>
+                        Bukan Peserta? login ke <Link to="/login/admin">Dashboard Admin</Link> | <Link to="/">Home</Link>
                     </Message>
                 </Grid.Column>
             </Grid>
@@ -138,4 +138,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default LoginUser;

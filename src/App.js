@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Login from './landing/pages/auth/Login';
+import LoginUser from './landing/pages/auth/Login_user';
 import Contact from './landing/pages/general/Contact';
 import Home from './landing/pages/general/Home';
 
@@ -13,13 +14,18 @@ import TnCPage from './landing/pages/general/T&C';
 
 import ReactGA from 'react-ga';
 import Dashboard from './dashboard/admin/Dashboard';
+import Dashboard_user from './dashboard/user/Dashboard_user';
+
 ReactGA.initialize('UA-48910414-11');
 ReactGA.pageview('/');
 ReactGA.pageview('/about');
 ReactGA.pageview('/contact');
 ReactGA.pageview('/form');
 ReactGA.pageview('/tnc');
-ReactGA.pageview('/login');
+ReactGA.pageview('/login/admin');
+ReactGA.pageview('/login/user');
+ReactGA.pageview('/admin/dashboard');
+ReactGA.pageview('/user/dashboard');
 
 class App extends Component {
 
@@ -34,8 +40,10 @@ class App extends Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/form" component={Formregister} />
             <Route exact path="/tnc" component={TnCPage} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login/admin" component={Login} />
+            <Route exact path="/login/user" component={LoginUser} />
             <Route exact path="/admin/dashboard" component={Dashboard} />
+            <Route exact path="/user/dashboard" component={Dashboard_user} />
             {/* <Route exact path="/hook" component={Formregisterhook} /> */}
           </Switch>
         </div>
