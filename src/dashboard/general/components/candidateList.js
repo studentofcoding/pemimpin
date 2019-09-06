@@ -61,15 +61,15 @@ function CandidateList() {
       } = list
       return (
       <Table.Row key={id} textAlign='left'>
-        <Table.Cell collapsing>
+        <Table.Cell collapsing textAlign='center'>
           <Checkbox slider>{isAccepted}</Checkbox>
         </Table.Cell>
         <Table.Cell>{name}</Table.Cell>
         <Table.Cell>{university}</Table.Cell>
-        <Table.Cell>{year_in}</Table.Cell>
-        <Table.Cell>{score}</Table.Cell>
-        <Table.Cell>{head_essay}</Table.Cell>
-        <Table.Cell>{email}</Table.Cell>
+        <Table.Cell textAlign='center'>{year_in}</Table.Cell>
+        <Table.Cell textAlign='center'>{score}</Table.Cell>
+        <Table.Cell textAlign='center'>{head_essay}</Table.Cell>
+        <Table.Cell textAlign='center'>{email}</Table.Cell>
       </Table.Row>
       )
     })
@@ -83,7 +83,7 @@ function CandidateList() {
       <Table size='small'>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Pilih Kandidat</Table.HeaderCell>
+            <Table.HeaderCell singleLine>Pilih Kandidat</Table.HeaderCell>
             <Table.HeaderCell>Nama</Table.HeaderCell>
             <Table.HeaderCell>Universitas</Table.HeaderCell>
             <Table.HeaderCell>Tahun Angkatan</Table.HeaderCell>

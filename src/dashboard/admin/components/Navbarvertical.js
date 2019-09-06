@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, Divider } from 'semantic-ui-react';
 import logo_pemimpin from '../../../image/Logo.png';
-import Navbarcss from './Navbarvertical.css';
+import './Navbarvertical.css';
 
 const initialState = {
   selected_status: false,
@@ -18,7 +18,7 @@ const Navbarvertical = () => {
   return (
     <div className="sidebar-sticky">
       <div className="logo-container_container">
-        <a href="http://www.fellowship.pemimpin.id">
+        <a href="http://localhost:3000">
           <img src={logo_pemimpin} alt="Pemimpin.co" className="app-logo-sidebar"/>
         </a>
         {/* <NavLink exact to="pemimpin.id">

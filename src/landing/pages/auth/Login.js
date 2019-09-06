@@ -30,24 +30,21 @@ class Login extends React.Component {
   formisValid = ({ email, password }) => email && password;
 
   handleSubmit = input => {
-    this.setState({ loading: true });
     input.preventDefault();
+    const formData = new FormData();
 
     if (this.formisValid(this.state)) {
       this.setState({ errors: [], loading: true });
+      formData.set('email', this.state.email)
+      formData.set('password', this.state.password)
+
       axios({
         method: 'POST',
         url: config.endpoint + '/api/v1/admin',
-        data: JSON.stringify({
-          email    : this.state.email,
-          password : this.state.password
-        }),
-        config: {
-          headers: { 
-            'Content-Type': 'application/json' 
-          }
-        } 
-      }).then( user => {
+        data: formData,
+        config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then( user => {
 
         this.setState({ 
           initialState,
@@ -55,7 +52,7 @@ class Login extends React.Component {
         });
         this.setState({ loading: false});
         console.log('User Login', user)
-        this.props.history.push('/');
+        this.props.history.push('/admin/dashboard');
         
       }).catch((response) => {
         // ? Show to user that request is failed

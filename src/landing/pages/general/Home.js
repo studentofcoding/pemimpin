@@ -14,7 +14,6 @@
 
 import React, { Component } from 'react';
 import '../../../App.css';
-// import logo_pemimpin from '../image/Logo.png';
 
 // Navbar related
 import Navbar from '../../components/Navbar';

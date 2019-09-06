@@ -1,5 +1,5 @@
 import React from 'react';
-import semanticStyle from 'semantic-ui-css/semantic.min.css';
+// import semanticStyle from 'semantic-ui-css/semantic.min.css';
 import '../../App.css';
 
 import { Container } from 'semantic-ui-react';

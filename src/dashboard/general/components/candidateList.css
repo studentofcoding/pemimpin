@@ -1,11 +1,11 @@
 .ui.text.container {
-  max-width: 100%;
+  width: 90% !important;
 }
 
 .ui.secondary.vertical.pointing.menu .item {
-  margin: 10% 0;
+  margin: 6% 0;
 }
 
-.ui.container {
+/* .ui.container {
   width: 100%;
-}
+} */
