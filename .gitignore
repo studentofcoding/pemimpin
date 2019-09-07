@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# upload folder
+data-file
+
+
 # testing
 /coverage
 
