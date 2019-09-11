@@ -7,9 +7,11 @@ import './Pages.css';
 
 import { Form, Input, TextArea, Message, Container } from 'semantic-ui-react';
 import Footer from '../../components/Footer';
-import Tncmodul from '../../components/Tncmodul';
+// import Tncmodul from '../../components/Tncmodul';
+
 
 import axios from 'axios';
+import RegisterModul from '../../components/Registermodul';
 // import config from '../config';
 
 const contactState = { 
@@ -69,7 +71,7 @@ class Contact extends Component {
       <div className="web-container">
         <Navbar />
         
-        <Tncmodul />
+        <RegisterModul />
         
         {/* Pages Header */}
         <div className="pages-header">

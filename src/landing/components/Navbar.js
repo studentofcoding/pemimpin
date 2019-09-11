@@ -38,7 +38,7 @@ function Navbar() {
           <NavLink className="navigation_item" exact to="/about">About</NavLink>
           <NavLink className="navigation_item" exact to="/tnc">Term</NavLink>
           <NavLink className="navigation_item" exact to="/contact">Contact</NavLink>
-          <NavLink className="navigation_item" exact to="/login">Login</NavLink>
+          <NavLink className="navigation_item" exact to="/login/admin">Login</NavLink>
           <div className="menu_button">
           <Button icon='align justify' inverted color='red' onClick={menuOpen} />
             <Dimmer active={active} onClickOutside={menuClose} page>

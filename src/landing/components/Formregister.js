@@ -230,7 +230,7 @@ class Formregister extends Component {
     return (
       <div className="web-container">
         <Navbar />
-
+        
         {/* Pages Header */}
         <div className="pages-header">
           <div className="pages-header_header">
@@ -553,7 +553,7 @@ class Formregister extends Component {
                 control={Input}
                 value={year_in}
                 placeholder='contoh : 2014'
-                label='Tahun year_in'
+                label='Tahun'
                 name="year_in"
                 type="number"
                 onChange={this.handleChange}

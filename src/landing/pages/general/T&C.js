@@ -4,12 +4,13 @@ import Navbar from '../../components/Navbar';
 import './Pages.css';
 import Footer from '../../components/Footer';
 import Tncmodul from '../../components/Tncmodul';
+import RegisterModul from '../../components/Registermodul';
 
 const TnCPage = () => (
   <div className="web-container">
-    <Navbar/>
+    <Navbar />
 
-    <Tncmodul/>
+    <RegisterModul />
 
     {/* Pages Header */}
     <div className="pages-header">

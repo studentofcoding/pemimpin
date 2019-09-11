@@ -6,6 +6,8 @@ import './registerLogin.css';
 import customStyles from 'semantic-ui-css/semantic.min.css';
 import logo_pemimpin from '../../../image/Logo.png';
 import axios from 'axios';
+import setAuthToken from '../../../utils/setAuthToken';
+
 import config from '../../../config';
 
 const initialState = {
@@ -45,6 +47,10 @@ class Login extends React.Component {
         config: { headers: {'Content-Type': 'multipart/form-data' }}
       })
       .then( user => {
+        // Put token to header
+        const token = user.data.token;
+        localStorage.setItem('jwtToken', token);
+        setAuthToken(token);
 
         this.setState({ 
           initialState,

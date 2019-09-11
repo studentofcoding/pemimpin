@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Container, Divider } from 'semantic-ui-react';
 import './Pages.css';
 import Navbar from '../../components/Navbar';
-import Tncmodul from '../../components/Tncmodul';
+
+// import Tncmodul from '../../components/Tncmodul';
+
 import Footer from '../../components/Footer';
 import founderPic from '../../../image/pages-section-founder.png';
+import RegisterModul from '../../components/Registermodul';
 
 // import buttonDaftar from '../components/buttonDaftar';
 
@@ -14,7 +17,7 @@ export default class About extends Component {
       <div className="web-container">
         <Navbar />
 
-        <Tncmodul/>
+        <RegisterModul />
 
         {/* Pages Header */}
         <div className="pages-header">
