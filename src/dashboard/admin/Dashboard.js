@@ -8,7 +8,7 @@ import Navbarvertical from './components/Navbarvertical';
 import CandidateList from '../general/components/candidateList';
 
 const initialState = {
-  token: '',
+  token: null,
   isUserAuth: false
 }
 
@@ -18,23 +18,23 @@ function Dashboard(props) {
 
   const redirect = () => {
     //
-    props.history.push('/');
+    props.history.push('/login/admin');
   }
 
   // Akan se
   useEffect(() => {
     // Tulis fucntionnya untuk grab header tokennya
-    if (token === '') {
+    if (token === null) {
       // Tulis functionnya untuk grab header tokennya
       const userToken = () => {   
-        return 'j910j910j109j109';
+        return window.localStorage.getItem('jwtToken');
         // Harus ada return karena function gunanya untuk mengembalikan sesuatu
         // set token ke state token
         // isUserAuth ganti ke true
       }
       // Memanggil function dari variable (menyimpan value)
       const user = userToken();
-      if (user === '') {
+      if (user === null) {
         redirect();
       }
       console.log(user)
@@ -44,7 +44,7 @@ function Dashboard(props) {
 
   
 
-  if (token === '') { return '' }
+  if (token === '' | null) { return '' }
 
   return (
     <div className="dashboard-container">

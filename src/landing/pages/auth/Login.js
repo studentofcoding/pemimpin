@@ -21,7 +21,7 @@ const initialState = {
 class Login extends React.Component {
   state = initialState
 
-  dispalyErrors = errors =>
+  displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
   handleUserInput = input => {
@@ -131,7 +131,7 @@ class Login extends React.Component {
                     {errors.length > 0 && (
                         <Message error>
                             <h3>Error</h3>
-                            {this.dispalyErrors(errors)}
+                            {this.displayErrors(errors)}
                         </Message>
                     )}
                     <Message style={{fontSize:"14px"}}>

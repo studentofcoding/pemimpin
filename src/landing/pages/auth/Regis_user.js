@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Grid, Form, Segment, Button, Header, Message } from 'semantic-ui-react';
+// Import withRouter to make this.props.history.push work
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './registerLogin.css';
@@ -9,6 +10,10 @@ import logo_pemimpin from '../../../image/Logo.png';
 import axios from 'axios';
 import config from '../../../config';
 
+// Swal for Popup Message
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
 const initialState = {
     username: "",
     email: "",
@@ -16,13 +21,13 @@ const initialState = {
     university: "",
     errors: [],
     loading: false,
-    submit: false
+    isFormSubmitted: false
 }
 
 class RegisUser extends React.Component {
-  state = initialState
+  state = initialState;
 
-  dispalyErrors = errors =>
+  displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
   handleUserInput = input => {
@@ -41,9 +46,13 @@ class RegisUser extends React.Component {
         length: 10,
         numbers: true
     });
-    
-    // 'uEyMTw32v9'
     console.log(password);
+
+    const redirect = (user) => {
+        this.props.history.push('/');
+    }
+
+    
 
     if (this.formisValid(this.state)) {
         this.setState({ errors: [], loading: true });
@@ -62,14 +71,11 @@ class RegisUser extends React.Component {
         })
         .then( user => {
 
-            this.setState({ 
-            initialState,
-            submit: true
-            });
-            this.setState({ loading: false});
+            this.setState(initialState);
+            this.setState({ loading: false, isFormSubmitted: true });
             console.log('User Registed', user)
-            if (this.state.submit) {
-                return <Redirect to='/about' />
+            if (this.state.isFormSubmitted === true) {
+                return <Redirect to='/about' />;
             }
             
         }).catch((response) => {
@@ -77,6 +83,14 @@ class RegisUser extends React.Component {
             this.setState({ errors:[response ]})
             this.setState({ loading: false });
             console.log('request failed', response)
+        })
+        
+        Swal.fire({
+            title: 'Selamat, datamu terikirim!',
+            text: 'Beberapa saat lagi kamu akan menerima detail akunmu',
+            type: 'success',
+            showConfirmButton: false,
+            timer: 3000
         });
     }
   };
@@ -166,7 +180,7 @@ class RegisUser extends React.Component {
                     {errors.length > 0 && (
                         <Message error>
                             <h3>Error</h3>
-                            {this.dispalyErrors(errors)}
+                            {this.displayErrors(errors)}
                         </Message>
                     )}
                     <Message style={{fontSize:"14px"}}>

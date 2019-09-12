@@ -64,12 +64,12 @@ function CandidateList() {
         <Table.Cell collapsing textAlign='center'>
           <Checkbox slider>{isAccepted}</Checkbox>
         </Table.Cell>
-        <Table.Cell>{name}</Table.Cell>
-        <Table.Cell>{university}</Table.Cell>
+        <Table.Cell singleLine>{name}</Table.Cell>
+        <Table.Cell singleLine>{university}</Table.Cell>
         <Table.Cell textAlign='center'>{year_in}</Table.Cell>
         <Table.Cell textAlign='center'>{score}</Table.Cell>
-        <Table.Cell textAlign='center'>{head_essay}</Table.Cell>
-        <Table.Cell textAlign='center'>{email}</Table.Cell>
+        <Table.Cell singleLine textAlign='center'>{head_essay}</Table.Cell>
+        <Table.Cell singleLine textAlign='center'>{email}</Table.Cell>
       </Table.Row>
       )
     })
@@ -85,10 +85,10 @@ function CandidateList() {
           <Table.Row>
             <Table.HeaderCell singleLine>Pilih Kandidat</Table.HeaderCell>
             <Table.HeaderCell>Nama</Table.HeaderCell>
-            <Table.HeaderCell>Universitas</Table.HeaderCell>
-            <Table.HeaderCell>Tahun Angkatan</Table.HeaderCell>
+            <Table.HeaderCell singleLine>Universitas</Table.HeaderCell>
+            <Table.HeaderCell singleLine>Tahun Angkatan</Table.HeaderCell>
             <Table.HeaderCell>IPK</Table.HeaderCell>
-            <Table.HeaderCell>Judul Skripsi</Table.HeaderCell>
+            <Table.HeaderCell singleLine>Judul Skripsi</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

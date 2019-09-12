@@ -53,10 +53,10 @@ class App extends Component {
             <Route exact path="/login/admin" component={Login} />
             <Route exact path="/login/user" component={LoginUser} />
 
-            { isUserAuth 
+            {/* { isUserAuth 
             ? <PrivateRoute exact path="/admin/dashboard" component={Dashboard} />
             : <Redirect to='/' />
-            }
+            } */}
             
             {/* Dashboard - Protected Route */}
             <Route exact path="/admin/dashboard" component={Dashboard} />

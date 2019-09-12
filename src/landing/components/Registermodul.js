@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Form, Checkbox } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 // T&C Modal
 import Modal from 'react-modal';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import './tncModul.css';
 import RegisUser from '../pages/auth/Regis_user';
 

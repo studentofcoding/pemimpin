@@ -145,11 +145,41 @@ export default function Example() {
                 >
                     <p>
                         Program Young Innovative Fellowship akan melewati serangkaian tahapan, antara lain:
-                        <li>Registrasi berkas (10 - 31 Agustus 2019)</li>
-                        <li>Proses seleksi (1 - 5 September 2019)</li>
-                        <li>Pengumuman peserta lolos 20 September 2019</li>
+                        <li>Pendaftaran gelombang 1 (10 - 31 Agustus 2019)</li>
+                        <li>Pendaftaran gelombang 2 (7 - 21 September 2019)</li>
+                        <li>Pengumuman peserta lolos tahap 1 : 28 September 2019</li>
                         <li>Bootcamp peserta terpilih (30 September - 4 Oktober 2019)</li>
                         <li>Periode fellowship (30 September 2019 - 31 Mei 2020)</li>
+                    </p>
+                </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem>
+                <AccordionItemHeading>
+                    <AccordionItemButton 
+                        style=
+                        {{
+                            fontFamily:"Ubuntu", 
+                            fontSize:"0.7em",
+                            fontWeight:"bold",
+                            backgroundColor:"#1d1d2c", 
+                            color:"white", 
+                            border:"#1d1d2c solid 2px"
+                        }}
+                    >
+                        Batas waktu melengkapi berkas?
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel style=
+                    {{
+                        width:"100%",
+                        fontFamily:"Lato", 
+                        fontSize:"0.6em",
+                        backgroundColor:"white", 
+                        color:"#1d1d2c"
+                    }}
+                >
+                    <p>
+                        21 September 2019
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>

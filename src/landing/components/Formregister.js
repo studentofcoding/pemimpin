@@ -553,7 +553,7 @@ class Formregister extends Component {
                 control={Input}
                 value={year_in}
                 placeholder='contoh : 2014'
-                label='Tahun'
+                label='Tahun Angkatan'
                 name="year_in"
                 type="number"
                 onChange={this.handleChange}
