@@ -1,23 +1,57 @@
 import React from 'react';
-// import semanticStyle from 'semantic-ui-css/semantic.min.css';
 import '../../App.css';
 
 import { Container } from 'semantic-ui-react';
 import { useEffect } from 'react';
 import Navbarvertical from './components/Navbarvertical_user';
+import { Menu, Divider } from 'semantic-ui-react';
 import CandidateList from '../general/components/candidateList';
+import { ReactComponent as WelcomeImage } from '../../image/welcome_1.svg';
+import logo_pemimpin from '../../image/Logo.png';
+import './components/Navbarvertical_user.css';
+import Formregister from './components/Formregister';
 
 const initialState = {
   token: null,
-  isUserAuth: false
+  isUserAuth: false,
+  selected_status: false,
+  activeItem: 'Dashboard'
 }
 
 function Dashboard(props) {
   const [ state, setState ] = React.useState(initialState);
-  const { token, isUserAuth } = state;
+  const { token, isUserAuth, activeItem } = state;
+
+  const handleItemClick = (e, { name }) => setState({ ...state, activeItem: name })
+
+  const Navbar = () => {
+    return <div className="sidebar-sticky">
+    <div className="logo-container_container">
+      <a href="http://localhost:3000/user/dashboard">
+        <img src={logo_pemimpin} alt="Pemimpin.id" className="app-logo-sidebar"/>
+      </a>
+      {/* <NavLink exact to="pemimpin.id">
+      </NavLink> */}
+    </div>
+  
+    <Divider/>
+  
+    <Menu pointing secondary inverted sticky vertical>
+      <Menu.Item
+        name='Dashboard'
+        active={activeItem === 'Dashboard'}
+        onClick={handleItemClick}
+      />
+      <Menu.Item
+        name='Form Pendaftaran'
+        active={activeItem === 'Form Pendaftaran'}
+        onClick={handleItemClick}
+      />
+    </Menu>
+  </div>
+  }
 
   const redirect = () => {
-    //
     props.history.push('/login/user');
   }
 
@@ -48,11 +82,16 @@ function Dashboard(props) {
 
   return (
     <div className="dashboard-container">
-      <Navbarvertical />
+      <Navbar />
       <div className="main-container">
         <div className="head_dashboard">
           <Container>
-            <CandidateList />
+            {/* Open this if Dashboard is selected else Open Formregister */}
+            {
+              activeItem === 'Dashboard'
+              ? <WelcomeImage style={{ fill: "#d10927" }}/>
+              : <Formregister />
+            }
           </Container>
         </div>
       </div>

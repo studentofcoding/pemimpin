@@ -1,0 +1,8 @@
+.welcomepage {
+    display: block;
+    text-indent: -9999px;
+    width: auto;
+    height: 100vh;
+    background-image: url(../../image/welcome_1.png);
+    background-size: 100vh auto;
+  }

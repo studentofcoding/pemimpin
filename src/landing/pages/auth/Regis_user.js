@@ -48,9 +48,9 @@ class RegisUser extends React.Component {
     });
     console.log(password);
 
-    const redirect = (user) => {
-        this.props.history.push('/');
-    }
+    // const redirect = (user) => {
+    //     this.props.history.push('/');
+    // }
 
     
 
